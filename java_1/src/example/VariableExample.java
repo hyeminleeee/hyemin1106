@@ -11,7 +11,7 @@ public class VariableExample {
 		
 		//높이가 9이고 밑변의 길이가 7인 삼각형의 넓이를 계산하여 출력하세요.
 		int n=9, m=7;
-		double samnulbi=n*m/2.0;
+		double samnulbi=n*m/2.0;//or double samnulbi=(double)n*m/2
 		
 		System.out.println("삼각형의 넓이 = "+samnulbi);
 		System.out.println("==============================================================");
