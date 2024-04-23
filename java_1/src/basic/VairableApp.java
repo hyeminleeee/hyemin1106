@@ -20,4 +20,4 @@ public class VairableApp {
 		 System.out.println("");
 	}
 }
-/수정사항입니다!
+//수정사항입니다.
