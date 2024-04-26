@@ -25,7 +25,17 @@ public class MultiforExample {
 		//☆☆☆★★
 		//☆☆☆☆★
 		
-
+		for(int i=1; i<=5; i++) {
+			for(int j=1; j<=5; j++) {
+				if(j<i) {
+					System.out.print("☆");
+				} else {
+					System.out.print("★");
+				}
+			}
+			System.out.println();
+		}
+		System.out.println();
 		System.out.println("===============================================================");
 		//☆☆☆☆★ - 4/1
 		//☆☆☆★★★ -3/3
@@ -33,7 +43,7 @@ public class MultiforExample {
  		//☆★★★★★★★ - 1/7
 		//★★★★★★★★★ - 0/9
 		
-		int cnt=0;
+ 		int cnt=0;
 		for(int i=1;i<=5;i++) {
 			for(int j=1;j<=5-i;j++) {
 				System.out.print("☆");
@@ -45,9 +55,22 @@ public class MultiforExample {
 			System.out.println();
 			
 		}
-		System.out.println();
-		
+		System.out.println();	
 		System.out.println("===============================================================");
+		
+		for(int i=1; i<=5; i++) {
+			for(int j=1; j<=5-i; j++) {
+				System.out.print("☆");
+			}
+			for(int j=1; j<=i*2-1;j++) {
+				System.out.print("★");
+			}
+			System.out.println();
+				
+		}
+		System.out.println();	
+		System.out.println("===============================================================");
+		
 		//★☆☆☆★
 		//☆★☆★☆
 		//☆☆★☆☆
