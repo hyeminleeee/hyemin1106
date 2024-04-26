@@ -14,14 +14,27 @@ public class InputCheckApp {
 		*/
 		
 		//변수의 비정상적인 값을 저장해야만 반복문이 실행된다.
-		int score=-1;
+		/*int score=-1;
 		
 		//비정상적인 점수가 입력된 경우 반복문을 실행하고 정상적인 점수가 입력된 경우 반복문 종료
 		while(score<0 || score > 100) {
 			System.out.print("점수 입력[0~100] >>");
 			score=scanner.nextInt();
+			if(score < 0 || score > 100) {
+				System.out.println("[Error]점수는 0~100 범위의 정수값만 입력 가능합니다.");
+			}
 			
-		}
+		}*/
+		
+		int score;
+		//비정상적인 점수가 입력된 경우 반복문을 실행하고 정상적인 점수가 입력된 경우 반복문 종료
+			do {
+				System.out.print("점수 입력[0~100] >>");
+				score=scanner.nextInt();
+				if(score < 0 || score > 100) {
+				System.out.println("[Error]점수는 0~100 범위의 정수값만 입력 가능합니다.");
+			}	
+		} while(score<0 || score > 100);
 		
 		String grade="";
 		switch (score/10) {
