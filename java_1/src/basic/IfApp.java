@@ -60,14 +60,7 @@ public class IfApp {
 			System.out.println("현재 변수값은 [false]입니다.");
 		}
 		System.out.println("==============================================================");
-		
-		
-		
-		
-		
-		
-		
-		
+
 		}
 		
 	}
