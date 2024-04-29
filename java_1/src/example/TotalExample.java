@@ -11,31 +11,36 @@ import java.util.Scanner;
 //    [결과]합계 = 60
 public class TotalExample {
 	public static void main(String[] args) {
-		/*Scanner scanner=new Scanner(System.in);
-		System.out.print("정수값 입력[0:종료] >> ");
-		int num=scanner.nextInt();
+	/*	Scanner scanner=new Scanner(System.in);
 		
-		do {
+		
+		
+		int total=0;
+		while(true) {
 			System.out.print("정수값 입력[0:종료] >> ");
-			num=scanner.nextInt();
-			if(num == 0) {
-				System.out.print("[Error]0을 입력하셨습니다."); break;
-			}
-		} while(scores<0 || scores>100);
-		
-		String grade="";
-		switch(score/10) {
-		case 10 : 
-		case 9: grade="A"; break;
-		case 8: grade="B"; break;
-		case 7: grade="C"; break;
-		case 6: grade="D"; break;
-		default : grade="F"; break;
-		
+			int num=scanner.nextInt();
+			total+=num;
+			
+			if(num == 0) break;
+			
 		}*/
-			
-			
 		
+		Scanner scanner=new Scanner(System.in);
+		
+		int total=0;
+		
+		//정수값을 입력받아 정수값을 누적하기 위한 반복문
+		//정수값 0이 입력되면 반복문 종료
+		while(true) {
+			System.out.print("정수값 입력[0:종료] >> ");
+			int num=scanner.nextInt();
+			if(num == 0) break;
+			total+=num;
+		}
+			
+		System.out.println("합계 = "+total);
+		
+		scanner.close();
 		
 	}
 }
