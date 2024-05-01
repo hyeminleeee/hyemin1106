@@ -53,16 +53,18 @@ public class StudentApp {
 		//향상된 for 구문을 사용하여 배열 요소가 참조하는 객체를 차례대로 제공받아 일괄 처리 가능
 		for(Student student : students) {
 			student.display();
-			total+=student.getTot();
+			//total+=student.getTot();
+			//Student.total+=student.getTot();
+			Student.setTotal(Student.getTotal()+student.getTot());
 		}
 		System.out.println("==============================================================");
 		//모든 학생들의 성적 합계를 계산하여 출력
-		System.out.println("총합계 = "+total);
+		//System.out.println("총합계 = "+total);
+		//System.out.println("총합계 = "+Student.total);
+		System.out.println("총합계 = "+Student.getTotal());
 		System.out.println("==============================================================");
 	}
 }
-
-
 
 
 
