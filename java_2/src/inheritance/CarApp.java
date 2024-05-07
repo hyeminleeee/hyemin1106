@@ -9,7 +9,7 @@ public class CarApp {
 		System.out.println("=======================================================");
 		//Object.toString() : 참조변수에 저장된 객체를 참조하여 "클래스@메모리주소"형식의
 		//문자열을 반환하는 메소드
-		System.out.println("car.toString() : "+car.toString());
+		//System.out.println("car.toString() : "+car.toString());
 		//참조변수를 출력할 경우 자동으로 Object 객체를 참조하여 Object 클래스의 toString()
 		//메소드 자동 호출 - toString() 호출 생략 가능
 		
@@ -27,7 +27,7 @@ public class CarApp {
 		
 		//String 객체가 저장된 참조변수를 출력할 경우 String 클래스의 toString() 메소드가 
 		//자동 호출되어 문자열을 반환하는 명령 작성
-		System.out.println("name "+name);
+		System.out.println("name : "+name);
 		System.out.println("=======================================================");
 	}
 
