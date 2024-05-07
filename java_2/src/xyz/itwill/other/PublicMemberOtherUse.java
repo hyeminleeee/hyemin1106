@@ -9,5 +9,4 @@ public class PublicMemberOtherUse {
 		member.num=100;
 		member.display();
 	}
-
 }

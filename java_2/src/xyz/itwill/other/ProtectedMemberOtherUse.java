@@ -1,11 +1,11 @@
 package xyz.itwill.other;
 
-import xyz.itwill.access.PackageMember;
+import xyz.itwill.access.ProtectedMember;
 
-public class OtherUse {
+public class ProtectedMemberOtherUse {
 	public void run() {
 		@SuppressWarnings("unused")
-		PackageMember member=new PackageMember();
+		ProtectedMember member=new ProtectedMember();
 		
 		/*
 		member.num=100;

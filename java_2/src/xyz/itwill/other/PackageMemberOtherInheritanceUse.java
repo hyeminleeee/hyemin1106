@@ -9,7 +9,5 @@ public class PackageMemberOtherInheritanceUse extends PackageMember {
 		num=100;
 		display();
 		*/
-		
 	}
-
 }
