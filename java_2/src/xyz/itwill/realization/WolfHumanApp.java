@@ -4,9 +4,9 @@ package xyz.itwill.realization;
 // => 인터페이스에는 상수필드(Constant Field)와 추상메소드(Abstract Method)만 작성 가능
 // => JDK11 이상에서는 인터페이스에 정적메소드(Static Method)와 기본메소드(Default Method)도 작성 가능
 //형식) public interface 인터페이스명 {
-//      		자료형 필드명=초기값;//public static final 생략 가능
+//      		public static final 자료형 필드명=초기값;//public static final 생략 가능
 //              ...
-//              반환형 메소드명(자료형 변수명, 자료형 변수명,...);//public abstract 생략 가능
+//              public abstract 반환형 메소드명(자료형 변수명, 자료형 변수명,...);//public abstract 생략 가능
 //              ...
 //      }
 // => 인터페이스의 이름은 파스칼 표기법을 사용하여 작성하는 것을 권장
