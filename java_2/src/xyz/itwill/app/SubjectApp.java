@@ -16,7 +16,7 @@ import xyz.uniwill.subject.NetworkSubject;
 
 //Java 자료형을 선언할 때 Java 소스파일의 처음 위치에 Java 자료형이 선언된 패키지를 반드시 작성
 //형식) package 패키지경로;
-//=> Java 자료형이 특정 패키지에 존재하는지를 명확히 구분하여 제공
+//=> package 선언문으로 Java 자료형이 특정 패키지에 존재하는지를 명확히 구분하여 사용
 
 //import : 다른 패키지에 작성된 Java 자료형을 명확히 표현하여 제공하기 위한 키워드
 //형식) import 패키지경로.자료형
