@@ -46,7 +46,7 @@ public class PasswardMatchApp {
 			scanner.close();
 		} catch (InputMismatchException e) {
 			System.out.println("[에러]숫자만 입력 가능합니다.");
-		} catch (RuntimeException e) {
+		} catch (PasswardMissmatchException e) {
 			System.out.println(e.getMessage());
 		} catch (Exception e) {
 			System.out.println("[에러]프로그램 실행에 예기치 못한 오류가 발생되었습니다.");
