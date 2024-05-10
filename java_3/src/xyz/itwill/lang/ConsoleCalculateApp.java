@@ -1,5 +1,7 @@
 package xyz.itwill.lang;
 
+import java.util.Scanner;
+
 //키보드로 하나의 사칙 연산식을 입력받아 연산결과를 계산하여 출력하는 프로그램 작성
 //ex) 연산식 입력 >> 20 + 10
 //    [결과]30
@@ -8,6 +10,12 @@ package xyz.itwill.lang;
 // => 입력 연산식에 공백 입력이 가능하도록 처리
 public class ConsoleCalculateApp {
 	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		
+		System.out.print("연산식 입력 >> ");
+		
+		scanner.close();
+		
 		
 	}
 }
