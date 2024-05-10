@@ -1,6 +1,6 @@
 package xyz.itwill.thread;
 //은행계좌를 사용할 수 있는 사용자 정보(은행계좌정보, 사용자명)를 저장하기 위한 클래스
-public class AccountUser {
+public class AccountUser extends Thread {
 	//생성자 또는 Setter 메소드로 필드에 객체를 저장하여 포함관계 완성
 	private Account account;
 	private String userName;
@@ -27,9 +27,17 @@ public class AccountUser {
 		return userName;
 	}
 
-	public void setUserName(String userNameString) {
-		this.userName = userNameString;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
-	
+	//새로운 스레드로 실행될 명령 작성 - 입금 또는 출금 관련 명령 작성
+	@Override
+	public void run() {
+		//account.disposit(userName, 5000);
+		
+		synchronized (account) {
+			account.withDraw(userName, 5000);
+		}
+	}
 }
