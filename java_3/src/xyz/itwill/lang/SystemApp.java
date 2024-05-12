@@ -49,6 +49,6 @@ public class SystemApp {
 		
 		long endTime=System.currentTimeMillis();
 		
-		System.err.println("반복문 실행 시간 = "+(endTime-startTime)+"ms");
+		System.out.println("반복문 실행 시간 = "+(endTime-startTime)+"ms");
 	}
 }

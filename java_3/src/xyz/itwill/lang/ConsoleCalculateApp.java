@@ -12,10 +12,28 @@ public class ConsoleCalculateApp {
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);
 		
-		System.out.print("연산식 입력 >> ");
+		String number;
+		while(true) {
+			System.out.print("연산식 입력 >> ");
+			
+			number=scanner.nextLine();
+			
+		//	if(number.) break;
 		
-		scanner.close();
 		
-		
+			scanner.close();
+			
+			String serparation=number.substring(3, 4);
+			
+			if(serparation.equals("+") || serparation.equals("/") || serparation.equals("+") || serparation.equals("-")) {
+				break;
+			} else {
+				System.out.println("[에러]연산식이 형식에 맞지 않게 입력되었습니다."); break;
+			}
+			
+			
+			
+			//System.out.println("[결과]"+Integer.parseInt(num1)+Integer.parseInt(num2));
+		}
 	}
 }
