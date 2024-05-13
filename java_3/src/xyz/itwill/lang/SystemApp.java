@@ -15,13 +15,14 @@ import java.util.Scanner;
 //Class 클래스 : 메모리(MethodArea)에 존재하는 클래스 관련 정보를 저장한 객체를 생성하기 위한 클래스
 //Math 클래스 : 수학 관련 기능을 상수필드 및 정적메소드로 제공하는 클래스
 //System 클래스 : 표준 입출력 스트림을 제공하거나 시스템 관련 기능을 정적메소드로 제공하는 클래스
+//=> 은닉화되어 있어서 객체를 생성할 수 없다. 
 
 public class SystemApp {
 	public static void main(String[] args) {
-		//System.in : 표준 입력장치(키보드)에 대한 입력스트림(InputStream 객체)가 저장된 정적필드
+		//System.in : 표준 입력장치(키보드)에 대한 입력스트림(InputStream 객체)가 저장된 상수필드
 		Scanner scanner=new Scanner(System.in);
 		
-		//System.out : 표준 출력장치(모니터)에 대한 출력스트림(PrintStream 객체)가 저장된 정적필드
+		//System.out : 표준 출력장치(모니터)에 대한 출력스트림(PrintStream 객체)가 저장된 상수필드
 		System.out.print("정수값 입력 >> ");
 		int num=scanner.nextInt();
 		

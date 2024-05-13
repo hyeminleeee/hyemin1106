@@ -9,7 +9,7 @@ package xyz.itwill.lang;
 
 //StringBuilder 클래스 : 문자열을 저장한 객체를 생성하기 위한 클래스
 //=> StringBuffer 클래스와 동일한 메소드를 제공하지만 StringBuilder 클래스의 메소드는 일반
-//메소드로 선언되어 있는 StringBuilder 클래스는 동기화 메소드로 선언
+//메소드로 선언되어 있지만 StringBuilder 클래스는 동기화 메소드로 선언
 
 public class StringBufferApp {
 	public static void main(String[] args) {

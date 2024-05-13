@@ -1,6 +1,6 @@
 package xyz.itwill.lang;
 
-//Wrapper 클래스 : 기본형을 클래스로 포괄적으로 표현하기 위해 사용하는 이름
+//Wrapper 클래스 : 원시형(기본형)을 클래스로 포괄적으로 표현하기 위해 사용하는 이름
 //=> Byte, Short, Integer, Long, Character, Float, Double, Boolean
 //=> 원시형 대신 Wrapper 클래스로 객체를 생성하여 프로그램 작성
 
@@ -30,8 +30,8 @@ public class WrapperApp {
 		//객체에 저장된 값을 반환받아 사용할 수 있는 기능 제공
 		//오토박싱(AutoBoxing) : 값을 자동으로 Wrapper 클래스의 객체로 생성하여 제공하는 기능
 		//오토언박싱(AutoUnBoxing) : Wrapper 클래스의 객체에 저장된 값을 자동으로 제공하는 기능
-		Integer num1=100, num2=200;
-		Integer num3=num1+num2;
+		Integer num1=100, num2=200;//오토박싱
+		Integer num3=num1+num2;//오토언박싱
 		System.out.println("합계 = "+num3);
 		System.out.println("=================================================================");
 		//Integer.valueOf(String s, int radix) : 매개변수로 전달받은 문자열을 원하는 진수의
@@ -60,33 +60,8 @@ public class WrapperApp {
 		
 		//Integer.parseInt(String s) : 문자열을 전달받아 정수값으로 변환하여 반환하는 정적메소드
 		//=> 매개변수로 전달받은 문자열을 정수값으로 변환할 수 없을 경우 NumberFormatException 발생
+		//문자열이 숫자값이 아닐 때 NumberFormatException 발생
 		System.out.println("합계 = "+(Integer.parseInt(str1)+Integer.parseInt(str2)));
 		System.out.println("=================================================================");
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

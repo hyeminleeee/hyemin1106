@@ -12,15 +12,16 @@ public class StringApp {
 		String str1="ABC";
 		
 		//String.toString() : String 객체에 저장된 문자열을 반환하는 메소드
-		// => String 객체가 저장된 참조변수를 출력할 경우 자동으로 toString 메소드 호출
+		// => String 객체가 저장된 참조변수를 출력할 경우 자동으로 toString(String 객체에 있는 
+		//문자열을 반환하는 메소드) 메소드 호출
 		//System.out.println("str1.toString() = "+str1.toString());
 		System.out.println("str1 = "+str1);
 		System.out.println("==============================================================");
-		//메소드영역에 생성된 기본 String 객체를 제공받아 참조변수에 저장
+		//메소드영역에 저장된 기존 String 객체를 제공받아 참조변수에 저장
 		String str2="ABC";
 		
 		//참조변수를 비교연산자로 비교하면 참조변수에 저장된 메모리주소를 비교하여 결과 제공
-		if(str1 == str2) {
+		if(str1 == str2) {//srt1, srt2 저장된 객체가 같음.
 			System.out.println("str1 변수와 str2 변수에 저장된 객체의 메모리주소가 같습니다.");
 		} else {
 			System.out.println("str1 변수와 str2 변수에 저장된 객체의 메모리주소가 다릅니다.");
