@@ -4,6 +4,6 @@ package xyz.itwill.util;
 
 public class WantCalendarApp {
 	public static void main(String[] args) {
-		//스캐너, 카렌다 두개 사용
+		//스캐너, 카렌다 클래스 두개 사용
 	}
 }
