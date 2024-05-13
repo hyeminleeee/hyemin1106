@@ -7,7 +7,7 @@ import java.util.Scanner;
 //    [결과]30
 // => 입력 연산식에서 사용 가능한 연산자는 사칙 연산자(*, /, +, -)만 허용
 // => 형식에 맞지 않는 연산식이 입력될 경우 에러 메세지 출력 후 프로그램 종료
-// => 입력 연산식에 공백 입력이 가능하도록 처리
+// => 입력 연산식에 공백 입력이 가능하도록 처리 → 공백이 생기면 없애면 됨.
 public class ConsoleCalculateApp {
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);
