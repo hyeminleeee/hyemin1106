@@ -8,6 +8,7 @@ import java.util.Scanner;
 //    [결과]태어난지 <1일>이 지났습니다.
 //=> 형식에 맞지 않는 생년월일 입력한 경우 에러 메세지 출력 후 프로그램 종료(try catch 사용)
 public class DayCalculateApp {
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		//스캐너 객체 이용해서 년월일 입력받기
 		//심플데이트포맷 이용해서 패턴 지정해 문자열을 date 객체로 바꿈

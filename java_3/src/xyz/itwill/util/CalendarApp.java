@@ -3,7 +3,7 @@ package xyz.itwill.util;
 import java.util.Calendar;
 
 //Calendar 클래스 : 날짜와 시간을 저장한 객체를 생성하기 위한 클래스
-//=> 날짜와 시간외에 부가적인 정보들이 Calendar 객체에 저장되어 메소드로 사용 가능
+//=> 날짜와 시간외에 부가적(MetaData)인 정보들이 Calendar 객체에 저장되어 메소드로 사용 가능
 public class CalendarApp {
 	public static void main(String[] args) {
 		//Calendar 클래스는 추상클래스로 객체 생성 불가능

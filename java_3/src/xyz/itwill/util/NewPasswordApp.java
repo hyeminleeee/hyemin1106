@@ -33,9 +33,6 @@ public class NewPasswordApp {
 		return UUID.randomUUID().toString().replace("-", "").substring(0, 10).toUpperCase();
 	
 	}
-		
-		
-	
 	
 	public static void main(String[] args) {
 		System.out.println("새로운 비밀번호-1 = "+getPasswordOne());

@@ -34,7 +34,7 @@ public class GenericApp {
 		
 		String returnObject3=generic3.getField();
 		System.out.println("필드값 = "+returnObject3);
-		System.out.println("====================================================================");
+		System.out.println("======================l==============================================");
 
 	}
 }
