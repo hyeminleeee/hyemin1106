@@ -1,7 +1,5 @@
 package xyz.itwill.util;
 
-import java.util.zip.Inflater;
-
 //Object 클래스로 필드가 작성된 클래스로 객체를 생성해 사용
 //=> Object 클래스의 필드에는 모든 클래스의 객체를 전달받아 저장 가능
 //=> Object 클래스의 필드에 저장된 객체를 반환받아 사용하기 위해서는 반드시 명시적 객체 형변환 사용
