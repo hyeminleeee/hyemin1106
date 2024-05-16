@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 //List 인터페이스를 상속받은 콜렉션 클래스 - ArrayList 클래스, Vector 클래스, LinkedList 등
 //=> List 객체에는 객체(값)를 저장한 요소의 순서가 있으며 요소에 동일한 객체 저장 가능
 //=> List 객체는 첨자로 요소를 구분해 사용 구분
