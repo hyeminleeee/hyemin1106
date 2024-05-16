@@ -80,24 +80,3 @@ public class PanelApp extends Frame {
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -41,7 +41,7 @@ public class RegularExpressionApp {
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);
 		
-		/*
+		/*ㅂ
 		//사용자로부터 [아이디]를 입력받아 원하는 패턴의 문자열인지를 검사하여 결과 출력
 		// => 아이디는 영문자로 시작되며 영문자, 숫자, 특수문자(_)의 조합으로 6~20 범위의 
 		//문자로 구성되도록 패턴을 설정하여 처리

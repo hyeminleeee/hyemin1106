@@ -8,7 +8,7 @@ import java.awt.Frame;
 // => 컴퍼넌트를 사용하여 작성한 프로그램
 
 //java.awt 패키지 : GUI 프로그램을 작성하기 위한 Java 자료형이 선언된 패키지
-// => 플렛폼(운영체제 - OS)에 종속된 Java 클래스로 컴퍼넌트를 생성하여 사용
+// => 플렛폼(운영체제 - OS)에 종속된 Java 클래스로 컴퍼넌트를 생성하여 사용(운영체제가 바뀌면 변함)
 //javax.swing 패키지 : GUI 프로그램을 작성하기 위한 Java 자료형이 선언된 패키지
 // => java.awt 패키지의 확장 패키지 
 // => 플렛폼(운영체제 - OS)에 종속되지 않은 독립적인 Java 클래스로 컴퍼넌트를 생성하여 사용
@@ -22,7 +22,7 @@ import java.awt.Frame;
 
 public class FrameOneApp {
 	public static void main(String[] args) {
-		//Frame 클래스 : 멚가 존재하는 컨테이너를 생성하기 위한 클래스
+		//Frame 클래스 : 메뉴가 존재하는 컨테이너를 생성하기 위한 클래스
 		// => new 연산자로 Frame 클래스의 기본 생성자를 호출하여 객체 생성 
 		// => Frame 클래스로 객체를 생성하면 프레임이 보여지지 않은 상태로 생성
 		//Frame frame=new Frame();
