@@ -27,7 +27,7 @@ public class StudentApp {
 		Collections.sort(studentListOne);
 		
 		System.out.print("정렬 후 >> ");
-		System.out.println(studentListOne);
+		System.out.println(studentListOne); 
 		System.out.println("===================================================================");
 		
 		
