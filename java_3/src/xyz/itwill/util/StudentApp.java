@@ -38,6 +38,8 @@ public class StudentApp {
 		studentListTwo.add(new Student(8000, "신동엽"));
 		studentListTwo.add(new Student(9000, "전현무"));
 		
+		
+		//제네릭을 인터페이스로 설정한 경우 인터페이스를 상속받은 자식클래스의 객체 저장 가능
 		Map<Integer, List<Student>> studentListMap=new HashMap<Integer, List<Student>>();
 		
 		studentListMap.put(1, studentListOne);
