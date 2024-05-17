@@ -6,6 +6,7 @@ import java.awt.Frame;
 public class FrameTwoApp extends Frame {
 	private static final long serialVersionUID = 1L;
 
+	//자식클래스의 생성자에서 UI 구현 및 이벤트 처리 등의 명령 작성
 	public FrameTwoApp(String title) {
 		//super 키워드로 부모클래스(Frame 클래스)의 매개변수가 작성된 생성자를 호출하여 객체 생성
 		// => 매개변수에 전달된 문자열을 프레임의 제목으로 사용

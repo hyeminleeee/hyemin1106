@@ -9,7 +9,7 @@ import java.awt.Frame;
 
 //java.awt 패키지 : GUI 프로그램을 작성하기 위한 Java 자료형이 선언된 패키지
 // => 플렛폼(운영체제 - OS)에 종속된 Java 클래스로 컴퍼넌트를 생성하여 사용(운영체제가 바뀌면 변함)
-//javax.swing 패키지 : GUI 프로그램을 작성하기 위한 Java 자료형이 선언된 패키지
+//javax.swing 패키지 : GUI 프로그램을 작성하기 위한 Java 자료형이 선언된 패키지(확장판)
 // => java.awt 패키지의 확장 패키지 
 // => 플렛폼(운영체제 - OS)에 종속되지 않은 독립적인 Java 클래스로 컴퍼넌트를 생성하여 사용
 
@@ -17,7 +17,7 @@ import java.awt.Frame;
 //클래스로 생성된 객체 - 컨테이너에 배치하여 사용
 // => Button, List, Label, Canvas, Checkbox, Choice, Scrollbar, TextField, TextArea 등
 //컨테이너(Container) : 컴퍼넌트를 배치할 수 있는 컴퍼넌트
-// => 독립적 컨테이너 : Frame, Window, Dialog 등 - 독립적으로 출력하여 사용 
+// => 독립적 컨테이너 : Frame, Window, Dialog 등 - 독립적으로 출력하여 사용(눈에 보이게)
 // => 종속적 컨테이너 : Panel, ScrollPane 등 - 다른 컨테이너에 배치하여 사용
 
 public class FrameOneApp {

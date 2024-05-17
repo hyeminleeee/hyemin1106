@@ -10,7 +10,7 @@ import java.awt.Frame;
 // => Frame, Window, Dialog 등 - BorderLayout
 // => Panel, Applet 등 - FlowLayout
 
-//배치관리자를 사용하지 않고 프레임에 컴퍼넌트를 배치하여 사용하는 프로그램 작성
+//배치관리자를 사용하지 않고 프레임에 컴퍼넌트를 배치하여 사용하는 프로그램 작성=>유지보수가 어려움
 public class NonLayoutManagerApp extends Frame {
 	private static final long serialVersionUID = 1L;
 

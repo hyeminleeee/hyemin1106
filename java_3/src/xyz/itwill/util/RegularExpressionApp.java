@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 //정규표현식(RegualarExpression) : 메타문자(Meta Character), 회피문자(Escape Character)등을
 //사용해 일정한 패턴의 문자열을 표현하기 위한 표현식 - 사용자 입력값에 대한 검증 처리
-/*
+/*메타문자
 ^문자 : 문자(열)로 시작됨을 의미
 문자$ : 문자(열)로 종료됨을 의미
 . : 임의의 문자 하나를 의미(\ 문자 제외)
@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 (!=문자열) : 문자열이 반드시 포함되지 않음을 의미
 */
 
-/*
+/*회피문자
 \s : 공백이 있는 문자열을 의미
 \S : 공백이 없는 문자열을 의미
 \w : 영문자, 숫자, 특수문자(_)의 문자로만 구성된 문자열을 의미
@@ -36,12 +36,12 @@ import java.util.regex.Pattern;
 */
 
 //키보드를 이용하여 사용자로부터 값(문자열)을 입력받아 원하는 패턴의 문자열인지를 비교하여
-//결과를 출력하는 메소드
+//결과를 출력하는 프로그램
 public class RegularExpressionApp {
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);
 		
-		/*ㅂ
+		/*
 		//사용자로부터 [아이디]를 입력받아 원하는 패턴의 문자열인지를 검사하여 결과 출력
 		// => 아이디는 영문자로 시작되며 영문자, 숫자, 특수문자(_)의 조합으로 6~20 범위의 
 		//문자로 구성되도록 패턴을 설정하여 처리

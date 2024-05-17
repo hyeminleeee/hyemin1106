@@ -15,7 +15,7 @@ public class PersonApp {
 		}
 		System.out.println();
 	}
-	
+	//매개변수로 람다표현식으로 만든 객체를 사용
 	public static <T> List<T> filter(List<T> list, Predicate<T> predicate) {
 		List<T> result=new ArrayList<T>();
 		

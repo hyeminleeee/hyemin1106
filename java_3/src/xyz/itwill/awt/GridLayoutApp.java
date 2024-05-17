@@ -13,7 +13,7 @@ public class GridLayoutApp extends Frame {
 		
 		//프레임의 배치관리자를 [GridLayout]으로 변경
 		// => GridLayout 클래스의 매개변수(행과 열의 갯수)가 작성된 생성자를 호출하여 객체 생성
-		setLayout(new GridLayout(3, 2));
+		setLayout(new GridLayout(3, 2));//행 : 가로, 열 : 세로
 
 		Button button1=new Button("Button-1");
 		Button button2=new Button("Button-2");
