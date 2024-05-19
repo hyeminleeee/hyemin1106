@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 //java.awt 패키지의 컴퍼넌트(컨테이너)를 사용하여 UI 클래스를 작성하는 것보다 javax.swing 
-//패키지의 컴퍼넌트(컨테이너)를 사용하여 GUI 프로그램을작성하는 것을 권장
+//패키지의 컴퍼넌트(컨테이너)를 사용하여 GUI 프로그램을 작성하는 것을 권장
 //=> 플랫폼에 독립적인 컴퍼넌트(컨테이너)를 사용하여 GUI 프로그램 작성
 //=> java.awt 패키지의 컴퍼넌트(컨테이너)를 생성하는 클래스 이름앞에 [J]를 붙이면 javax.swing
 //패키지의 컴퍼넌트(컨테이너)를 생성할 수 있는 클래스

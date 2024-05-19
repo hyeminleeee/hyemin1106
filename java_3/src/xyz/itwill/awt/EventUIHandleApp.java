@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //[EXIT] 버튼을 누른 경우 프로그램을 종료하는 이벤트 프로그램 작성
-//=> UI 클래스를 이벤트 처리 클래스를 하나의 클래스로 작성하여 사용
+//=> UI 클래스와 이벤트 처리 클래스를 하나의 클래스로 작성하여 사용
 public class EventUIHandleApp extends Frame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 

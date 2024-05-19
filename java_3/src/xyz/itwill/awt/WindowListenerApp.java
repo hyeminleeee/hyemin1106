@@ -6,7 +6,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 //프레임의 [닫기] 버튼을 누른 경우 프로그램을 종료하는 이벤트 처리 프로그램
-//=> 프레임(Frame 객체)에서는 WindowEvent 발생되므로 WindowListener 인터페이스를 상복받은
+//=> 프레임(Frame 객체)에서는 WindowEvent 발생되므로 WindowListener 인터페이스를 상속받은
 //자식클래스를 작성하여 이벤트 처리 클래스로 사용
 public class WindowListenerApp extends Frame {
 	private static final long serialVersionUID = 1L;
