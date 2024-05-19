@@ -150,8 +150,7 @@ public class CalculatorFrameApp extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-        operation += b1.getText();
-        label.setText(operation);
+
 	}
 }
 
