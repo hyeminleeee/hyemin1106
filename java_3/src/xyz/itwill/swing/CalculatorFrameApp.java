@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 //사칙 연산식을 입력받아 연산 결과를 출력하는 프로그램 작성
@@ -150,12 +151,78 @@ public class CalculatorFrameApp extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		//이벤트가 발생된 컴퍼넌트(JButton 객체)를 반환받아 저장
+		//=> Event.getSource() 메소드는 이벤트가 발생된 컴퍼넌트를 Object 객체로 반환하므로
+		//JButton 클래스의 메소드를 사용하기 위해서는 반드시 명시적 객체 형변환 필요
+		JButton eventSource=(JButton)e.getSource();
+		
+		//이벤트가 발생된 JButton 컴퍼넌트를 비교하여 명령 선택 실행
+		if(eventSource == bClear) {
+			operation="";//연산식을 저장하기 위한 필드를 초기화 처리
+			label.setText("0");//연산식을 출력하기 위한 JLabel 컴퍼넌트의 출력값 초기화 처리
+		} else if(eventSource == bEquals) {
+			//연산식(operation 필드값)에서 검색할 연산자가 저장된 문자열 배열 생성
+			String[] operatorArray= {"*", "/", "+", "-"};
+			
+			//연산자의 시작첨자를 저장하기 위한 변수 선언
+			int index=-1;
+			//문자열 배열의 요소값(연산자)를 차례대로 제공받아 일괄처리할 반복문
+			for(String operator : operatorArray) {
+				//연산식에서 필요한 연산자를 찾아 연산자의 시작첨자를 반환받아 저장
+				index=operation.indexOf(operator, 1);
+				//연산식에서 연산자를 찾은 경우 반복문 종료
+				if(index != -1) break;
+			}
+			
+			//연산식에서 연산자를 찾을 수 없는 경우 이벤트 처리 메소드 종료
+			if(index < 0) return;
+			
+			try {
+				//연산식에서 첫번째 피연산자를 분리하여 정수값으로 변환해 저장
+				int num1=Integer.parseInt(operation.substring(0, index));
+				
+				//연산식에서 연산자를 분리하여 저장
+				String operator=operation.substring(index, index+1);
+				
+				//연산식에서 두번째 피연산자를 분리하여 정수값으로 변환해 저장
+				int num2=Integer.parseInt(operation.substring(index+1));
+				
+				//연산자를 비교하여 피연산자에 대한 연산결과를 계산하여 저장
+				int result=0;
+				switch(operator) {
+				case "*" : result=num1*num2; break;
+				case "/" : result=num1/num2; break;
+				case "+" : result=num1+num2; break;
+				case "-" : result=num1-num2; break;
+				}
+				//연산결과를 JLabel 컴퍼넌트를 사용하여 출력 처리
+				//label.setText(String.valueOf(result));
+				label.setText(result+"");
+				
+				//operation="";//연산식을 저장하기 위한 필드를 초기화 처리
+				operation=result+"";//연산 결과값을 operation 필드에 저장하여 지속적인 연산 처리
+			} catch (ArithmeticException exception) {
+				label.setText("[에러]0으로 나눌 수 없습니다.");
+				operation="";
+			} catch (NullPointerException exception) {
+				//JOptionPane 클래스 : 다양한 다이얼로그를 제공하는 클래스
+				//JOptionPane.showMessageDialog(Component parent, String message) : 메세지
+				//다이얼로그를 제공하여 메세지를 출력하기 위한 정적메소드
+				JOptionPane.showMessageDialog(this, "입력한 연산식이 형식에 맞지 않습니다.");					
+			} catch (Exception exception) {
+				JOptionPane.showMessageDialog(this, "프로그램 실행에 예기치 못한 오류가 발생되었습니다.");					
+				System.exit(0);
+			}
+		} else {//bClear 및 bEquals의 JButton을 제외한 나머지 JButton 컴퍼넌트에서 이벤트
+				//JButton 컴퍼넌트의 라벨명을 반환받아 operation 필드에 추가하여 저장
+				//=> 버튼(JButton 컴퍼넌트)를 눌러 연산식을 완성하여 필드에 저장
+			operation+=eventSource.getText();
+			
+			//JLabel 컴퍼넌트의 출력값을 operation 필드값으로 변경하여 출력 처리
+			label.setText(operation);
+			
+		}
+		
 	}
 }
-
-
-
-
-
 

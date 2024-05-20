@@ -32,7 +32,7 @@ public class EventInnerHandleApp extends Frame{
 		new EventInnerHandleApp("이벤트 처리");
 	}
 	
-	//내부클래스(이벤트 처리 클래스)는 외부클래스의 필드 또는 메소드를 접근제한자에 상관없이
+	//내부클래스(이벤트 처리 클래스)는 외부클래스(UI클래스)의 필드 또는 메소드를 접근제한자에 상관없이
 	//접근하여 사용 가능
 	public class ButtonEventHandle implements ActionListener {
 		@Override
