@@ -40,7 +40,6 @@ public class CharacterStreamApp {
 		while(true) {
 			//Reader.read() : 입력스트림에 저장된 원시데이터(1Byte)를 인코딩 처리한 문자데이터
 			//얻어와 정수값(int)으로 반환하는 메소드
-			//반환하는 메소드
 			readByte=in.read();
 	
 			if(readByte==-1) break;

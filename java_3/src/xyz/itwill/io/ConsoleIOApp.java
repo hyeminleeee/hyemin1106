@@ -16,7 +16,7 @@ public class ConsoleIOApp {
 		BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
 		
 		/*
-		//모니터 입력스트림(System.out)을 OutputStreamWriter 클래스를 사용해 문자데이터를 출력할
+		//모니터 출력스트림(System.out)을 OutputStreamWriter 클래스를 사용해 문자데이터를 출력할
 		//수 있는 출력스트림으로 확장하고 BufferedWriter 클래스를 사용해 대량의 문자데이터를
 		//출력받을 수 있는 출력스트림으로 확장 - 스트림의 다단계 연결
 		BufferedWriter out=new BufferedWriter(new OutputStreamWriter(System.out));
