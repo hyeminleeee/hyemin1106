@@ -89,6 +89,8 @@ public class PenguinMoveApp extends JFrame {
 					
 					//펭귄 이미지를 구분하기 위한 필드값을 변경
 					penguinNo++;
+					//나머지는 0~2 범위의 정수값을 제공받아 변수에 저장(~부터 ~까지를 표현)
+					//ex)10으로 나누면 0~9, 3으로 나누면 0~2
 					penguinNo%=3;
 					
 					repaint();
