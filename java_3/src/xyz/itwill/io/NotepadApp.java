@@ -155,7 +155,7 @@ public class NotepadApp extends JFrame{
 					file=fileChooser.getSelectedFile();
 					try {
 						BufferedReader in=new BufferedReader(new FileReader(file));
-						textArea.write(in);
+						//textArea.write(in);
 					} catch (Exception e2) {
 						// TODO: handle exception
 					}
