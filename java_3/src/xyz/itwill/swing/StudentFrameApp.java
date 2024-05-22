@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import java.awt.Toolkit;
 
 public class StudentFrameApp extends JFrame {
 
@@ -44,6 +45,8 @@ public class StudentFrameApp extends JFrame {
 	 * Create the frame.
 	 */
 	public StudentFrameApp() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(StudentFrameApp.class.getResource("/images/stone.gif")));
+		setTitle("학생관리프로그램");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(700, 200, 500, 400);
 		contentPane = new JPanel();
@@ -70,7 +73,7 @@ public class StudentFrameApp extends JFrame {
 		//JTable 클래스 : 값을 행과 열로 구성된 테이블(Table - 표) 형식을 출력하는 컴퍼넌트를
 		//생성하기 위한 클래스
 		//JTable(TableModel tm) 생성자를 사용하여 객체 생성
-		//=> tm 매개변수에 TableModel 객체를 전달해 JTable 객체에 컬럼명과 행 출력 처리
+		//=> tm 매개변수에 TableModel 객체를 전달받아 JTable 객체에 컬럼명과 행 출력 처리
 		table = new JTable(tableModel);
 		table.setFont(new Font("굴림체", Font.BOLD, 16));
 		scrollPane.setViewportView(table);

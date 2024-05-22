@@ -22,6 +22,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class StudentDialog extends JDialog {
 
@@ -38,6 +39,8 @@ public class StudentDialog extends JDialog {
 		//비활성화 여부를 설정하는 논리값(false : 부모창 활성화 - Modeless Dialog, true : 
 		//부모창 비활성화 - Model Dialog)을 전달받아 JDialog 객체 생성
 		super(frame, title, true);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(StudentDialog.class.getResource("/images/stone.gif")));
+		setTitle("학생정보입력");
 		
 		setBounds(700, 200, 450, 300);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
