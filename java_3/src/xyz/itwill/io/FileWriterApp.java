@@ -34,8 +34,9 @@ public class FileWriterApp {
 		while(true) {
 			//확장된 키보드 입력스트림을 사용해 문자데이타를 반환받아 변수에 저장
 			readByte=in.read();
+			//2byte 씩 읽어들여서 변수에 저장
 			if(readByte == -1) break;
-			//파일 출력스트림을 사용해 파일에 문자데이타를 전달받아 저장
+			//파일 출력스트림을 사용해 파일에 문자데이타를 전달해 저장
 			out.write(readByte);
 		}
 		

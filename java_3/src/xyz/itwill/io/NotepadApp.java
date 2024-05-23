@@ -7,9 +7,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
@@ -149,24 +151,50 @@ public class NotepadApp extends JFrame{
 					return;
 				}
 			} else if(eventSource==save) {
-				int option=fileChooser.showSaveDialog(NotepadApp.this);
-				
-				if(option==JFileChooser.APPROVE_OPTION) {
-					file=fileChooser.getSelectedFile();
+				if(file==null) {//현재 작업중인 파일이 없는 경우
+					//JFileChooser.showSaveDialog(Component parent) : 저장 관련 파일 다이얼로그를
+					//화면에 출력하는 메소드 - [저장] 또는 [취소] 버튼 선택에 따른 정수값 반환	
+					int option=fileChooser.showSaveDialog(NotepadApp.this);
+					
+					if(option==JFileChooser.APPROVE_OPTION) {//파일 선택 후 [저장] 버튼을 누른 경우
+					//JFileChooser.getSelectedFile() : 선택한 파일의 경로가 저장된 File 객체를 반환하는 메소드
+					//=> 파일 다이얼로그의 [파일이름]에 입력된 문자열(파일명)을 제공받아 File 객체 생성	
+						file=fileChooser.getSelectedFile();
+						
+						if(file.toString().lastIndexOf(".")==-1) {
+							file=new File(file.toString()+".txt");
+						}
+						//뒤에서부터 .을 찾는데 점이 없다면(-1) 문자 뒤에 .txt를 붙이는 명령
+						
+						setTitle(file.toString()+" - Java 메모장");
+						
+						try {
+							BufferedWriter out=new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+							
+							//JTextArea 컴퍼넌트에 존재하는 모든 문자열을 반환받아 저장
+							String text=textArea.getText();
+							out.write(text);
+						} catch (IOException exception) {
+							JOptionPane.showMessageDialog(NotepadApp.this, "프로그램에 문제가 발생하였습니다.");					
+						}	
+					}
+				} else {//현재 작업중인 파일이 있는 경우
 					try {
-						BufferedReader in=new BufferedReader(new FileReader(file));
-						//textArea.write(in);
-					} catch (Exception e2) {
-						// TODO: handle exception
+						BufferedWriter out=new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+						String text=textArea.getText();
+						out.write(text);
+					} catch (IOException exception) {
+						JOptionPane.showMessageDialog(NotepadApp.this, "프로그램에 문제가 발생하였습니다.");					
 					}
 				}
+				
 			} else if(eventSource==exit) {
 				System.exit(0);
 			}		
 		}		
 	}
 }
-
+//save 
 
 
 

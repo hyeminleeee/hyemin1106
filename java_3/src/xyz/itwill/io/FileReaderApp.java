@@ -24,6 +24,7 @@ public class FileReaderApp {
 		
 		//모니터 출력스트림을 매개변수로 전달받아 문자데이타를 전달할 수 있는 출력스트림으로 확장
 		OutputStreamWriter out=new OutputStreamWriter(System.out);
+		//확장된 모니터 출력스트림에 입력된 문자데이터를 출력할 수 있음
 		
 		System.out.println("[메세지]c:\\data\\char.txt 파일에 저장된 내용입니다.");
 		

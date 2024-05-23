@@ -42,7 +42,7 @@ public class FileCopyCharApp {
 		System.out.println("[메세지]파일을 성공적으로 복사 하였습니다.");
 	}
 }
-
+//reader writer 는 문서(문서파일)만 취급 / 그 외엔 인풋스트림 아웃풋스트림
 
 
 

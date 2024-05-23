@@ -13,6 +13,7 @@ public class ObjectOutputStreamApp {
 		// => 매개변수로 출력스트림(OutputStream 객체)을 전달받아 객체를 전달할 수 있는 출력스트림으로 
 		//확장하기 위해 사용
 		ObjectOutputStream out=new ObjectOutputStream(new FileOutputStream("c:/data/object.txt"));
+		//원시데이터를 읽어 전달하는 스트림인데 객체를 읽어 전달하는 스트림으로 확장
 		
 		//ObjectOutputStream.writeObject(Object obj) : 매개변수로 전달받은 객체를 확장된 출력
 		//스트림으로 전달하기 위한 메소드
@@ -25,3 +26,6 @@ public class ObjectOutputStreamApp {
 		System.out.println("c:\\data\\object.txt 파일을 확인해 보세요.");
 	}
 }
+//개별적인 값을 하나씩 보내는 것(Data)보단 덩어리(객체 Objcet)로 보내는 것이 더 효율적
+//오브젝트에는 데이터 인풋, 아웃풋 스트림이 가지고 잇는 메소드 다 갖고있음
+//오브젝트가 데이터를 상속받아서 다 가지고있음.
