@@ -14,7 +14,7 @@ import oracle.jdbc.driver.OracleDriver;
 
 //java.sql : JDBC 프로그램을 작성하기 위한 Java 자료형이 선언된 패키지
 // => java.sql 패키지에는 JDBC 기능을 제공하기 위한 인터페이스 제공
-// => DBMS 종료가 다양하므로 JDK 라이브러리(jrt-fs.jar)에 JDBC 기능의 클래스 제공 불가능
+// => DBMS 종류가 다양하므로 JDK 라이브러리(jrt-fs.jar)에 JDBC 기능의 클래스 제공 불가능
 // => DBMS를 개발하여 관리하는 그룹에서 JDBC 기능의 클래스(JDBC Driver)를 만들어 배포하므로
 //JDBC Driver 관련 라이브러리 파일를 다운로드 받아 프로젝트에 빌드 처리
 
@@ -43,7 +43,7 @@ public class InsertStudentApp {
 		Statement stmt=null;
 		try {
 			/*
-			//1.OracleDriver 클래스를 객체로 생성하여 DriverManager 클래스에 JDBC Driver 객체로 등록
+			//1.OracleDriver 클래스로 객체를 생성하여 DriverManager 클래스에 JDBC Driver 객체로 등록
 			// => 동일한 Driver 클래스로 생성된 다수의 객체가 DriverManager 클래스에 JDBC Driver 객체로 등록 가능
 			// => 불필요한 자원이 존재해 프로그램 성능 저하 
 			//OracleDriver 클래스 : Oracle DBMS 서버에 접속할 수 있는 기능을 제공하는 Driver 객체를 
@@ -121,7 +121,7 @@ public class InsertStudentApp {
 			System.out.println("[에러]DBMS 관련 오류 = "+e.getMessage());
 		} finally {
 			try {
-				//6.JDBC 관련 객체를 모든 제거 - 객체가 생성된 순서의 반대로 제거
+				//6.JDBC 관련 객체를 모두 제거 - 객체가 생성된 순서의 반대로 제거
 				// => DBMS 서버 접속을 종료하기 위해 JDBC 관련 객체를 제거
 				//Statement.close() : Statement 객체를 제거하는 메소드
 				// => NullPointerException 발생 가능 - if 명령을 사용해 예외 발생 방지
