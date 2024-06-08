@@ -86,7 +86,7 @@ public class InsertStudentApp {
 			//SQLException : JDBC 관련 객체로 메소드를 호출한 경우 발생되는 예외
 			// => SQLException 객체에는 예외가 발생된 DBMS 관련 에러메세지 저장
 			//URL(Uniform Resource Location) : 인터넷에 존재하는 자원의 위치를 표현하기 위한 주소
-			//형식) Protocol:ServerName:Port:ResourcePath
+			//형식) Protocol:ServerName:Port:ResourcePath			
 			//ex) https://www.itwill.xyz:80/test/index.html
 			//Oracle DBMS 서버에 접속해 전역 데이타베이스(XE)에 접근하기 위한 URL 주소
 			//형식) jdbc:oracle:thin:@ServerName:Port:SID
