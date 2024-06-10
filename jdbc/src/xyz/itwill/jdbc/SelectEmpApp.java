@@ -16,39 +16,36 @@ public class SelectEmpApp {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		
-			String url="oracle:jdbc:thin:@localhost:1521:xe";
+			String url="jdbc:oracle:thin:@localhost:1521:xe";
 			String username="scott";
 			String password="tiger";
 			con=DriverManager.getConnection(url, username, password);
 			
 			stmt=con.createStatement();
 			
-			String sql="select empno,ename,job,mgr,hirdate,sal,comm,deptno from emp order by sal desc";
+			String sql="select empno,ename,sal from emp order by sal desc";
 			rs=stmt.executeQuery(sql);
 			
+			/*
 			if(rs.next()) {
 				do {
 					int empno=rs.getInt("empno");
 					String ename=rs.getString("ename");
-					String job=rs.getString("job");
-					int mgr=rs.getInt("mgr");
-					String hirdate=rs.getString("hirdate");
 					int sal=rs.getInt("sal");
-					int comm=rs.getInt("comm");
-					int deptno=rs.getInt("deptno");
 					
 					System.out.println("사원번호 : "+empno);
 					System.out.println("사원이름 : "+ename);
-					System.out.println("부서이름 : "+job);
-					System.out.println("관리자 : "+mgr);
-					System.out.println("입사일 : "+hirdate.substring(0,10));
 					System.out.println("급여 : "+sal);
-					System.out.println("상여금 : "+comm);
-					System.out.println("부서번호 : "+deptno);
 					System.out.println("=========================================");
+					
 				} while(rs.next());
 			} else {
 				System.out.println("검색 결과가 없습니다.");
+				*/
+			
+			while(rs.next()) {
+				System.out.println("사원번호 = "+rs.getInt("empno")+", 사원이름 = "+rs.getString("ename")
+					+", 사원급여 = "+rs.getInt("sal"));
 				}
 			} catch (ClassNotFoundException e) {
 				System.out.println("[에러]OracleDriver 클래스를 찾을 수 없습니다.");

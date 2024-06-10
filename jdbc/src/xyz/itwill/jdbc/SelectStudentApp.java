@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//STUDENT 테이블에 저장된 모든 행(학생정보)을 학번으로 오름차순 정렬하여 검색해 학생정보를
+//STUDENT 테이블에 저장된 모든 행(학생정보)을 NO 컬럼값(학번)으로 오름차순 정렬하여 검색해 학생정보를
 //출력하는 JDBC 프로그램 작성
 public class SelectStudentApp {
 	public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class SelectStudentApp {
 			
 			//ResultSet 객체에 저장된 검색행을 행단위로 처리하기 위해 커서(Cursor) 제공
 			// => ResultSet 객체로부터 제공받은 ResultSet 커서는 ResultSet 객체의 BOF(Before
-			//Of File) 영역에 위치되도록 설정
+			//Of File) 영역에 위치되도록 설정 - 처음위치(BOF)
 			//ResultSet.next() : ResultSet 커서를 다음행으로 이동한 후 논리값을 반환하는 메소드
 			// => false 반환 : ResultSet 커서가 이동한 위치에 처리행이 없는 경우의 반환값 
 			//    - EOF(End Of File) 영역에 ResultSet 커서가 위치한 경우의 반환값 

@@ -71,12 +71,13 @@ public class InsertStudentApp {
 			/*
 			Enumeration<Driver> drivers=DriverManager.getDrivers();
 			while (drivers.hasMoreElements()) {
-				Driver driver = (Driver) drivers.nextElement();
+				Driver driver = drivers.nextElement();
 				System.out.println(driver);
 			}
 			*/
 			
-			//2.DBMS 서버를 접속하여 Connection 객체를 반환받아 저장
+			//2.DriverManager 클래스에 등록된 JDBC Driver 객체를 사용해 DBMS 서버에 접속하여 
+			//Connection 객체를 반환받아 저장
 			//DriverManager.getConnection(String url, String username, String password)
 			// => DBMS 서버를 접속하여 Connection 객체를 반환하는 정적 메소드
 			// => DriverManager 클래스에 등록된 JDBC Driver 객체로 매개변수로 전달받은 값을
@@ -96,12 +97,12 @@ public class InsertStudentApp {
 			con=DriverManager.getConnection(url, username, password);
 			
 			//3.Connection 객체로 메소드를 호출하여 Statement 객체를 반환받아 저장
-			//Connection.createStatement() : Connection 객체에 SQL 명령을 전달하는 Statement 객체를
+			//Connection.createStatement() : Connection 객체로 SQL 명령을 전달하는 Statement 객체를
 			//반환하는 메소드
 			//Statement 객체 : 접속된 DBMS 서버에 SQL 명령을 전달하는 기능을 제공하는 객체
 			stmt=con.createStatement();
 			
-			//4.Statement 객체로 메소드를 호출하여 DBMS 서버에 SQL 명령을 전달하여 실행해
+			//4.Statement 객체로 메소드를 호출하여 DBMS 서버에 SQL 명령을 전달하여 실행하고
 			//실행 결과를 반환받아 저장 
 			//Statement.executeUpdate(String sql) : DML(INSERT, UPDATE, DELETE) 명령을 전달하여
 			//실행하는 메소드 - 조작행의 갯수를 정수값(int)로 반환

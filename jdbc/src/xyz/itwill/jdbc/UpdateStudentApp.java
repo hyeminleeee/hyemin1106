@@ -21,7 +21,7 @@ public class UpdateStudentApp {
 			
 			stmt=con.createStatement();
 			
-			String sql="update student set name='임걱정',address='부천시 원미구' where no=3000";
+			String sql="update student set name='임걱정',address='부천시 원미구' where no=2000";
 			int rows=stmt.executeUpdate(sql);
 			
 			System.out.println("[메세지]"+rows+"명의 학생정보를 변경 하였습니다.");

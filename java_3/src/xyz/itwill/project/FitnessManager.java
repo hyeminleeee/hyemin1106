@@ -45,6 +45,7 @@ public class FitnessManager extends JFrame {
 	private JLabel usertypeLB;
 	private JTextField usertypeTF;
 	private JButton removeButton;
+	
 
 	/**
 	 * Launch the application.
