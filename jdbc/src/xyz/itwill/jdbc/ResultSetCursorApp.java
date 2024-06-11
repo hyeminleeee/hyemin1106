@@ -40,7 +40,7 @@ public class ResultSetCursorApp {
 		//resultSetConcurrency : ResultSet 객체의 커서 위치에 처리행 조작 관련 속성값(ResultSet
 		//인터페이스에 의해  제공되는 상수 중 하나를 선택하여 사용) 전달 
 		// => ResultSet.CONCUR_READ_ONLY : ResultSet 객체의 커서 위치에 처리행 조작 불가능
-		// => ResultSet.CONCUR_UPDATABLE : ResultSet 객체의 커서 위치에 처리행 조작 가능
+		// => ResultSet.CONCUR_UPDATABLE : ResultSet 객체의 커서 위치에 처리행 조작 가능-행삽입,삭제,변경 가능
 		stmt=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		
 		sql="select no,name from student order by no";
@@ -97,7 +97,7 @@ public class ResultSetCursorApp {
 		rs.absolute(3);//ResultSet 객체의 커서를 3번째 행으로 이동
 		
 		//ResultSet.moveToInsertRow() : ResultSet 객체의 커서가 위치한 다음행에 새로운 행을
-		//삽입하여 커서를 이동하고 기존 행은 다음행을 차례대로 이동 처리하는 메소드
+		//삽입하여 커서를 이동하고 기존 행은 다음행으로 차례대로 이동 처리하는 메소드
 		rs.moveToInsertRow();
 		
 		//ResultSet 객체의 커서가 위치한 삽입행의 컬럼값 변경

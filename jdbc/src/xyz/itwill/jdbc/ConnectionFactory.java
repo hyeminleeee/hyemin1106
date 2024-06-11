@@ -29,7 +29,7 @@ public class ConnectionFactory {
 		return con;
 	}
 	
-	//매개변수로 전달받은 JDBC 관련 객체를 제거하는 메소드
+	//매개변수로 전달받은 JDBC 관련 객체를 제거하는 정적 메소드
 	public static void close(Connection con) {
 		try {
 			if(con!=null) con.close();

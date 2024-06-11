@@ -117,6 +117,10 @@ public class FitnessManager extends JFrame {
 		panel.add(addButton);
 		
 		updateButton = new JButton("수정");
+		updateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		updateButton.setFont(new Font("굴림체", Font.PLAIN, 13));
 		panel.add(updateButton);
 		

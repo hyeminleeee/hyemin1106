@@ -24,7 +24,8 @@ public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private FitnessManager fitnessManager;
+	private AdminPassword adminPassword;
+	private Myinfo myinfo;
 
 	/**
 	 * Launch the application.
@@ -68,14 +69,22 @@ public class Login extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 		
 		JButton myinfoButtion = new JButton("내 정보");
+		myinfoButtion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				myinfo=new Myinfo();
+				myinfo.setVisible(true);
+				setVisible(false);
+			}
+		});
 		myinfoButtion.setFont(new Font("굴림체", Font.PLAIN, 14));
 		panel.add(myinfoButtion);
 		
 		JButton managerButton = new JButton("관리자");
 		managerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				fitnessManager.setVisible(true);
+				adminPassword =new AdminPassword();
+				adminPassword.setVisible(true);
+				setVisible(false);
 			}
 		});
 		managerButton.setFont(new Font("굴림체", Font.PLAIN, 14));
