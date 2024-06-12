@@ -24,7 +24,7 @@ import java.sql.Types;
 
 //CallableStatement 객체 : 저장 프로시저를 호출하는 기능을 제공하기 위한 객체
 
-//키보드로 학번을 입력받아 STUDENT 테이블에서 NO 컬럼값이 입력된 학번의 행을 삭제하는 JDBC
+//키보드로 학번을 입력받아 STUDENT 테이블에서 NO 컬럼값이 입력된 학번과 같은 행을 삭제하는 JDBC
 //프로그램 작성 - 저장 프로시저를 호출하여 STUDENT 테이블의 행을 삭제 처리
 public class CallableStatementApp {
 	public static void main(String[] args) throws NumberFormatException, IOException, SQLException {

@@ -33,7 +33,7 @@ public class PropertiesApp {
 		Properties properties=new Properties();
 		
 		//Properties.load(InputStream in) : 매개변수로 Properties 파일을 읽기 위한 입력스트림을
-		//전달받아 Properties 파일을 [이름=값] 형식의 문자열을 Properties 객체의 엔드리로
+		//전달받아 Properties 파일을 [이름=값] 형식의 문자열을 Properties 객체의 엔트리로
 		//추가하는 메소드
 		properties.load(in);
 		

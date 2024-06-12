@@ -21,7 +21,7 @@ import oracle.ucp.jdbc.PoolDataSourceFactory;
 
 //Oracle 그룹에서 배포한 UCP(Universal Connection Pool) 라이브러리의 DBCP 클래스를 사용해
 //JDBC 프로그램 작성
-// => https://www.oracle.com 사이트에서 UCP 라이브러리 파일(ucp11.jar)을 다운로그 받아
+// => https://www.oracle.com 사이트에서 UCP 라이브러리 파일(ucp11.jar)을 다운로드 받아
 //프로젝트에 빌드 처리
 public class DataSourceApp {
 	public DataSourceApp() throws IOException, SQLException {

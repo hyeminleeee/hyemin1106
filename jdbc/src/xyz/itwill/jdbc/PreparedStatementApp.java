@@ -42,11 +42,12 @@ public class PreparedStatementApp {
 		Connection con=ConnectionFactory.getConnection();
 				
 		//Connection.prepareStatement(String sql) : 매개변수로 전달받은 SQL 명령이 저장된
-		//PreparedStatement 객체를 반환하는 메소드
+		//PreparedStatement 객체를 반환하는 메소드 - Statement 전달만
 		//PreparedStatement 객체에 저장되는 SQL 명령에서는 ?(InParameter) 기호 사용
 		//InParameter : Java 변수값을 제공받아 SQL 명령의 문자값으로 포함하기 위한 기호
 		String sql1="insert into student values(?,?,?,?,?)";//미완성된 SQL 명령
 		PreparedStatement pstmt=con.prepareStatement(sql1);//InParameter가 포함된 SQL 명령 저장
+		
 		//PreparedStatement.setXXX(int parameterIndex, XXX value) : PreparedStatement 객체에
 		//저장된 SQL 명령의 InParameter에 Java 변수값을 전달하여 SQL 명령에 포함하는 메소드
 		//=> XXX : InParameter에 전달하기 위한 변수값의 Java 자료형
@@ -61,7 +62,7 @@ public class PreparedStatementApp {
 		
 		//PreparedStatement.executeUpdate() : PreparedStatement 객체에 저장된 SQL 명령(INSERT,
 		//UPDATE,DELETE)을 전달하여 실행하고 조작행의 갯수를 정수값으로 반환하는 메소드
-		int rows=pstmt.executeUpdate();
+		int rows=pstmt.executeUpdate();//pstmt에 이미 sql 명령 저장되어 있기 떄문에 매개변수에 명령 안넣어준다.
 
 		System.out.println(rows+"명의 학생정보를 삽입하여 저장 하였습니다.");
 		System.out.println("=================================================================");
