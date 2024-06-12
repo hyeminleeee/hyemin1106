@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import xyz.itwill.student.StudentDTO;
 
 //삽입, 변경, 삭제, 검색 기능 제공하는 객체 생성 클래스
 public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
@@ -21,7 +20,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		_dao=new MemberDAOImpl();
 	}
 	
-	public static MemberDAOImpl getDao;{
+	public static MemberDAOImpl getDao() {
 		return _dao;
 	}
 	@Override
@@ -98,6 +97,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		}
 		return 0;
 	}
+	
 	@Override
 	public MemberDTO selectMemberByno(int no) {
 		Connection con=null;
@@ -130,6 +130,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		}
 		return member;
 	}
+	
 	@Override
 	public List<MemberDTO> selectMemberByName(String name) {
 		Connection con=null;
