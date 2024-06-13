@@ -13,7 +13,7 @@ STARTDATE    VARCHAR2(20)
 public class MemberDTO {//회원정보 저장하는 객체 생성하는 클래스
 	private int no;
 	private String name;
-	private String birthday;
+	private String birth;
 	private String gender;
 	private String phone;
 	private String type;
@@ -23,11 +23,11 @@ public class MemberDTO {//회원정보 저장하는 객체 생성하는 클래�
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberDTO(int no, String name, String birthday, String gender, String phone, String type, String stardate) {
+	public MemberDTO(int no, String name, String birth, String gender, String phone, String type, String stardate) {
 		super();
 		this.no = no;
 		this.name = name;
-		this.birthday = birthday;
+		this.birth = birth;
 		this.gender = gender;
 		this.phone = phone;
 		this.type = type;
@@ -50,12 +50,12 @@ public class MemberDTO {//회원정보 저장하는 객체 생성하는 클래�
 		this.name = name;
 	}
 
-	public String getBirthday() {
-		return birthday;
+	public String getBirth() {
+		return birth;
 	}
 
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 
 	public String getGender() {

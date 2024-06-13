@@ -15,9 +15,9 @@ public class JdbcDAO {
 		
 		try {
 			pds.setConnectionFactoryClassName("oracle.jdbc.driver.OracleDriver");
-			pds.setURL("jdbc:oracle:thin:@localhost:1521:xe");
-			pds.setUser("scott");
-			pds.setPassword("tiger");
+			pds.setURL("jdbc:oracle:thin:@www.itwill.xyz:1521:xe");
+			pds.setUser("fitness");
+			pds.setPassword("240603");
 			pds.setInitialPoolSize(10);
 			pds.setMaxPoolSize(15);
 		} catch (SQLException e) {

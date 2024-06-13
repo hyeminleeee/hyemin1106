@@ -32,11 +32,11 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		try {
 			con=getConnection();
 			
-			String sql="insert into student values(?,?,?,?,?,?,?)";
+			String sql="insert into member values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, member.getNo());
 			pstmt.setString(2, member.getName());
-			pstmt.setString(3, member.getBirthday());
+			pstmt.setString(3, member.getBirth());
 			pstmt.setString(4, member.getGender());
 			pstmt.setString(5, member.getPhone());
 			pstmt.setString(6, member.getType());
@@ -59,10 +59,10 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		try {
 			con=getConnection();
 			
-			String sql="update student set name=?,birthday=?,gender=?,phone=?,type=?,startdate=? where no=?";
+			String sql="update member set name=?,birth=?,gender=?,phone=?,type=?,startdate=? where no=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, member.getName());
-			pstmt.setString(2, member.getBirthday());
+			pstmt.setString(2, member.getBirth());
 			pstmt.setString(3, member.getGender());
 			pstmt.setString(4, member.getPhone());
 			pstmt.setString(5, member.getType());
@@ -77,6 +77,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		}
 		return rows;
 	}
+	/*
 	@Override
 	public int deleteMember(int no) {
 		Connection con=null;
@@ -97,6 +98,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		}
 		return 0;
 	}
+	*/
 	
 	@Override
 	public MemberDTO selectMemberByno(int no) {
@@ -107,7 +109,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select no from student where no=?";
+			String sql="select no from member where no=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			
@@ -117,14 +119,14 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 				member=new MemberDTO();
 				member.setNo(rs.getInt("no"));
 				member.setName(rs.getString("name"));
-				member.setBirthday(rs.getString("birthday"));
+				member.setBirth(rs.getString("birth"));
 				member.setGender(rs.getString("gender"));
 				member.setPhone(rs.getString("phone"));
 				member.setType(rs.getString("type"));
 				member.setStardate(rs.getString("startdate"));
 			}
 		} catch (SQLException e) {
-			System.out.println("[에러]selectStudentByNo() 메소드의 SQL 오류 = "+e.getMessage());
+			System.out.println("[에러]selectMemberByno() 메소드의 SQL 오류 = "+e.getMessage());
 		} finally {
 			close(con, pstmt, rs);
 		}
@@ -140,7 +142,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select no,name,birthday,gender,phone,type,startdate from member where name=? order by no";
+			String sql="select no,name,birth,gender,phone,type,startdate from member where name=? order by no";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, name);
 			
@@ -151,7 +153,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 				MemberDTO member=new MemberDTO();
 				member.setNo(rs.getInt("no"));
 				member.setName(rs.getString("name"));
-				member.setBirthday(rs.getString("birthday"));
+				member.setBirth(rs.getString("birth"));
 				member.setGender(rs.getString("gender"));
 				member.setPhone(rs.getString("phone"));
 				member.setType(rs.getString("type"));
@@ -161,7 +163,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 				memberList.add(member);
 			}
 		} catch (SQLException e) {
-			System.out.println("[에러]selectStudentByName() 메소드의 SQL 오류 = "+e.getMessage());
+			System.out.println("[에러]selectMemberByName() 메소드의 SQL 오류 = "+e.getMessage());
 		} finally {
 			close(con, pstmt, rs);
 		}
@@ -177,7 +179,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select no,name,birthday,gender,phone,type,startdate from member order by no";
+			String sql="select no,name,birth,gender,phone,type,startdate from member order by no";
 			pstmt=con.prepareStatement(sql);
 			
 			rs=pstmt.executeQuery();
@@ -186,7 +188,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 				MemberDTO member=new MemberDTO();
 				member.setNo(rs.getInt("no"));
 				member.setName(rs.getString("name"));
-				member.setBirthday(rs.getString("birthday"));
+				member.setBirth(rs.getString("birth"));
 				member.setGender(rs.getString("gender"));
 				member.setPhone(rs.getString("phone"));
 				member.setType(rs.getString("type"));
@@ -195,7 +197,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 				memberList.add(member);
 			}
 		} catch (SQLException e) {
-			System.out.println("[에러]selectStudentAll() 메소드의 SQL 오류 = "+e.getMessage());
+			System.out.println("[에러]selectMemberAll() 메소드의 SQL 오류 = "+e.getMessage());
 		} finally {
 			close(con, pstmt, rs);
 		}
