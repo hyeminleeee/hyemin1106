@@ -11,7 +11,7 @@ import oracle.ucp.jdbc.PoolDataSourceFactory;
 //JDBC 기능을 사용한 모든 DAO 클래스가 상속받기 위한 클래스
 // => Connection 객체가 저장된 DBCP 객체를 생성해 저장하고 DBCP 객체로부터 Connection 객체를 
 //제공받아 반환하는 메소드와 매개변수로 JDBC 관련 객체를 전달받아 제거하는 메소드 작성
-// => 객체 생성이 목적이 아닌 상속을 목적으로 작성된 클래스이므로 추상메소드로 선언하는 것을 권장
+// => 객체 생성이 목적이 아닌 상속을 목적으로 작성된 클래스이므로 추상메소드로 선언하는 것을 권장(abstract)
 public abstract class JdbcDAO {
 	//PoolDataSource 객체(DBCP 객체)를 저장하기 위한 필드
 	private static PoolDataSource pds;

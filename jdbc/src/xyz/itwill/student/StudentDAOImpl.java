@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //DAO(Data Access Object) 클래스 : 저장매체에 행을 삽입, 변경, 삭제, 검색하는 기능을 제공하는
-//객체를 생성하기 위한 클래스
+//객체를 생성하기 위한 클래스 - 테이블 갯수만큼 생성
 // => 저장매체 : 데이타를 행단위로 저장하기 위한 하드웨어 또는 소프트웨어 - DataBase >> DBMS
 // => 인터페이스를 상속받아 작성하는 것을 권장 - 메소드 작성 규칙을 제공받아 DAO 클래스 작성
 // => 인터페이스를 상속받아 DAO 클래스를 작성하는 이유는 DAO 클래스가 변경돼도 DAO 클래스를
@@ -16,9 +16,9 @@ import java.util.List;
 // => 프로그램에 하나의 객체만 제공하기 위해 싱글톤 디자인 패턴을 적용하여 작성하는 것을 권장 
 
 //STUDENT 테이블에 행을 삽입, 변경, 삭제, 감색하는 기능의 메소드가 작성된 DAO 클래스
-// => DAO 클래스의 메소드는 SQL 명령에 필요한 값을 객체로 매개변수에 전달받아 하나의 SQL 
-//명령을 DBMS 서버에 전달하여 실행하고 실행결과를 객체로 매핑(검색행의 컬럼값을 객체 필드에 
-//저장) 하여 반환하도록 작성
+// => DAO 클래스의 메소드는 SQL 명령에 필요한 값을 매개변수로 전달받아 하나의 SQL 명령을 
+//DBMS 서버에 전달하여 실행하고 실행결과를 객체로 매핑(검색행의 컬럼값을 객체 필드에 저장)
+//처리하여 반환하도록 작성
 // => JdbcDAO 클래스를 상속받아 DAO 클래스의 메소드에서 JdbcDAO 클래스의 메소드 호출 가능
 public class StudentDAOImpl extends JdbcDAO implements StudentDAO {
 	private static StudentDAOImpl _dao;
