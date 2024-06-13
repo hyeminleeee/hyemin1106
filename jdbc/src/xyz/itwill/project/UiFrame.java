@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Vector;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +20,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import xyz.itwill.student.StudentDAOImpl;
+import xyz.itwill.student.StudentDTO;
 
 
 public class UiFrame extends JFrame {
@@ -79,6 +83,12 @@ public class UiFrame extends JFrame {
         textField.setColumns(10);
 
         JButton addButton_1_1 = new JButton("검색");
+        addButton_1_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		searchNoMember();
+        		textField.setText("");
+        	}
+        });
         addButton_1_1.setFont(new Font("굴림체", Font.BOLD, 18));
         searchPanel.add(addButton_1_1);
 
@@ -205,4 +215,94 @@ public class UiFrame extends JFrame {
     	}
     	
     } 
+    
+    public void searchNoMember() {
+    	String noString=textField.getText();
+    	
+    	if(noString.equals("")) {//JTextField 컴퍼넌트에 입력된 값이 없는 경우
+			JOptionPane.showMessageDialog(this, "회원번호를 입력해 주세요.");
+			textField.requestFocus();//JTextField 컴퍼넌트를 포커스가 위치되도록 커서 이동
+			return;
+		}
+    	
+    	String noReg="^[1-9][0-9]{3}$";
+		if(!Pattern.matches(noReg, noString)) {
+			JOptionPane.showMessageDialog(this, "회원번호는 4자리 숫자로만 입력해 주세요.");
+			textField.requestFocus();
+			return;
+		}
+		
+		int no=Integer.parseInt(noString);
+		
+		//매개변수로 회원번호를 전달받아 STUDENT 테이블에 저장된 해당 회원번호의 행을 검색하여
+		//DTO 객체로 반환하는 DAO 클래스의 메소드 호출
+		MemberDTO member=MemberDAOImpl.getDao().selectMemberByno(no);
+		
+		if(member == null) {//학번으로 검색된 학생정보가 없는 경우
+			JOptionPane.showMessageDialog(this, "변경할 학번의 학생정보를 찾을 수 없습니다.");
+			textField.requestFocus();
+			textField.setText("");
+			return;
+		}
+		
+		DefaultTableModel defaultTableModel=(DefaultTableModel)table.getModel();
+		
+		for(int i=defaultTableModel.getRowCount();i>0;i--) {
+			defaultTableModel.removeRow(0);
+		}
+		/*
+		if(member != null) {
+			String[] rowdata= {
+					member.getName(),
+					member.getBirth(),
+					member.getGender(),
+					member.getPhone(),
+					member.getType(),
+					member.getStardate()
+				};
+			table.addRow(rowdata);
+		}
+		*/
+		 if (member != null) {
+	            Vector<Object> rowData = new Vector<Object>();
+
+	            rowData.add(member.getNo());
+	            rowData.add(member.getName());
+	            rowData.add(member.getBirth());
+	            rowData.add(member.getGender());
+	            rowData.add(member.getPhone());
+	            rowData.add(member.getType());
+	            rowData.add(member.getStardate().substring(0, 10));
+
+	            defaultTableModel.addRow(rowData);
+	        }
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

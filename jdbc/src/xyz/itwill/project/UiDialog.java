@@ -258,7 +258,7 @@ public class UiDialog extends JDialog {
                       public void actionPerformed(ActionEvent e) {
                        
                     	  addMemberToDatabase();
-                    	  setVisible(false);
+//                    	  setVisible(false);
                       }
                   });
                   buttonPane.add(addButton);
@@ -379,10 +379,22 @@ public class UiDialog extends JDialog {
           if (rowsAffected > 0) {
               JOptionPane.showMessageDialog(this, "회원이 추가되었습니다.");
               
+              setVisible(false);
+              /*
+              noTF.setText("");
+              nameTF.setText("");
+              birthTF.setText("");
+              phoneTF.setText("");
+              joinDateTF.setText("");
+              */
+              init();
+              
               // 추가된 회원 정보를 테이블에 표시하기 위해 UiFrame의 displayAllMember() 호출
               if (getParent() instanceof UiFrame) { 
                   ((UiFrame) getParent()).displayAllMember();
               }
+              
           }
+          
       }
   } 
