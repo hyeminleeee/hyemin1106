@@ -205,4 +205,24 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		return memberList;
 	}
 		
+	@Override
+	public int deleteMember(int no) {
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    int rows = 0;
+	    try {
+	        con = getConnection();
+	        
+	        String sql = "delete from member where no = ?";
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, no);
+	        
+	        rows = pstmt.executeUpdate();
+	    } catch (SQLException e) {
+	        System.out.println("[에러]deleteMember() 메소드의 SQL 오류 = " + e.getMessage());
+	    } finally {
+	        close(con, pstmt);
+	    }
+	    return rows;
+	}
 }

@@ -21,7 +21,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 public class UiDialog extends JDialog {
 
@@ -62,7 +61,7 @@ public class UiDialog extends JDialog {
                 init();
             }
         });
-        
+         
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -298,6 +297,14 @@ public class UiDialog extends JDialog {
               return;
           }
           
+          String noReg="^[1-9][0-9]{3}$";
+  			
+          if(!Pattern.matches(noReg, noString)) {//정규표현식과 입력값의 패턴이 맞지 않는 경우
+  			JOptionPane.showMessageDialog(this, "회원번호는 4자리 숫자로만 입력해 주세요.");
+  			noTF.requestFocus();
+  			return;
+  		}
+          
           int no = Integer.parseInt(noString);
           
           if (MemberDAOImpl.getDao().selectMemberByno(no) != null) {
@@ -373,7 +380,7 @@ public class UiDialog extends JDialog {
               JOptionPane.showMessageDialog(this, "회원이 추가되었습니다.");
               
               // 추가된 회원 정보를 테이블에 표시하기 위해 UiFrame의 displayAllMember() 호출
-              if (getParent() instanceof UiFrame) {
+              if (getParent() instanceof UiFrame) { 
                   ((UiFrame) getParent()).displayAllMember();
               }
           }

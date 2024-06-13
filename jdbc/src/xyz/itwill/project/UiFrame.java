@@ -20,8 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import xyz.itwill.student.StudentDAOImpl;
-
 
 public class UiFrame extends JFrame {
 
@@ -112,14 +110,27 @@ public class UiFrame extends JFrame {
         removeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-                if (tableModel.getRowCount() == 0)
+                int selectedRow = table.getSelectedRow();
+
+                if (selectedRow == -1) {
+                    JOptionPane.showMessageDialog(UiFrame.this, "삭제할 회원을 선택해주세요.", "선택 오류", JOptionPane.WARNING_MESSAGE);
                     return;
-                int row = table.getSelectedRow();
-                if (row == -1)
-                    return;
-                tableModel.removeRow(row);
+                }
+
+                // 회원 번호를 Integer 타입으로 가져옵니다.
+                int memberNo = (Integer) tableModel.getValueAt(selectedRow, 0);
+
+                int response = JOptionPane.showConfirmDialog(UiFrame.this, "정말로 삭제하시겠습니까?", "삭제 확인", JOptionPane.YES_NO_OPTION);
+                if (response == JOptionPane.YES_OPTION) {
+                    int result = MemberDAOImpl.getDao().deleteMember(memberNo);
+                    if (result > 0) {
+                        tableModel.removeRow(selectedRow);
+                        JOptionPane.showMessageDialog(UiFrame.this, "회원이 성공적으로 삭제되었습니다.", "삭제 완료", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(UiFrame.this, "회원 삭제에 실패했습니다.", "삭제 오류", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
-            
         });
         removeButton.setFont(new Font("굴림체", Font.BOLD, 18)); // 버튼의 폰트 크기 조정
         buttonPanel.add(removeButton);
@@ -159,7 +170,7 @@ public class UiFrame extends JFrame {
         buttonPanel.add(backButton);
 
         panel.add(buttonPanel, BorderLayout.EAST);
-
+ 
         contentPane.add(panel, BorderLayout.NORTH);
 
         uidialog = new UiDialog(this, "회원추가");
@@ -193,38 +204,5 @@ public class UiFrame extends JFrame {
 			defaultTableModel.addRow(rowData);
     	}
     	
-    }
-    
-    public void removeStudent() {
-    	int rows=MemberDAOImpl.getDao().deleteStudent(no);
-    }
-    	
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    } 
 }
