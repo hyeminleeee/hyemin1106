@@ -1,6 +1,13 @@
 package xyz.itwill.project;
 
-public class MemberTypeDAOImpl extends JdbcDAO implements MemberTypeDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MemberTypeDAOImpl extends JdbcDAO {
 	private static MemberTypeDAOImpl _typeDao;
 	
 	public MemberTypeDAOImpl() {
@@ -15,16 +22,36 @@ public class MemberTypeDAOImpl extends JdbcDAO implements MemberTypeDAO {
 		return _typeDao;
 	}
 	
-	@Override
-	public MemberTypeDAO selectDuringDateByType(String type) {
-		// TODO Auto-generated method stub
+	public List<MemberTypeDTO> selectMembertpyeAll(String type) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<MemberTypeDTO> membertypeList=new ArrayList<MemberTypeDTO>();
+		try {
+			con=getConnection();
+			
+			String sql="select price,duringdate from member natural join membertype";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, type);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberTypeDTO memberType=new MemberTypeDTO();
+				memberType.setPrice(rs.getString("price"));
+				memberType.setDuringDate(rs.getString("duringdate"));
+				
+				membertypeList.add(8, memberType);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("[에러]selectMembertpyeAll() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		
 		return null;
-	}
-
-	@Override
-	public MemberTypeDAO selectPriceeByType(String type) {
-		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 }

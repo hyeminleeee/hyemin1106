@@ -9,9 +9,9 @@ PRICE         VARCHAR2(20)
  */
 
 public class MemberTypeDTO {
-	private String type;
-	private String duringDate;
+	private String type;	
 	private String price;
+	private String duringDate;
 	
 	public MemberTypeDTO() {
 		// TODO Auto-generated constructor stub
@@ -20,8 +20,9 @@ public class MemberTypeDTO {
 	public MemberTypeDTO(String type, String duringDate, String price) {
 		super();
 		this.type = type;
-		this.duringDate = duringDate;
 		this.price = price;
+		this.duringDate = duringDate;
+		
 	}
 
 	public String getType() {
@@ -32,13 +33,6 @@ public class MemberTypeDTO {
 		this.type = type;
 	}
 
-	public String getDuringDate() {
-		return duringDate;
-	}
-
-	public void setDuringDate(String duringDate) {
-		this.duringDate = duringDate;
-	}
 
 	public String getPrice() {
 		return price;
@@ -49,6 +43,12 @@ public class MemberTypeDTO {
 	}
 	
 	
-	
+	public String getDuringDate() {
+		return duringDate;
+	}
+
+	public void setDuringDate(String duringDate) {
+		this.duringDate = duringDate;
+	}
 	
 }

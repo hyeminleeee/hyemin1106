@@ -20,7 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-
 public class UiFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -108,14 +107,15 @@ public class UiFrame extends JFrame {
             }
         });
         
-                JButton addButton_1 = new JButton("초기화");
-                addButton_1.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        displayAllMember();
-                    }
-                });
-                addButton_1.setFont(new Font("굴림체", Font.BOLD, 18));
-                buttonPanel.add(addButton_1);
+		JButton addButton_1 = new JButton("초기화");
+		addButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				displayAllMember();
+				displayAllMemberType();
+			}
+		});
+		addButton_1.setFont(new Font("굴림체", Font.BOLD, 18));
+		buttonPanel.add(addButton_1);
         addButton.setFont(new Font("굴림체", Font.BOLD, 18)); // 버튼의 폰트 크기 조정
         buttonPanel.add(addButton);
 
@@ -150,9 +150,7 @@ public class UiFrame extends JFrame {
         JButton modifyButton = new JButton("회원수정");
         modifyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	updateMember();
-            	//updateMemberToDatabase();
-            	uiUpdateDialog.setVisible(true);
+                uiUpdateDialog.setVisible(true);
 
             }
         });
@@ -177,6 +175,7 @@ public class UiFrame extends JFrame {
         uidialog = new UiDialog(this, "회원추가");
 
         displayAllMember(); // 프레임 생성 시 모든 회원 정보를 테이블에 표시
+        displayAllMemberType();
     }
 
     public void displayAllMember() {
@@ -209,6 +208,25 @@ public class UiFrame extends JFrame {
             defaultTableModel.addRow(rowData);
         }
     }
+    public void displayAllMemberType() {
+    	List<MemberTypeDTO> memberTypeList = MemberTypeDAOImpl.geTypeDao().selectMembertpyeAll();
+    	
+    	DefaultTableModel defaultTableModel=(DefaultTableModel) table.getModel();
+    	
+    	 while (defaultTableModel.getRowCount() > 0) {
+             defaultTableModel.removeRow(0);
+         }
+    	 
+    	 for(MemberTypeDTO memberType : memberTypeList) {
+    		 Vector<Object> rowdata=new Vector<Object>();
+    		 
+    		 rowdata.add(8, memberType.getPrice());
+    		 rowdata.add(9, memberType.getDuringDate());
+    		 
+    		 defaultTableModel.addRow(rowdata);
+    		 
+    	 }
+    }
 
     public void displayMemberByNo(int memberNo) {
         MemberDTO member = MemberDAOImpl.getDao().selectMemberByno(memberNo);
@@ -240,31 +258,8 @@ public class UiFrame extends JFrame {
         defaultTableModel.addRow(rowData);
     }
     
-    public void updateMember() {
-    	DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-        int selectedRow = table.getSelectedRow();
-
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(UiFrame.this, "수정할 회원을 선택해주세요.", "선택 오류", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        int no = (Integer) tableModel.getValueAt(selectedRow, 0);
-        String name = (String) tableModel.getValueAt(selectedRow, 1);
-        String birth = (String) tableModel.getValueAt(selectedRow, 2);
-        String gender = (String) tableModel.getValueAt(selectedRow, 3);
-        String phone = (String) tableModel.getValueAt(selectedRow, 4);
-        String type = (String) tableModel.getValueAt(selectedRow, 5);
-        String startdate = (String) tableModel.getValueAt(selectedRow, 6);
-
-        uiUpdateDialog.setMemberInfo(String.valueOf(no), name, birth, gender, phone, type, startdate);
-    }
     
 }
-
-
-
-
 
 
 
