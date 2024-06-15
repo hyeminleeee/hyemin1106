@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

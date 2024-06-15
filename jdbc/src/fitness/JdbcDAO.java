@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

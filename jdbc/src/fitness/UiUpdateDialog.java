@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -24,8 +24,6 @@ import javax.swing.border.EmptyBorder;
 
 public class UiUpdateDialog extends JDialog {
 
-    
-
     private static final long serialVersionUID = 1L;
     private final JPanel contentPanel = new JPanel();
     private JTextField noTF; 
@@ -35,17 +33,16 @@ public class UiUpdateDialog extends JDialog {
     private JTextField phoneTF;
     private JComboBox<String> memberTypeComboBox;
     private JTextField joinDateTF;
-    //private JTextField endDateTF;
-    //private JTextField visitCountTF;
     
     public UiUpdateDialog(JFrame frame, String title) {
         super(frame, title, true);
         
-        setBounds(100, 100, 1000, 800);
+        setBounds(100, 100, 600, 700);
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+            	setVisible(false);
                 init();
             }
         });
@@ -54,9 +51,9 @@ public class UiUpdateDialog extends JDialog {
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         GridBagLayout gbl_contentPanel = new GridBagLayout();
-        gbl_contentPanel.columnWidths = new int[] {100, 300, 0};
+        gbl_contentPanel.columnWidths = new int[] {100, 300};
         gbl_contentPanel.rowHeights = new int[] {50, 50, 50, 50, 50, 50, 50, 50};
-        gbl_contentPanel.columnWeights = new double[]{0.0, 0.0, 0.0};
+        gbl_contentPanel.columnWeights = new double[]{0.0, 0.0};
         gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
         contentPanel.setLayout(gbl_contentPanel);
         {
@@ -73,27 +70,10 @@ public class UiUpdateDialog extends JDialog {
             noTF.setFont(new Font("굴림체", Font.PLAIN, 20));
             GridBagConstraints gbc_noTF = new GridBagConstraints();
             gbc_noTF.fill = GridBagConstraints.HORIZONTAL;
-            gbc_noTF.insets = new Insets(0, 0, 5, 5);
+            gbc_noTF.insets = new Insets(0, 0, 5, 0);
             gbc_noTF.gridx = 1;
             gbc_noTF.gridy = 0;
-            contentPanel.add(noTF, gbc_noTF);   
-           
-           
-           
-        }
-        {
-        	JButton searchButton = new JButton("검색");
-        	searchButton.addActionListener(new ActionListener() {
-        		public void actionPerformed(ActionEvent e) {
-        			searchNoMember();
-        		}
-        	});
-        	searchButton.setFont(new Font("굴림체", Font.BOLD, 12));
-        	GridBagConstraints gbc_searchButton = new GridBagConstraints();
-        	gbc_searchButton.insets = new Insets(0, 0, 5, 0);
-        	gbc_searchButton.gridx = 2;
-        	gbc_searchButton.gridy = 0;
-        	contentPanel.add(searchButton, gbc_searchButton);
+            contentPanel.add(noTF, gbc_noTF);                    
         }
         {
             JLabel nameLabel = new JLabel("이름");
@@ -109,7 +89,7 @@ public class UiUpdateDialog extends JDialog {
             nameTF.setFont(new Font("굴림체", Font.PLAIN, 20));
             GridBagConstraints gbc_nameTF = new GridBagConstraints();
             gbc_nameTF.fill = GridBagConstraints.HORIZONTAL;
-            gbc_nameTF.insets = new Insets(0, 0, 5, 5);
+            gbc_nameTF.insets = new Insets(0, 0, 5, 0);
             gbc_nameTF.gridx = 1;
             gbc_nameTF.gridy = 1;
             contentPanel.add(nameTF, gbc_nameTF);
@@ -128,7 +108,7 @@ public class UiUpdateDialog extends JDialog {
             birthTF.setFont(new Font("굴림체", Font.PLAIN, 20));
             GridBagConstraints gbc_birthTF = new GridBagConstraints();
             gbc_birthTF.fill = GridBagConstraints.HORIZONTAL;
-            gbc_birthTF.insets = new Insets(0, 0, 5, 5);
+            gbc_birthTF.insets = new Insets(0, 0, 5, 0);
             gbc_birthTF.gridx = 1;
             gbc_birthTF.gridy = 2;
             contentPanel.add(birthTF, gbc_birthTF);
@@ -147,7 +127,7 @@ public class UiUpdateDialog extends JDialog {
             genderComboBox.setFont(new Font("굴림체", Font.PLAIN, 20));
             GridBagConstraints gbc_genderComboBox = new GridBagConstraints();
             gbc_genderComboBox.fill = GridBagConstraints.HORIZONTAL;
-            gbc_genderComboBox.insets = new Insets(0, 0, 5, 5);
+            gbc_genderComboBox.insets = new Insets(0, 0, 5, 0);
             gbc_genderComboBox.gridx = 1;
             gbc_genderComboBox.gridy = 3;
             contentPanel.add(genderComboBox, gbc_genderComboBox);
@@ -166,7 +146,7 @@ public class UiUpdateDialog extends JDialog {
             phoneTF.setFont(new Font("굴림체", Font.PLAIN, 20));
             GridBagConstraints gbc_phoneTF = new GridBagConstraints();
             gbc_phoneTF.fill = GridBagConstraints.HORIZONTAL;
-            gbc_phoneTF.insets = new Insets(0, 0, 5, 5);
+            gbc_phoneTF.insets = new Insets(0, 0, 5, 0);
             gbc_phoneTF.gridx = 1;
             gbc_phoneTF.gridy = 4;
             contentPanel.add(phoneTF, gbc_phoneTF);
@@ -185,7 +165,7 @@ public class UiUpdateDialog extends JDialog {
             memberTypeComboBox.setFont(new Font("굴림체", Font.PLAIN, 20));
             GridBagConstraints gbc_memberTypeComboBox = new GridBagConstraints();
             gbc_memberTypeComboBox.fill = GridBagConstraints.HORIZONTAL;
-            gbc_memberTypeComboBox.insets = new Insets(0, 0, 5, 5);
+            gbc_memberTypeComboBox.insets = new Insets(0, 0, 5, 0);
             gbc_memberTypeComboBox.gridx = 1;
             gbc_memberTypeComboBox.gridy = 5;
             contentPanel.add(memberTypeComboBox, gbc_memberTypeComboBox);
@@ -204,7 +184,7 @@ public class UiUpdateDialog extends JDialog {
             joinDateTF.setFont(new Font("굴림체", Font.PLAIN, 20));
             GridBagConstraints gbc_joinDateTF = new GridBagConstraints();
             gbc_joinDateTF.fill = GridBagConstraints.HORIZONTAL;
-            gbc_joinDateTF.insets = new Insets(0, 0, 5, 5);
+            gbc_joinDateTF.insets = new Insets(0, 0, 5, 0);
             gbc_joinDateTF.gridx = 1;
             gbc_joinDateTF.gridy = 6;
             contentPanel.add(joinDateTF, gbc_joinDateTF);
@@ -218,10 +198,10 @@ public class UiUpdateDialog extends JDialog {
                   addButton.setFont(new Font("굴림체", Font.BOLD, 18));
                   addButton.addActionListener(new ActionListener() {
                       public void actionPerformed(ActionEvent e) {
-                       
-                         //updateMemberToDatabase();
-                         //setVisible(false);
-                    	  
+                    	  updateMemberToDatabase();
+                    	  updateMember();                 	  
+                        //updateMemberToDatabase();
+                         setVisible(false);
                       }
                   });
                   buttonPane.add(addButton);
@@ -239,7 +219,6 @@ public class UiUpdateDialog extends JDialog {
                   buttonPane.add(cancelButton);
               }
           }
-        updateMemberToDatabase();
       }
       
       private void init() {//TextField 초기화 시켜주는 메소드
@@ -251,18 +230,10 @@ public class UiUpdateDialog extends JDialog {
           memberTypeComboBox.setSelectedIndex(0); // Default to the first item
           joinDateTF.setText("");
       }
-      
+
       private void updateMemberToDatabase() {
-    	  String noString = noTF.getText();
-    	  String name=nameTF.getText();
-    	  String birth=birthTF.getText();
-    	  String gender=(String) genderComboBox.getSelectedItem();
-    	  String phone=phoneTF.getText();
-    	  String type=(String) memberTypeComboBox.getSelectedItem();
-    	  String startdate=joinDateTF.getText();
-      }
+          String noString = noTF.getText();
           
-     /*     
           if (noString.equals("")) {
               JOptionPane.showMessageDialog(this, "회원번호를 입력해 주세요.");
               noTF.requestFocus();
@@ -277,13 +248,6 @@ public class UiUpdateDialog extends JDialog {
            return;
         }
           
-          int no = Integer.parseInt(noString);
-          
-          if (MemberDAOImpl.getDao().selectMemberByno(no) != null) {
-              JOptionPane.showMessageDialog(this, "이미 사용중인 회원번호를 입력 하였습니다.");
-              noTF.requestFocus();
-              return;
-          }
           
           String name = nameTF.getText();
           
@@ -341,7 +305,7 @@ public class UiUpdateDialog extends JDialog {
               joinDateTF.requestFocus();
               return;
           }
-
+/*
           // Create a MemberDTO object with the entered information
           MemberDTO newMember = new MemberDTO(no, name, birth, gender, phone, type, startdate);
 
@@ -354,105 +318,76 @@ public class UiUpdateDialog extends JDialog {
               init();
               
               // 추가된 회원 정보를 테이블에 표시하기 위해 UiFrame의 displayAllMember() 호출
-              if (getParent() instanceof UiFrame) { 
-                  ((UiFrame) getParent()).displayAllMember();
+             
               }
+              
           }
+          */
       }
-      */
-
       
-      public void setMemberInfo(int no, String name, String birth, String gender, String phone, String type, String startdate) {
-          noTF.setText(String.valueOf(no));
-          nameTF.setText(name);
-          birthTF.setText(birth);
-          genderComboBox.setSelectedItem(gender);
-          phoneTF.setText(phone);
-          memberTypeComboBox.setSelectedItem(type);
-          joinDateTF.setText(startdate);
-      }
-
       /*
-      // 회원정보 수정
-      public void setMemberInfo(String no, String name, String birth, String gender, String phone, 
-              String memberType, String joinDate /*String endDate, String visitCount) {
-          noTF.setText(no);
-         nameTF.setText(name);
-          birthTF.setText(birth);
-          genderComboBox.setSelectedItem(gender);
-          phoneTF.setText(phone);
-          memberTypeComboBox.setSelectedItem(memberType);
-          joinDateTF.setText(joinDate);
-          //endDateTF.setText(endDate);
-          //visitCountTF.setText(visitCount);
-      }
-      */
+      public void setNoTF(int no) {
+    	    noTF.setText(String.valueOf(no));
+    	}
+
+    	public void setNameTF(String name) {
+    	    nameTF.setText(name);
+    	}
+
+    	public void setBirthTF(String birth) {
+    	    birthTF.setText(birth);
+    	}
+
+    	public void setGenderComboBox(String gender) {
+    	    genderComboBox.setSelectedItem(gender);
+    	}
+
+    	public void setPhoneTF(String phone) {
+    	    phoneTF.setText(phone);
+    	}
+
+    	public void setMemberTypeComboBox(String type) {
+    	    memberTypeComboBox.setSelectedItem(type);
+    	}
+
+    	public void setJoinDateTF(String startdate) {
+    	    joinDateTF.setText(startdate);
+    	}
+    	*/
       
-      public void searchNoMember() {
-    	  String noString=noTF.getText();
-    	  
-    	  if(noString.equals("")) {
-  			JOptionPane.showMessageDialog(this, "회원번호를 입력해 주세요.");
-  			noTF.requestFocus();
-  			return;
-  		}
-  		
-  		String noReg="^[1-9][0-9]{3}$";
-  		if(!Pattern.matches(noReg, noString)) {
-  			JOptionPane.showMessageDialog(this, "회원번호는 4자리 숫자로만 입력해 주세요.");
-  			noTF.requestFocus();
-  			return;
-  		}
-  		
-  		int no=Integer.parseInt(noString);
-  		
-  		MemberDTO member=MemberDAOImpl.getDao().selectMemberByno(no);
-  		
-  		if(member == null) {
-  			JOptionPane.showMessageDialog(this, "변경할 회원번호의 학생정보를 찾을 수 없습니다.");
-			noTF.requestFocus();
-			noTF.setText("");
-			return;
-  		}
-  		
-  		noTF.setText(member.getNo()+"");
-  		nameTF.setText(member.getName());
-  		birthTF.setText(member.getBirth());
-  		genderComboBox.setSelectedItem(member.getGender());
-  		phoneTF.setText(member.getPhone());
-  		memberTypeComboBox.setSelectedItem(member.getType());
-  		joinDateTF.setText(member.getStardate().substring(0, 10));
+      public void setMemberData(MemberDTO member) {
+    	 noTF.setText(String.valueOf(member.getNo()));
+    	 nameTF.setText(member.getName());
+    	 birthTF.setText(member.getBirth());
+    	 genderComboBox.setSelectedItem(member.getGender());
+    	 phoneTF.setText(member.getPhone());
+    	 memberTypeComboBox.setSelectedItem(member.getType());
+    	 joinDateTF.setText(member.getStardate());
+    	 
       }
+      
+      public void updateMember() {
+    	  MemberDTO member=new MemberDTO();
+    	  member.setNo(Integer.parseInt(noTF.getText()));
+    	  member.setName(nameTF.getText());
+    	  member.setBirth(birthTF.getText());
+    	  member.setGender((String) genderComboBox.getSelectedItem());
+    	  member.setPhone(phoneTF.getText());
+    	  member.setType((String)memberTypeComboBox.getSelectedItem());
+    	  member.setStardate(joinDateTF.getText());
+    	  
+    	  int rows=MemberDAOImpl.getDao().updateMember(member);
+    	  if(rows>0) {
+    		  JOptionPane.showMessageDialog(this, "회원 정보가 성공적으로 수정되었습니다.");
+              setVisible(false);
+    	  } else {
+              JOptionPane.showMessageDialog(this, "회원 정보 수정에 실패했습니다.");
+          }
+    	  
+    	  if (getParent() instanceof UiFrame) { 
+              ((UiFrame) getParent()).displayAllMember();
+    	  }
+      }
+
+
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

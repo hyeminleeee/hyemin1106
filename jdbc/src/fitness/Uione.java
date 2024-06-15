@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -40,12 +40,16 @@ public class Uione extends JFrame {
      * Create the frame.
      */
     public Uione() {
+    	
+    	
         setTitle("아이티윌 피트니스");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1000, 800);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
+        setLocationRelativeTo(null);
+        
         setContentPane(contentPane);
 
         btnNewButton = new JButton("내정보");

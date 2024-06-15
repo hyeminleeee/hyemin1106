@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -24,9 +24,10 @@ import javax.swing.border.EmptyBorder;
 
 public class UiDialog extends JDialog {
 
+	/*
     // 회원정보 수정
     public void setMemberInfo(String no, String name, String birth, String gender, String phone, 
-            String memberType, String joinDate /*String endDate, String visitCount*/) {
+            String memberType, String joinDate /*String endDate, String visitCount) {
         noTF.setText(no);
     	nameTF.setText(name);
         birthTF.setText(birth);
@@ -37,6 +38,8 @@ public class UiDialog extends JDialog {
         //endDateTF.setText(endDate);
         //visitCountTF.setText(visitCount);
     }
+    */
+
 
     private static final long serialVersionUID = 1L;
     private final JPanel contentPanel = new JPanel();
@@ -53,15 +56,18 @@ public class UiDialog extends JDialog {
     public UiDialog(JFrame frame, String title) {
         super(frame, title, true);
         
-        setBounds(100, 100, 1000, 800);
+        setBounds(100, 100, 600, 700);
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                setVisible(false);
                 init();
             }
         });
          
+        setLocationRelativeTo(null);
+        
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -258,7 +264,7 @@ public class UiDialog extends JDialog {
                       public void actionPerformed(ActionEvent e) {
                        
                     	  addMemberToDatabase();
-//                    	  setVisible(false);
+                    	  //setVisible(false);
                       }
                   });
                   buttonPane.add(addButton);
@@ -278,7 +284,7 @@ public class UiDialog extends JDialog {
           }
       }
       
-      private void init() {
+      private void init() {//TextField 초기화 시켜주는 메소드
           noTF.setText(""); 
           nameTF.setText("");
           birthTF.setText("");
@@ -374,27 +380,19 @@ public class UiDialog extends JDialog {
           MemberDTO newMember = new MemberDTO(no, name, birth, gender, phone, type, startdate);
 
           // Call the insertMember method of MemberDAOImpl to add the new member to the database
-          int rowsAffected = MemberDAOImpl.getDao().insertMember(newMember);
+          int rows = MemberDAOImpl.getDao().insertMember(newMember);
 
-          if (rowsAffected > 0) {
+          if (rows > 0) {
               JOptionPane.showMessageDialog(this, "회원이 추가되었습니다.");
-              
               setVisible(false);
-              /*
-              noTF.setText("");
-              nameTF.setText("");
-              birthTF.setText("");
-              phoneTF.setText("");
-              joinDateTF.setText("");
-              */
               init();
               
               // 추가된 회원 정보를 테이블에 표시하기 위해 UiFrame의 displayAllMember() 호출
               if (getParent() instanceof UiFrame) { 
                   ((UiFrame) getParent()).displayAllMember();
               }
-              
           }
-          
       }
-  } 
+
+
+} 

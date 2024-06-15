@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 
 public interface MemberTypeDAO {
 	MemberTypeDAO selectDuringDateByType(String type);

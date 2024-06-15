@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 
 /*
  이름         널? 유형           
@@ -9,9 +9,9 @@ PRICE         VARCHAR2(20)
  */
 
 public class MemberTypeDTO {
-	private String type;	
-	private String price;
+	private String type;
 	private String duringDate;
+	private String price;
 	
 	public MemberTypeDTO() {
 		// TODO Auto-generated constructor stub
@@ -20,9 +20,8 @@ public class MemberTypeDTO {
 	public MemberTypeDTO(String type, String duringDate, String price) {
 		super();
 		this.type = type;
-		this.price = price;
 		this.duringDate = duringDate;
-		
+		this.price = price;
 	}
 
 	public String getType() {
@@ -33,6 +32,13 @@ public class MemberTypeDTO {
 		this.type = type;
 	}
 
+	public String getDuringDate() {
+		return duringDate;
+	}
+
+	public void setDuringDate(String duringDate) {
+		this.duringDate = duringDate;
+	}
 
 	public String getPrice() {
 		return price;
@@ -43,12 +49,6 @@ public class MemberTypeDTO {
 	}
 	
 	
-	public String getDuringDate() {
-		return duringDate;
-	}
-
-	public void setDuringDate(String duringDate) {
-		this.duringDate = duringDate;
-	}
+	
 	
 }

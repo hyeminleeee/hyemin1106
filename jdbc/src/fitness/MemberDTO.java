@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 /*
  이름        널? 유형           
 --------- -- ------------ 
@@ -7,7 +7,7 @@ NAME         VARCHAR2(20)
 BIRTHDAY     VARCHAR2(30) 
 GENDER       VARCHAR2(10) 
 PHONE        VARCHAR2(30) 
-TYPE         VARCHAR2(20) 
+TYPE         VARCHAR2( 20) 
 STARTDATE    VARCHAR2(20) 
  */
 public class MemberDTO {//회원정보 저장하는 객체 생성하는 클래스
@@ -18,12 +18,15 @@ public class MemberDTO {//회원정보 저장하는 객체 생성하는 클래�
 	private String phone;
 	private String type;
 	private String stardate;
+	private String price;
+	private String duringdate;
 	
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberDTO(int no, String name, String birth, String gender, String phone, String type, String stardate) {
+	public MemberDTO(int no, String name, String birth, String gender, String phone, String type, String stardate,
+			String price, String duringdate) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -32,6 +35,20 @@ public class MemberDTO {//회원정보 저장하는 객체 생성하는 클래�
 		this.phone = phone;
 		this.type = type;
 		this.stardate = stardate;
+		this.price = price;
+		this.duringdate = duringdate;
+	}
+	public MemberDTO(int no, String name, String birth, String gender, String phone, String type, String stardate
+			) {
+		super();
+		this.no = no;
+		this.name = name;
+		this.birth = birth;
+		this.gender = gender;
+		this.phone = phone;
+		this.type = type;
+		this.stardate = stardate;
+		
 	}
 
 	public int getNo() {
@@ -89,6 +106,21 @@ public class MemberDTO {//회원정보 저장하는 객체 생성하는 클래�
 	public void setStardate(String stardate) {
 		this.stardate = stardate;
 	}
-	
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getDuringdate() {
+		return duringdate;
+	}
+
+	public void setDuringdate(String duringdate) {
+		this.duringdate = duringdate;
+	}
 	
 }

@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -89,9 +89,11 @@ public class UiFrame extends JFrame {
                 try {
                     int memberNo = Integer.parseInt(input);
                     displayMemberByNo(memberNo);
+                    
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(UiFrame.this, "유효한 회원번호를 입력하세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
                 }
+                textField.setText("");
             }
         });
         searchPanel.add(searchButton);
@@ -107,15 +109,14 @@ public class UiFrame extends JFrame {
             }
         });
         
-		JButton addButton_1 = new JButton("초기화");
-		addButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				displayAllMember();
-				displayAllMemberType();
-			}
-		});
-		addButton_1.setFont(new Font("굴림체", Font.BOLD, 18));
-		buttonPanel.add(addButton_1);
+                JButton addButton_1 = new JButton("초기화");
+                addButton_1.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        displayAllMember();
+                    }
+                });
+                addButton_1.setFont(new Font("굴림체", Font.BOLD, 18));
+                buttonPanel.add(addButton_1);
         addButton.setFont(new Font("굴림체", Font.BOLD, 18)); // 버튼의 폰트 크기 조정
         buttonPanel.add(addButton);
 
@@ -150,32 +151,34 @@ public class UiFrame extends JFrame {
         JButton modifyButton = new JButton("회원수정");
         modifyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                uiUpdateDialog.setVisible(true);
+            	//modifyMember(JFrame frame, int selecet);
+            	int selectedRow=table.getSelectedRow();
+            	if(selectedRow < 0) {
+            		JOptionPane.showMessageDialog(UiFrame.this, "수정할 회원을 선택해주세요.", "선택 오류", JOptionPane.WARNING_MESSAGE);
+                    return;
+            	}
+            	DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+                int memberNo = (Integer) tableModel.getValueAt(selectedRow, 0);
+                MemberDTO member = MemberDAOImpl.getDao().selectMemberByno(memberNo);
+                if (member != null) {
+                    uiUpdateDialog.setMemberData(member);
+                    uiUpdateDialog.setVisible(true);
+                }
+            	//uiUpdateDialog.setVisible(true);
 
             }
         });
         modifyButton.setFont(new Font("굴림체", Font.BOLD, 18)); // 버튼의 폰트 크기 조정
         buttonPanel.add(modifyButton);
 
-        JButton backButton = new JButton("뒤로가기");
-        backButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose(); // 현재 UiFrame 창 닫기
-                Uione uioneFrame = new Uione(); // Uione 클래스의 인스턴스 생성
-                uioneFrame.setVisible(true); // Uione 창 보이기
-            }
-        });
-        backButton.setFont(new Font("굴림체", Font.BOLD, 18)); // 폰트 크기 조정
-        buttonPanel.add(backButton);
-
         panel.add(buttonPanel, BorderLayout.EAST);
 
         contentPane.add(panel, BorderLayout.NORTH);
 
         uidialog = new UiDialog(this, "회원추가");
+        uiUpdateDialog=new UiUpdateDialog(this, "회원수정");
 
         displayAllMember(); // 프레임 생성 시 모든 회원 정보를 테이블에 표시
-        displayAllMemberType();
     }
 
     public void displayAllMember() {
@@ -203,29 +206,11 @@ public class UiFrame extends JFrame {
             rowData.add(member.getGender());
             rowData.add(member.getPhone());
             rowData.add(member.getType());
-            rowData.add(member.getStardate().substring(0, 10)); // 가입일에서 날짜 부분만 표시
-
+            rowData.add(member.getStardate().substring(0, 10)); 
+            rowData.add(member.getPrice());// 가입일에서 날짜 부분만 표시
+            rowData.add(member.getDuringdate());
             defaultTableModel.addRow(rowData);
         }
-    }
-    public void displayAllMemberType() {
-    	List<MemberTypeDTO> memberTypeList = MemberTypeDAOImpl.geTypeDao().selectMembertpyeAll();
-    	
-    	DefaultTableModel defaultTableModel=(DefaultTableModel) table.getModel();
-    	
-    	 while (defaultTableModel.getRowCount() > 0) {
-             defaultTableModel.removeRow(0);
-         }
-    	 
-    	 for(MemberTypeDTO memberType : memberTypeList) {
-    		 Vector<Object> rowdata=new Vector<Object>();
-    		 
-    		 rowdata.add(8, memberType.getPrice());
-    		 rowdata.add(9, memberType.getDuringDate());
-    		 
-    		 defaultTableModel.addRow(rowdata);
-    		 
-    	 }
     }
 
     public void displayMemberByNo(int memberNo) {
@@ -246,7 +231,11 @@ public class UiFrame extends JFrame {
         rowData.add(member.getGender());
         rowData.add(member.getPhone());
         rowData.add(member.getType());
-
+        rowData.add(member.getStardate());
+        rowData.add(member.getPrice());// 가입일에서 날짜 부분만 표시
+        rowData.add(member.getDuringdate());
+        //defaultTableModel.addRow(rowData);
+/*
         // 가입일이 null인 경우 처리
         String stardate = member.getStardate();
         if (stardate != null) {
@@ -254,12 +243,41 @@ public class UiFrame extends JFrame {
         } else {
             rowData.add(""); // 가입일이 null인 경우 빈 문자열 추가
         }
-
+*/
         defaultTableModel.addRow(rowData);
     }
     
-    
+    /*
+    //JTable에서 선택된 행의 데이터를 다이얼로그 텍스트필드에 전달하는 메소드
+    public void modifyMember(JTable table, int selectedRow) {
+    	if(selectedRow < 0) {
+    		System.out.println("선택된 회원정보가 없습니다.");
+    	}
+    	
+    	int no=(int)table.getValueAt(selectedRow, 0);
+    	String name=(String)table.getValueAt(selectedRow, 1);
+    	String birth=(String)table.getValueAt(selectedRow, 2);
+    	String gender=(String)table.getValueAt(selectedRow, 3);
+    	String phone=(String)table.getValueAt(selectedRow, 4);
+    	String type=(String)table.getValueAt(selectedRow, 5);
+    	String startdate=(String)table.getValueAt(selectedRow, 6);
+    	
+    	 UiUpdateDialog uiUpdateDialog = new UiUpdateDialog(null, getTitle());
+         uiUpdateDialog.setNoTF(no);
+         uiUpdateDialog.setNameTF(name);
+         uiUpdateDialog.setBirthTF(birth);
+         uiUpdateDialog.setGenderComboBox(gender);
+         uiUpdateDialog.setPhoneTF(phone);
+         uiUpdateDialog.setMemberTypeComboBox(type);
+         uiUpdateDialog.setJoinDateTF(startdate);
+         uiUpdateDialog.setVisible(true);
+    	
+    	
+    }
+    */
 }
+
+
 
 
 

@@ -1,4 +1,4 @@
-package xyz.itwill.project;
+package fitness;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -109,7 +109,9 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select no from member where no=?";
+			String sql="SELECT NO, NAME, BIRTH, GENDER, PHONE, TYPE, STARTDATE, PRICE, DURINGDATE "
+					+ "FROM MEMBER NATURAL JOIN MEMBERTYPE WHERE NO=? order by startdate";
+	
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			
@@ -124,6 +126,8 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 				member.setPhone(rs.getString("phone"));
 				member.setType(rs.getString("type"));
 				member.setStardate(rs.getString("startdate"));
+				member.setPrice(rs.getString("price"));
+				member.setDuringdate(rs.getString("duringdate"));
 			}
 		} catch (SQLException e) {
 			System.out.println("[에러]selectMemberByno() 메소드의 SQL 오류 = "+e.getMessage());
@@ -132,7 +136,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		}
 		return member;
 	}
-	
+	/*
 	@Override
 	public List<MemberDTO> selectMemberByName(String name) {
 		Connection con=null;
@@ -170,6 +174,7 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		
 		return memberList;
 	}
+	*/
 	@Override
 	public List<MemberDTO> selectMemberAll() {
 		Connection con=null;
@@ -179,7 +184,8 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select no,name,birth,gender,phone,type,startdate from member order by no";
+			String sql="SELECT NO, NAME, BIRTH, GENDER, PHONE, TYPE, STARTDATE, PRICE, DURINGDATE "
+					+ "FROM MEMBER NATURAL JOIN MEMBERTYPE order by name";
 			pstmt=con.prepareStatement(sql);
 			
 			rs=pstmt.executeQuery();
@@ -193,6 +199,8 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 				member.setPhone(rs.getString("phone"));
 				member.setType(rs.getString("type"));
 				member.setStardate(rs.getString("startdate"));
+				member.setPrice(rs.getString("price"));
+				member.setDuringdate(rs.getString("duringdate"));
 				
 				memberList.add(member);
 			}
@@ -225,4 +233,43 @@ public class MemberDAOImpl extends JdbcDAO implements MemberDAO {
 	    }
 	    return rows;
 	}
+	/*
+	@Override
+	public MemberDTO selectMemberByphone(String phone) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		MemberDTO member=null;
+		try {
+			con=getConnection();
+			
+			String sql="SELECT NAME,no, STARTDATE, TYPE, PRICE,  from MEMBER NATURAL JOIN MEMBERTYPE WHERE phone=?";
+					
+	
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, phone);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member=new MemberDTO();
+				member.setNo(rs.getInt("no"));
+				member.setName(rs.getString("name"));
+				member.setBirth(rs.getString("birth"));
+				member.setGender(rs.getString("gender"));
+				member.setPhone(rs.getString("phone"));
+				member.setType(rs.getString("type"));
+				member.setStardate(rs.getString("startdate"));
+				member.setPrice(rs.getString("price"));
+				member.setDuringdate(rs.getString("duringdate"));
+			}
+		} catch (SQLException e) {
+			System.out.println("[에러]selectMemberByno() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return member;
+	}
+	*/	
+	
 }
