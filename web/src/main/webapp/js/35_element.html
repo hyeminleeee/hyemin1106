@@ -15,13 +15,13 @@ window.onload=function() {
 <body>
 	<h1>DOM(Document Object Model)</h1>
 	<hr>
-	<p>DOM : Document 객체를 기반으로 제공되는 자바스크립트 객체 - Node 객체</p>
+	<p>DOM : Document 객체를 기반으로 제공되는 자바스크립트 객체 - Node 객체(Element 객체)</p>
 	<p>클라이언트는 브라우저를 사용하여 서버의 웹프로그램을 요청해 실행결과를 HTML 문서로 응답받아
 	브라우저 엔진의 DOM 파서(Parser)로 HTML 문서를 읽어 DOM 트리(Tree)를 생성한 후 CSS 스타일 
 	시트를 적용해 브라우저에 출력 처리</p>
-	<p>자바스크립트를 사용해 태그에서 이벤트가 발생될 경우 DOM 트리에 존재하는 태그(Node)를 
-	찾아 태그를 조작해 동적인 페이지구현 가능 - DHTML(Dynamic HTML)</p>
-	<p>DOM 트리가 완성되어야 동적인 페이지 구현 가능</p>
+	<p>자바스크립트를 사용해 태그에서 이벤트가 발생될 경우 DOM 트리에 존재하는 태그(Node 객체)를 
+	검색해 검색된 태그를 조작해 동적인 페이지구현 가능 - DHTML(Dynamic HTML)</p>
+	<p>DOM 트리가 완성되어야 동적인 페이지 구현 가능 - onload 이벤트 리스너 속성 사용</p>
 	<p>Node 객체 : 태그(TagNode)와 태그내용(TextNode)을 자바스크립트 객체로 표현
 	- Element 객체와 Text 객체로 분리하여 표현</p>
 	<p>Element 객체 : 태그(TagNode)만을 자바스크립트 객체로 표현</p>
@@ -64,7 +64,7 @@ window.onload=function() {
 	/*
 	//document.getElementsByTagName(tagName) : DOM 트리의 document 객체에서 태그의 이름으로
 	//다수의 태그를 검색해 HTMLCollection 객체(NodeList 객체)로 반환하는 멤버함수
-	//HTMLCollection 객체(NodeList 객체) : 태그(Element 객체)가 여러개 저장된 콜렉션 객체
+	//HTMLCollection 객체(NodeList 객체) : 다수의 태그(Element 객체)가 요소에 저장된 콜렉션 객체
 	//=> document 객체대신 Element 객체(태그)를 사용하여 자식태그를 검색하여 Element 객체로 반환 가능
 	var liList=document.getElementsByTagName("li");
 	//alert(liList);//[object HTMLCollection]
@@ -74,7 +74,7 @@ window.onload=function() {
 	
 	for(i=0;i<liList.length;i++){
 		//HTMLCollection.item(index) : HTMLCollection(NodeList 객체)에서 매개변수로 전달받은
-		//첨자 위치의 요소(Element 객체)를 반환하는 멤버함수
+		//첨자 위치의 요소값(Element 객체)를 반환하는 멤버함수
 		var liE=liList.item(i);
 		//alert(liE);
 		alert(liE.firstChild.nodeValue);
@@ -105,38 +105,3 @@ window.onload=function() {
 	</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
