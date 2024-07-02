@@ -19,22 +19,22 @@
 	</div>
 	
 	<script type="text/javascript">
-	//$(selector).append(newItem) : 선택자로 검색된 태그의 마지막 자식태그로 매개변수로 
-	//전달받은 태그를 생성하여 추가하는 멤버함수 - DOM 트리에 태그를 추가하여 출력
+	//$(selector).append(newItem) : 매개변수로 전달받은 태그를 생성하여 선택자로 검색된 태그의
+	//마지막 자식태그로 추가하는 멤버함수 - DOM 트리에 태그를 추가하여 출력
 	$("#imagesList1").append("<img src='/web/jquery/images/1.png' width='200'>");
 	$("#imagesList1").append("<img src='/web/jquery/images/2.png' width='200'>");
 	
-	//$(selector).prepend(newItem) : 선택자로 검색된 태그의 첫번째 자식태그로 매개변수로 
-	//전달받은 태그를 생성하여 추가하는 멤버함수 - DOM 트리에 태그를 추가하여 출력
+	//$(selector).append(newItem) : 매개변수로 전달받은 태그를 생성하여 선택자로 검색된 태그의
+	//첫번째 자식태그로 추가하는 멤버함수 - DOM 트리에 태그를 추가하여 출력
 	$("#imagesList1").prepend("<img src='/web/jquery/images/3.png' width='200'>");
 	$("#imagesList1").prepend("<img src='/web/jquery/images/4.png' width='200'>");
 
-	//$(selector).before(newItem) : 선택자로 검색된 태그의 이전 태그로 매개변수로 전달받은 
-	//태그를 생성하여 추가하는 멤버함수 - DOM 트리에 태그를 추가하여 출력
+	//$(selector).before(newItem) : 매개변수로 전달받은 태그를 생성하여 선택자로 검색된 태그의
+	//이전 형제태그로 추가하는 멤버함수 - DOM 트리에 태그를 추가하여 출력
 	$("#imagesList1").find("img[src='/web/jquery/images/1.png']").before("<img src='/web/jquery/images/5.png' width='200'>");
 
-	//$(selector).after(newItem) : 선택자로 검색된 태그의 다음 태그로 매개변수로 전달받은 
-	//태그를 생성하여 추가하는 멤버함수 - DOM 트리에 태그를 추가하여 출력
+	//$(selector).after(newItem) : 매개변수로 전달받은 태그를 생성하여 선택자로 검색된 태그의
+	//다음 형제태그로 추가하는 멤버함수 - DOM 트리에 태그를 추가하여 출력
 	$("#imagesList1").find("img[src='/web/jquery/images/1.png']").after("<img src='/web/jquery/images/6.png' width='200'>");
 	
 	//$(selector).appendTo(tergetSelector) : 선택자로 검색된 태그를 타겟 선택자로 검색된 태그의
@@ -52,11 +52,11 @@
 	$("<img src='/web/jquery/images/4.png' width='200'>").prependTo("#imagesList2");
 
 	//$(selector).insertBefore(tergetSelector) : 선택자로 검색된 태그를 타겟 선택자로 검색된 
-	//태그의 이전 태그로 이동하는 멤버함수
+	//태그의 이전 형제태그로 이동하는 멤버함수
 	$("<img src='/web/jquery/images/5.png' width='200'>").insertBefore("#imagesList2 img[src='/web/jquery/images/1.png']");
 
 	//$(selector).insertAfter(tergetSelector) : 선택자로 검색된 태그를 타겟 선택자로 검색된 
-	//태그의 다음 태그로 이동하는 멤버함수
+	//태그의 다음 형제태그로 이동하는 멤버함수
 	$("<img src='/web/jquery/images/6.png' width='200'>").insertAfter("#imagesList2 img[src='/web/jquery/images/1.png']");
 
 	//$(selector).remove([selector]) : 선택자로 검색된 태그를 삭제하는 멤버함수
