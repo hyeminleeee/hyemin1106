@@ -95,7 +95,6 @@ public class FileUploadServlet extends HttpServlet {
 		String uploadone=mr.getFilesystemName("fileone");
 		String uploadtwo=mr.getFilesystemName("filetwo");
 		
-		
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
 		out.println("<head>");
@@ -117,17 +116,3 @@ public class FileUploadServlet extends HttpServlet {
 		out.println("</html>");	
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
