@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 //Servlet : Server+let 합성어로 웹서버에서 실행되는 간단한 프로그램
 // => SSL : Server Script Language - Java Web Program
 // => Servlet 프로그램은 클라이언트의 요청으로 WAS(Web Application Server)에 의해 실행되며
-//실행결과로 HTML 문서(XML 문서, JSON 문서 등)를 동적으로 생성하여 클라이언트에게 응답
-//WAS(Web Application Server) : 웹프로그램을 실행하기 위한 프로그램 
-// => Web 관련 객체를 관리(생성, 사용, 삭제)하는 Web Container 기능 제공  
-
+//서블릿은 실행결과로 HTML 문서(XML 문서, JSON 문서 등)를 동적으로 생성하여 클라이언트에게 응답
+//WAS(Web Application Server) : 서블릿(웹프로그램)을 실행하기 위한 프로그램 
+// => 서블릿 클래스의 객체를 관리(생성, 사용, 삭제)하는 Web Container 기능 제공  
+ 
 //서블릿(웹프로그램)을 작성하는 방법
 //1.HttpServlet 클래스를 상속받은 자식클래스 작성 - 서블릿 클래스
 // => 서블릿을 작성하기 위해서는 JavaEE 라이브러리(Apache Tomcat 라이브러리)가 프로젝트에 빌드 처리
