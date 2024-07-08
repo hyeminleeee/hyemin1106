@@ -13,7 +13,7 @@ import xyz.itwill.dto.StudentDTO;
 //실행하고 실행결과를 Java 객체로 매핑하여 반환하는 기능을 제공하는 클래스
 // => 싱글톤 클래스(프로그램에 객체를 하나만 생성하기 위한 클래스)로 작성하는 것을 권장
 
-//STUDENT 테이블에 행(학생정보)을 삽입, 변경, 삭제, 검색하는 기능을 제공하는 클래스
+//STUDENT 테이블에 행(학생정보)을 검색하는 기능을 제공하는 클래스
 // => DBMS 서버에 하나의 SQL 명령을 전달하여 실행하고 실행결과를 Java 객체로 반환하는 메소드 작성
 public class StudentDAO extends JdbcDAO {
 	private static StudentDAO _dao;
