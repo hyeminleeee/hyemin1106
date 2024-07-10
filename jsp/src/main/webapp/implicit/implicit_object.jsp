@@ -11,15 +11,15 @@
 	<hr>
 	<p>내장객체 : WAS 프로그램에 의해 JSP 문서에서 사용되도록 제공되는 Java 객체</p>
 	<hr>
-	<p>page(HttpJspPage 객체) : JSP 문서의 정보를 제공하기 위한 객체</p>
-	<p>config(ServletConfig 객체) : WAS 프로그램에 등록된 환경설정 정보를 제공하기 위한 객체</p>
-	<p>out(JspWriter 객체) : 클라이언트에게 응답될 문서파일을 생성하기 위한 객체 - 출력스트림</p>
-	<p>request(HttpServletResquest 객체) : 클라이언트의 요청정보를 제공하기 위한 객체</p>    
-	<p>response(HttpServletResponse 객체) : 클라이언트의 응답정보를 제공하기 위한 객체</p>
-	<p>session(HttpSession 객체) : 서버와 클라이언트의 연결 지속성을 제공하기 위한 객체</p>
-	<p>application(ServletContext 객체) : 웹자원(WebContext)을 관리하는 정보를 제공하기 위한 객체 - WAS</p>
-	<p>pageContext(PageContext 객체) : 웹프로그램 작성에 필요한 객체를 제공하기 위한 객체</p>
-	<p>exception(Exception 객체) : 웹프로그램 실행시 발생된 예외를 제공하기 위한 객체 
+	<p>page(HttpJspPage 객체) : JSP 문서의 정보를 저장한 객체</p>
+	<p>config(ServletConfig 객체) : WAS 프로그램에 등록된 환경설정파일의 정보를 저장한 객체</p>
+	<p>out(JspWriter 객체) : 클라이언트에게 응답될 문서파일을 생성하기 위한 출력스트림을 저장한 객체 - </p>
+	<p>request(HttpServletResquest 객체) : 클라이언트의 요청정보를 저장한 객체</p>    
+	<p>response(HttpServletResponse 객체) : 클라이언트의 응답정보를 저장한 객체</p>
+	<p>session(HttpSession 객체) : 서버와 클라이언트의 연결 지속성을 저장한 객체</p>
+	<p>application(ServletContext 객체) : 웹자원(WebContext)을 관리하는 WAS 프로그램의 정보를 저장한 객체</p>
+	<p>pageContext(PageContext 객체) : 웹프로그램 작성에 필요한 객체를 저장한 객체</p>
+	<p>exception(Exception 객체) : 웹프로그램 실행시 발생된 예외를 저장한 객체 
 	- page Directive에서 isErrorPage 속성값을 [true]로 설정한 경우에만 제공 : 에러페이지에서 사용</p>  
 </body>
 </html>
