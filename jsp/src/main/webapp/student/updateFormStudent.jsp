@@ -1,5 +1,32 @@
+<%@page import="xyz.itwill.dao.StudentDAO"%>
+<%@page import="xyz.itwill.dto.StudentDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- 사용자로부터 변경할 학생정보을 입력받아 위한 JSP 문서 --%>    
+<%-- => 학번을 전달받아 STUDENT 테이블에 저장된 하나의 행을 검색하여 검색된 학생정보를 
+입력태그의 초기값으로 출력 처리 --%>
+<%-- => [학생변경] 태그를 클릭한 경우 [updateStudent.jsp] 문서를 요청하여 페이지 이동 - 입력값(학생정보) 전달 --%>    
+<%-- => [학생목록] 태그를 클릭한 경우 [displayStudent.jsp] 문서를 요청하여 페이지 이동 --%>
+<%
+	//비정상적인 요청에 대한 응답 처리
+	if(request.getParameter("no") == null) {
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return;
+	}
+
+	//전달값을 반환받아 저장
+	int no=Integer.parseInt(request.getParameter("no"));
+	
+	//학번를 전달받아 STUDENT 테이블에 저장된 하나의 행을 검색하여 검색된 학생정보(StudentDTO 
+	//객체)를 반환하는 StudentDAO 클래스의 메소드 호출
+	StudentDTO student=StudentDAO.getDAO().selectStudent(no);
+	
+	//비정상적인 요청에 대한 응답 처리
+	if(student == null) {
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,43 +58,43 @@ th, td {
 <body>
 	<h1>학생정보 변경</h1>
 	<hr>
-	<form name="studentForm">
+	<form name="studentForm" action="<%=request.getContextPath()%>/student/updateStudent.jsp" method="post">
 	<table>
 		<tr>
 			<th class="title">학생번호</th>
 			<td class="input">
-				<input type="text" name="no" value="1000" readonly="readonly">
+				<input type="text" name="no" value="<%=student.getNo() %>" readonly="readonly">
 			</td>
 		</tr>
 		<tr>
 			<th class="title">이름</th>
 			<td class="input">
-				<input type="text" name="name" value="홍길동">
+				<input type="text" name="name" value="<%=student.getName() %>">
 			</td>
 		</tr>
 		<tr>
 			<th class="title">전화번호</th>
 			<td class="input">
-				<input type="text" name="phone" value="010-1234-5678">
+				<input type="text" name="phone" value="<%=student.getPhone() %>">
 			</td>
 		</tr>
 		<tr>
 			<th class="title">주소</th>
 			<td class="input">
-				<input type="text" name="address" value="서울시 강남구">
+				<input type="text" name="address" value="<%=student.getAddress() %>">
 			</td>
 		</tr>
 		<tr>
 			<th class="title">생년월일</th>
 			<td class="input">
-				<input type="text" name="birthday" value="2000-01-01">
+				<input type="text" name="birthday" value="<%=student.getBirthday().substring(0, 10) %>">
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<button type="button">학생변경</button> 
+				<button type="submit">학생변경</button> 
 				<button type="reset">초기화</button> 
-				<button type="button">학생목록</button> 
+				<button type="button" id="listBtn">학생목록</button> 
 			</td>
 		</tr>
 	</table>
@@ -129,7 +156,10 @@ th, td {
 			return false;
 		}
 	} 
+	
+	document.getElementById("listBtn").onclick=function() {
+		location.href="<%=request.getContextPath()%>/student/displayStudent.jsp";	
+	}
 	</script>
-
 </body>
 </html>

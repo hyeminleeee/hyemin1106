@@ -53,8 +53,8 @@
 	// => 포워드 이동되는 JSP 문서에서는 request 내장객체의 속성값을 반환받은 후 삭제 처리 불필요
 	
 	//forward 태그 대신 request 객체로 메소드를 호출하여 포워드 이동 가능
-	//request.getRequestDispatcher(String contextPath) : 매개변수로 전달받은 웹자원의 컨텍스트 
-	//경로가 저장된 RequestDispatcher 객체를 반환하는 메소드
+	//request.getRequestDispatcher(String contextPath) : 매개변수로 전달받은 컨텍스트 경로가 
+	//저장된 RequestDispatcher 객체를 반환하는 메소드
 	//=> RequestDispatcher 객체 : 다른 웹프로그램으로 스레드를 이동하는 기능을 제공하는 객체
 	//RequestDispatcher.forward(ServletRequest request, ServletResponse response) : RequestDispatcher
 	//객체에 저장된 컨텍스트 경로의 웹프로그램으로 스레드를 이동하여 응답 처리하는 메소드 - 포워드 이동

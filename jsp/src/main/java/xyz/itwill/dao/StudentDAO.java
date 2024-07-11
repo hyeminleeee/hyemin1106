@@ -98,8 +98,8 @@ public class StudentDAO extends JdbcDAO {
 	}
 	
 	
-	//학번(int)을 전달받아 STUDENT 테이블의 저장된 행을 검색하고 검색된 학생정보(StudentDTO 객체)를 반환하는 메소드
-	public StudentDTO insertStudent(int no) {
+	//학번(int)을 전달받아 STUDENT 테이블의 저장된 하나의 행을 검색하고 검색된 학생정보(StudentDTO 객체)를 반환하는 메소드
+	public StudentDTO selectStudent(int no) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -122,7 +122,7 @@ public class StudentDAO extends JdbcDAO {
 				student.setBirthday(rs.getString("birthday"));
 			}
 		} catch (SQLException e) {
-			System.out.println("[에러]selectStudentByNo() 메소드의 SQL 오류 = "+e.getMessage());
+			System.out.println("[에러]selectStudent() 메소드의 SQL 오류 = "+e.getMessage());
 		} finally {
 			close(con, pstmt, rs);
 		}
@@ -130,7 +130,7 @@ public class StudentDAO extends JdbcDAO {
 	}
 	
 	
-	//STUDENT 테이블에 저장된 모든 행을 검색하고 검색된 학생정보들(List 객체)를 반환하는 메소드
+	//STUDENT 테이블에 저장된 모든 행을 검색하고 검색된 다수의 학생정보(List 객체)를 반환하는 메소드
 	public List<StudentDTO> selectStudentList() {
 		Connection con=null;
 		PreparedStatement pstmt=null;

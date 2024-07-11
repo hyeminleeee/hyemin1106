@@ -59,18 +59,3 @@
 
 <jsp:forward page="/action/useBean/non_useBean_display.jsp"/>
 <%-- request.getRequestDispatcher("/action/useBean/non_useBean_display.jsp").forward(request, response); --%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

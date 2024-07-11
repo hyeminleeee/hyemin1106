@@ -58,7 +58,7 @@ th, td {
 <body>
 	<h1>학생목록</h1>
 	<div>
-		<button type="button">학생추가</button>
+		<button type="button" id="addBtn">학생추가</button>
 	</div>
 	<table>
 		<tr>
@@ -79,10 +79,27 @@ th, td {
 			<td><%=student.getPhone() %></td>				
 			<td><%=student.getAddress() %></td>				
 			<td><%=student.getBirthday().substring(0, 10) %></td>				
-			<td><button type="button">삭제</button></td>		
-			<td><button type="button">변경</button></td>		
+			<td><button type="button" onclick="removeStudent(<%=student.getNo()%>);">삭제</button></td>		
+			<td><button type="button" onclick="modifyStudent(<%=student.getNo()%>);">변경</button></td>		
 		</tr>	
 		<% } %>
 	</table>
+	
+	<script type="text/javascript">
+	document.getElementById("addBtn").onclick=function() {
+		location.href="<%=request.getContextPath()%>/student/insertFormStudent.jsp";	
+	}
+	
+	function modifyStudent(no) {
+		//alert(no);
+		location.href="<%=request.getContextPath()%>/student/updateFormStudent.jsp?no="+no;	
+	}
+	
+	function removeStudent(no) {
+		if(confirm("학생정보를 정말로 삭제 하시겠습니까?")) {
+			location.href="<%=request.getContextPath()%>/student/deleteStudent.jsp?no="+no;
+		}
+	}
+	</script>
 </body>
 </html>
