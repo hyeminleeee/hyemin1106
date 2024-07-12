@@ -105,19 +105,6 @@ th, td {
 	studentForm.no.focus();
 
 	studentForm.onsubmit=function() {
-		if(studentForm.no.value=="") {
-			alert("학생번호를 입력해 주세요.");
-			studentForm.no.focus();
-			return false;
-		}
-		
-		var noReg=/\d{4}/g;
-		if(!noReg.test(studentForm.no.value)) {
-			alert("학생번호는 정수 4자리로 입력해주세요.");
-			studentForm.no.focus();
-			return false;
-		}
-		
 		if(studentForm.name.value=="") {
 			alert("이름을 입력해 주세요.");
 			studentForm.name.focus();
