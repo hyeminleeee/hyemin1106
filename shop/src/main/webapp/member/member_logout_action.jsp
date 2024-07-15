@@ -7,5 +7,4 @@
 	session.invalidate();
 
 	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=main&work=main_page");
-	
 %>

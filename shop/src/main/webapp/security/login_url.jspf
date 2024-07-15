@@ -23,7 +23,7 @@
 		
 		//URL 주소를 부호화 처리하여 저장
 		url=URLEncoder.encode(url, "utf-8");
-		System.out.println("url = "+url);//queryString = workgroup=cart&work=cart_list
+		//System.out.println("url = "+url);//queryString = workgroup=cart&work=cart_list
 		
 		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=member&work=member_login&url="+url);
 		return;	
