@@ -25,15 +25,15 @@
 		// => this : 생성자 함수에서 객체를 표현하기 위한 사용하는 키워드
 		
 		//this 키워드를 사용해 변수에 값을 저장하여 멤버변수 작성 - 필드
-		//멤버변수(Member Variable) : 객체의 속성값을 저장하기 위한 변수
+		//멤버변수(Member Variable) : 객체의 속성값을 저장하기 위한 변수 
 		this.num=num;
 		this.name=name;
 		this.address=address;
 		
 		//this 키워드를 사용해 변수에 함수을 저장하여 객체함수 작성 - 메소드
-		//멤버함수(Member Function) : 멤버변수를 사용해 원하는 기능을 구현할 수 있는 명령의 모임 - 멤버함수
-		// => 멤버함수에서는 this 키워드를 사용해야 멤버함수 이용 가능
-		// => 멤버함수는 객체마다 따로 함수를 만들어 저장 - 객체의 갯수만큼 객체함수가 
+		//멤버함수(Member Function) : 객체속성을 사용해 원하는 기능을 구현할 수 있는 명령의 모임 - 멤버함수
+		// => 멤버함수에서는 this 키워드를 사용해야 멤버변수 사용 가능
+		// => 멤버함수는 객체마다 따로 함수를 만들어 저장 - 객체의 갯수만큼 멤버함수가 
 		//만들어져 메모리를 비효율적으로 사용
 		/*
 		this.display=function() {
@@ -81,11 +81,11 @@
 	
 	//alert("student1 변수의 자료형 = "+typeof(student1));//student1 변수의 자료형 = object
 	//객체형 변수를 출력할 경우 자동으로 toString 멤버함수가 자동 호출되어 반환값을 제공받아 출력
-	// => 객체에 toString 객체함수가 없는 경우 Object 객체의 toString 멤버함수가 자동 호출되어 
+	// => 객체에 toString 멤버함수가 없는 경우 Object 객체의 toString 멤버함수가 자동 호출되어 
 	//반환값을 제공받아 출력 처리
 	//alert(student1);//[object Object] - 생성자 함수로 생성된 객체는 Object 객체로 표현
 	
-	//[.] 연산자로 객체형 변수에 저장된 객체를 참조해 객체의 맴버변수와 멤버함수 사용 가능
+	//[.] 연산자로 객체형 변수에 저장된 객체를 참조해 객체의 멤버변수과 멤버함수 사용 가능
 	//alert("학번 = "+student1.num+", 이름 = "+student1.name+", 주소 = "+student1.address);
 	student1.display();
 
