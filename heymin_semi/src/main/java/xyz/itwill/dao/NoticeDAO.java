@@ -39,7 +39,7 @@ public class NoticeDAO extends JdbcDAO{
 			//매개변수에 저장된 값을 비교하여 DBMS 서버에 다른 SQL 명령을 전달하여 실행
 			// => 동적 SQL(Dynamic SQL)
 			if(keyword.equals("")) {//조회기능을 사용하지 않을 경우
-				String sql="select count(*) from review";
+				String sql="select count(*) from notice";
 				pstmt=con.prepareStatement(sql);
 			} else {
 				String sql="select count(*) from notice join member on notice_member=member_num"
