@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/qna_write.css">
+<link rel="stylesheet" href="../css/qna_write_style.css">
 
-<title>Insert title here</title>
+<title>상품문의 쓰기</title>
 </head>
 <body>
 <div id="container">
@@ -123,7 +123,7 @@
 															<span class="btn_gray_list">
 																<button type="button" class="btn_gray_small">
 																	<span>
-																		<img src="/images/icon_reset.png" alt="이미지 새로고침">
+																		<img src="../images/refresh.png" alt="이미지 새로고침">
 																		이미지 새로고침
 																	</span>
 																</button>
