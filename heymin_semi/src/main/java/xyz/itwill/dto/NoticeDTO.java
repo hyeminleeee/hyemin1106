@@ -4,12 +4,12 @@ package xyz.itwill.dto;
  CREATE TABLE notice (
     notice_num      NUMBER PRIMARY KEY,
     notice_title    VARCHAR2(100),
-    notice_content  VARCHAR2(1000),
     notice_image    VARCHAR2(100),
     notice_date     DATE DEFAULT SYSDATE,
     notice_update   DATE DEFAULT SYSDATE,
     notice_count    NUMBER,
     notice_member   NUMBER,
+    notice_status   NUMBER(1),
     CONSTRAINT fk_notice_member FOREIGN KEY (notice_member) REFERENCES member (member_num)
 );
  */
@@ -21,24 +21,26 @@ package xyz.itwill.dto;
 -------------- -------- -------------- 
 NOTICE_NUM     NOT NULL NUMBER         - 글번호
 NOTICE_TITLE            VARCHAR2(100)  - 글제목
-NOTICE_CONTENT          VARCHAR2(1000) - 글내용
 NOTICE_IMAGE            VARCHAR2(100)  - 이미지파일의 경로
 NOTICE_DATE             DATE           - 작성날짜
 NOTICE_UPDATE           DATE           - 수정날짜
 NOTICE_COUNT            NUMBER         - 조회수
 NOTICE_MEMBER           NUMBER   	   - 회원번호
+NOTICE_STATUS			NUMBER(1)	   - 공지사항 글 상태 - 상단고정글(0), 일반글(1)
 */
 
 
 public class NoticeDTO {
+
 	private int noticeNum;
 	private String noticeTitle;
-	private String noticeContent;
 	private String noticeImage;
 	private String noticeDate;
 	private String noticeUpdate;
 	private int noticeCount;
 	private int noticeMember;
+	private String memberNum;
+	private int noticeStatus;
 	
 	public NoticeDTO() {
 		// TODO Auto-generated constructor stub
@@ -58,14 +60,6 @@ public class NoticeDTO {
 
 	public void setNoticeTitle(String noticeTitle) {
 		this.noticeTitle = noticeTitle;
-	}
-
-	public String getNoticeContent() {
-		return noticeContent;
-	}
-
-	public void setNoticeContent(String noticeContent) {
-		this.noticeContent = noticeContent;
 	}
 
 	public String getNoticeImage() {
@@ -107,10 +101,21 @@ public class NoticeDTO {
 	public void setNoticeMember(int noticeMember) {
 		this.noticeMember = noticeMember;
 	}
+	
+	public String getMemberNum() {
+		return memberNum;
+	}
 
+	public void setMemberNum(String memberNunm) {
+		this.memberNum = memberNunm;
+	}
 	
+	public int getNoticeStatus() {
+		return noticeStatus;
+	}
 
-	
-	
+	public void setNoticeStatus(int noticeStatus) {
+		this.noticeStatus = noticeStatus;
+	}
 	
 }

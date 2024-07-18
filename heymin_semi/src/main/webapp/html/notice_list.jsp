@@ -91,174 +91,139 @@
 <title>공지사항</title>
 </head>
 <body>
-<div class="sub_content">
-            <div class="content">
-                <div class="board_zone_sec">
-                    <div class="board_zone_tit">
-                        <h2>공지사항</h2>
-                    </div>
-                    <div class="board_zone_con">
-                        <div class="board_zone_list">
-                            <table class="board_list_table" style="width: 100%;">
-                                <colgroup>
-                                    <col style="width: 6%;">
-                                    <col style="width: 37%;">
-                                    <col style="width: 7%;">
-                                    <col style="width: 15%;">
-                                    <col style="width: 6%;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>번호</th>
-                                        <th>제목</th>
-                                        <th>날짜</th>
-                                        <th>작성자</th>
-                                        <th>조회</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                
-                                <% if(totalNotice == 0) {//검색된 게시글이 없는 경우 %>
-                                	<tr style="height: 10px;">
-                                		<td>검색된 게시글이 없습니다.</td>
-                                	</tr>
-                                <% } else { %>
-                                	<% for(NoticeDTO notice : noticeList) { %>
-                                	<tr style="height: 10px;">
-                                		<!-- 일련번호 출력 -->
-                                		<td><%=displayNum %></td>
-                                		<% displayNum--; %>
-                                		
-                                		<!-- 공지사항 제목 출력 -->
-                                		<td class="board_tit">
-                                			<%
-                                				String url=request.getContextPath()+"index.jsp?workgroup=notice&work=notice_detail"
-                                				+"&noticeNum="+notice.getNoticeNum()+"&pageNum"+pageNum+"&pageSize="+pageSize
-                                				+"&search="+search+"&keyword="+keyword;
-                                			%>
-                                			<a href="<%=url%>"><%=notice.getNoticeTitle() %></a>
-                                		</td>
-                                		
-                                		<!-- 게시글 작성일 출력 -->
-                                		<td>
-                                			<% if(currentDate.equals(notice.getNoticeDate().substring(0, 10))) { %>
-                                				<%=notice.getNoticeDate().substring(11) %>
-                                			<% } else { %>
-                                				<%=notice.getNoticeDate() %>
-                                			<% } %>
-                       					</td>
-                       					
-                       					<!-- 작성자 출력 -->
-                       					<td>관리자</td>
-                       					
-                       					<!-- 게시글 조회수 출력 -->
-                       					<td><%=notice.getNoticeCount() %></td>
-                                	</tr>
-                                	<% } %>
-                                <% } %>
-                                </tbody>
-                            </table>
-                            
-                            <!-- 페이지 번호 출력 -->
-                            <%
-                         		//하나의 페이지블럭에 출력될 페이지번호의 갯수 설정
-                    			int blockSize=5;
-                            
-	                          	//페이지블럭에 출력될 시작 페이지번호를 계산하여 저장
-	                    		//ex) 1Block : 1, 2Block : 6, 3Block : 11, 4Block : 16,...
-	                    		int startPage=(pageNum-1)/blockSize*blockSize+1;
-	                    		
-	                    		//페이지블럭에 출력될 종료 페이지번호를 계산하여 저장
-	                    		//ex) 1Block : 5, 2Block : 10, 3Block : 15, 4Block : 20,...
-	                    		int endPage=startPage+blockSize-1;
-	                    		
-	                    		//종료 페이지번호가 페이지 총갯수보다 큰 경우 종료 페이지번호 변경
-	                    		if(endPage > totalPage) {
-	                    			endPage=totalPage;
-	                    		}
-                            %>
-                            <%
-								String myUrl=request.getContextPath()+"/index.jsp?workgroup=notice&work=notice_list"
-									+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword;
-							%>
-
-                            <div class="pagination">
-                            	<%-- 이전 블럭으로 출력할 수 있는 링크 제공 --%>
-                            	<% if(startPage > blockSize) { %>
-                            		<a href="<%=myUrl%>&pageNum=<%=startPage-blockSize %>">◁</a>
-                            	<% } else { %>
-                            		◁
-                            	<% } %>
-                            	
-                            	<% for(int i = startPage; i <= endPage; i++) { %>
-                            		<!-- 현재 처리중인 페이지 번호와 출력된 페이지 번호가 같이 않은 경우 링크 제공 -->
-                            		<!-- 현재 처리 중인 페이지 : pageNum, 출련된 페이지 : startPage -->
-                            		<% if(pageNum != i) { %>
-                            			<a href="<%=myUrl%>%pageNum=<%=i%>"><%=i %>&nbsp;</a>
-                            		<% } else { %>
-                            			<%=i %>
-                            		<% } %>
-                            	<% } %>
-                            	
-                            	<!--  다음 블록을 출력할 수 있는 링크 제공 -->
-                            	<% if(endPage != totalPage) { %>
-                            		<a href="<%=myUrl%>&pageNum=<%=startPage+blockSize%>">▷</a>
-                            	<% } else { %>
-                            		▷
-                            	<% } %>
-                            </div>
-                            
-                            <%-- 조회기능을 제공하기 위한 form 태그 --%>
-                            <div class="board_search_box">
-	                            <form action="<%=request.getContextPath() %>/index.jsp?workgroup=notice&work=notice_list" method="post">
-	                            	<%-- select 태그로 전달되는 값은 반드시 컬럼명을 전달되도록 작성 --%>
-	                            	<select name="search">
-	                            		<option value="member_name" <% if(search.equals("member_name")) { %>selected<% } %>>&nbsp;작성자&nbsp;</option>
-	                            		<option value="notice_title" <% if(search.equals("notice_title")) { %>selected<% } %>>&nbsp;제목&nbsp;</option>
-	                            		<option value="notice_content" <% if(search.equals("notice_content")) { %>selected<% } %>>&nbsp;내용&nbsp;</option>
-	                            	</select>
-	                            	<input type="text" class="text" name="keyword" value=<%=keyword %>>
-	                                <button class="btn_board_search">
-	                                    <em>검색</em>
-	                                </button>
-	                            </form>
-                            </div>
-                            <%--
-                            <div class="board_search_box">
-                                <form name="frmList" id="frmList" action="#" method="get">
-                                    <input type="hidden" name="bdld" value="notice">
-                                    <input type="hidden" name="memNo" >
-                                    <input type="hidden" name="noheader" >
-                                    <input type="hidden" name="mypageFl" >
-                                    <select class="chosen-select" name="searchField" style="display: none;">
-                                        <option value="subject">제목</option>
-                                        <option value="contents">내용</option>
-                                        <option value="writerNm">작성자</option>
-                                    </select>
-                                    <div class="search_select" style="width: 90px;">
-                                         <!-- <a class="chosen-single">
-                                            <span>제목</span>
-                                            <div>
-                                                <b></b>
-                                            </div>
-                                        </a> -->
-                                        <select class="chosen_single" id="search">
-                                        	<option>제목</option>
-                                        	<option>내용</option>
-                                        	<option>작성자</option>
-                                        </select>
-                                    </div>
-                                    <input type="text" class="text" name="searchWord" value>
-                                    <button class="btn_board_search">
-                                        <em>검색</em>
-                                    </button>
-                                </form>
-                            </div>
-                             --%>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div id="container">
+	<div id="contents">
+		<div class="sub_content">
+	            <div class="content">
+	                <div class="board_zone_sec">
+	                    <div class="board_zone_tit">
+	                        <h2>공지사항</h2>
+	                    </div>
+	                    <div class="board_zone_con">
+	                        <div class="board_zone_list">
+	                            <table class="board_list_table" style="width: 100%;">
+	                                <thead>
+	                                    <tr class="board_list_head">
+	                                        <th class="board_num">번호</th>
+	                                        <th class="board_title">제목</th>
+	                                        <th class="board_date">날짜</th>
+	                                        <th class="board_writer">작성자</th>
+	                                        <th class="board_count">조회</th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                
+	                                <% if(totalNotice == 0) {//검색된 게시글이 없는 경우 %>
+	                                	<tr style="height: 10px;">
+	                                		<td class="board_table_nosearch" colspan="5">검색된 게시글이 없습니다.</td>
+	                                	</tr>
+	                                <% } else { %>
+	                                	<% for(NoticeDTO notice : noticeList) { %>
+	                                	<tr class="board_table_content">
+	                                		<!-- 일련번호 출력 -->
+	                                		<td class="board_num"><%=displayNum %></td>
+	                                		<% displayNum--; %>
+	                                		
+	                                		<!-- 공지사항 제목 출력 -->
+	                                		<td class="board_tit">
+	                                			<%
+	                                				String url=request.getContextPath()+"index.jsp?workgroup=notice&work=notice_detail"
+	                                				+"&noticeNum="+notice.getNoticeNum()+"&pageNum"+pageNum+"&pageSize="+pageSize
+	                                				+"&search="+search+"&keyword="+keyword;
+	                                			%>
+	                                			<a href="<%=url%>"><%=notice.getNoticeTitle() %></a>
+	                                		</td>
+	                                		
+	                                		<!-- 게시글 작성일 출력 -->
+	                                		<td class="board_date">
+	                                			<% if(currentDate.equals(notice.getNoticeDate().substring(0, 10))) { %>
+	                                				<%=notice.getNoticeDate().substring(11) %>
+	                                			<% } else { %>
+	                                				<%=notice.getNoticeDate() %>
+	                                			<% } %>
+	                       					</td>
+	                       					
+	                       					<!-- 작성자 출력 -->
+	                       					<td class="board_writer">관리자</td>
+	                       					
+	                       					<!-- 게시글 조회수 출력 -->
+	                       					<td class="board_count"><%=notice.getNoticeCount() %></td>
+	                                	</tr>
+	                                	<% } %>
+	                                <% } %>
+	                                </tbody>
+	                            </table>
+	                            
+	                            <!-- 페이지 번호 출력 -->
+	                            <%
+	                         		//하나의 페이지블럭에 출력될 페이지번호의 갯수 설정
+	                    			int blockSize=5;
+	                            
+		                          	//페이지블럭에 출력될 시작 페이지번호를 계산하여 저장
+		                    		//ex) 1Block : 1, 2Block : 6, 3Block : 11, 4Block : 16,...
+		                    		int startPage=(pageNum-1)/blockSize*blockSize+1;
+		                    		
+		                    		//페이지블럭에 출력될 종료 페이지번호를 계산하여 저장
+		                    		//ex) 1Block : 5, 2Block : 10, 3Block : 15, 4Block : 20,...
+		                    		int endPage=startPage+blockSize-1;
+		                    		
+		                    		//종료 페이지번호가 페이지 총갯수보다 큰 경우 종료 페이지번호 변경
+		                    		if(endPage > totalPage) {
+		                    			endPage=totalPage;
+		                    		}
+	                            %>
+	                            <%
+									String myUrl=request.getContextPath()+"/index.jsp?workgroup=notice&work=notice_list"
+										+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword;
+								%>
+	
+	                            <div class="pagination">
+	                            	<%-- 이전 블럭으로 출력할 수 있는 링크 제공 --%>
+	                            	<% if(startPage > blockSize) { %>
+	                            		<a href="<%=myUrl%>&pageNum=<%=startPage-blockSize %>">◁</a>
+	                            	<% } else { %>
+	                            		◁
+	                            	<% } %>
+	                            	
+	                            	<% for(int i = startPage; i <= endPage; i++) { %>
+	                            		<!-- 현재 처리중인 페이지 번호와 출력된 페이지 번호가 같이 않은 경우 링크 제공 -->
+	                            		<!-- 현재 처리 중인 페이지 : pageNum, 출련된 페이지 : startPage -->
+	                            		<% if(pageNum != i) { %>
+	                            			<a href="<%=myUrl%>%pageNum=<%=i%>"><%=i %>&nbsp;</a>
+	                            		<% } else { %>
+	                            			<%=i %>
+	                            		<% } %>
+	                            	<% } %>
+	                            	
+	                            	<!--  다음 블록을 출력할 수 있는 링크 제공 -->
+	                            	<% if(endPage != totalPage) { %>
+	                            		<a href="<%=myUrl%>&pageNum=<%=startPage+blockSize%>">▷</a>
+	                            	<% } else { %>
+	                            		▷
+	                            	<% } %>
+	                            </div>
+	                            
+	                            <%-- 조회기능을 제공하기 위한 form 태그 --%>
+	                            <div class="board_search_box">
+		                            <form action="<%=request.getContextPath() %>/index.jsp?workgroup=notice&work=notice_list" method="post">
+		                            	<%-- select 태그로 전달되는 값은 반드시 컬럼명을 전달되도록 작성 --%>
+		                            	<select name="search">
+		                            		<option value="member_name" <% if(search.equals("member_name")) { %>selected<% } %>>&nbsp;작성자&nbsp;</option>
+		                            		<option value="notice_title" <% if(search.equals("notice_title")) { %>selected<% } %>>&nbsp;제목&nbsp;</option>
+		                            		<option value="notice_content" <% if(search.equals("notice_content")) { %>selected<% } %>>&nbsp;내용&nbsp;</option>
+		                            	</select>
+		                            	<input type="text" class="text" name="keyword" value=<%=keyword %>>
+		                                <button class="btn_board_search">
+		                                    <em>검색</em>
+		                                </button>
+		                            </form>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

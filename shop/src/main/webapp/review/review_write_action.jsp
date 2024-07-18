@@ -8,8 +8,8 @@
 <%-- 게시글(새글 또는 답글)을 전달받아 REVIEW 테이블의 행으로 삽입하고 [/review/review_list.jsp]
 문서를 요청할 수 있는 URL 주소로 응답하는 JSP 문서 - 페이징 처리 및 조회기능 관련 값 전달 --%>    
 <%-- => 로그인 사용자만 요청 가능한 JSP 문서 --%>
-<%-- => 게시글이 [multipart/form-data]로 전달되므로 COS 라이브러리의 MultipartRequst 객체를 
-사용해 전달값 및 파일 처리 - 전달파일은 [/review_image] 폴더에 저장되도록 업로드 처리 --%>
+<%-- => 입력값이 [multipart/form-data]로 전달되므로 COS 라이브러리의 MultipartRequst 객체를 
+사용해 전달값 및 전달파일 처리 - 전달파일은 [/review_image] 폴더에 저장되도록 업로드 처리 --%>
 
 <%@include file="/security/login_check.jspf" %>
 <%
@@ -40,7 +40,7 @@
 	
 	//사용자로부터 입력받아 전달된 값에 HTML 태그가 존재할 경우 웹프로그램 실행시 문제 발생
 	// => XSS(Cross Site Scripting) 공격 : 사용자가 악의적인 스크립트를 입력해 페이지가 비정상적으로 
-	//출력되거나 다른 사용자의 사용을 방행 또는 개인정보를 특정 사이트로 전달하는 공격
+	//출력되거나 다른 사용자의 사용을 방해 또는 개인정보를 특정 사이트로 전달하는 공격
 	//String reviewSubject=multipartReques.getParameter("reviewSubject");
 	//String reviewSubject=Utility.stripTag(multipartReques.getParameter("reviewSubject"));
 	String reviewSubject=Utility.escapeTag(multipartRequest.getParameter("reviewSubject"));
@@ -76,7 +76,7 @@
 		//REVIEW 테이블에 저장된 행에서 REVIEW_REF 컬럼값이 ref 변수값(부모글)과 같은 행 중
 		//REVIEW_RESTEP 컬럼값이 restep 변수값(부모글)보다 큰 행의 REVIEW_RESTEP 컬럼값이
 		//1 증가되도록 변경 처리
-		// => 새로운 답글이 기존 답글보다 먼저 검색되도록 기존 답글의 순서를 증가 처리
+		// => 새로운 답글이 기존 답글보다 먼저 검색되어 출력되도록 기존 답글의 순서 증가
 		//부모글 관련 정보를 전달받아 REVIEW 테이블에서 저장된 행에서 전달값을 비교하여 REVIEW_REF
 		//컬럼값을 1 증가되도록 변경하고 변경행의 갯수를 반환하는 ReviewDAO 클래스의 메소드 호출
 		ReviewDAO.getDAO().updateReviewRestep(ref, restep);

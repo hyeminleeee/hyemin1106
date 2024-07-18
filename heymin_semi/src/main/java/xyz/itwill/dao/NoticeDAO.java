@@ -74,7 +74,7 @@ public class NoticeDAO extends JdbcDAO{
 			
 			if(keyword.equals("")) {
 				String sql="select * from (select rownum rn, temp.* from (select notice_num,notice_title"
-						+ ",notice_content,notice_image,notice_date,notice_update,notice_count,notice_member"
+						+ ",notice_image,notice_date,notice_update,notice_count,notice_member,notice_status"
 						+ " from notice join member on notice_member=member_num order by notice_num desc)"
 						+ "temp) where rn between ? and ?";
 				pstmt=con.prepareStatement(sql);
@@ -82,7 +82,7 @@ public class NoticeDAO extends JdbcDAO{
 				pstmt.setInt(2, endRow);
 			} else {
 				String sql="select * from (select rownum rn, temp.* from (select notice_num,notice_title"
-					+ ",notice_content,notice_image,notice_date,notice_update,notice_count,notice_member"
+					+ ",notice_image,notice_date,notice_update,notice_count,notice_member,notice_status"
 					+ " from notice join member on notice_member=member_num where "+search+"like '%'||?||'%'"
 					+ "order by notice_num desc) temp) where rn between ? and ?";
 				pstmt=con.prepareStatement(sql);
@@ -98,12 +98,12 @@ public class NoticeDAO extends JdbcDAO{
 				
 				review.setNoticeNum(rs.getInt("notice_num"));
 				review.setNoticeTitle(rs.getString("notice_title"));
-				review.setNoticeContent(rs.getString("notice_content"));
 				review.setNoticeImage(rs.getString("notice_image"));
 				review.setNoticeDate(rs.getString("notice_date"));
 				review.setNoticeUpdate(rs.getString("notice_update"));
 				review.setNoticeCount(rs.getInt("notice_count"));
 				review.setNoticeMember(rs.getInt("notice_member"));
+				review.setNoticeStatus(rs.getInt("notice_status"));
 								
 				noticeList.add(review);
 			}
@@ -115,8 +115,54 @@ public class NoticeDAO extends JdbcDAO{
 		return noticeList;
 	}
 	
+	//공지글(NoticeDTO 객체)을 전달받아 NOTICE 테이블의 행으로 삽입하고 삽입행의 갯수를 반환하는 메소드
+	public int insertNotice(NoticeDTO notice) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rows=0;
+		try {
+			con=getConnection();
+			
+			String sql="insert into notice values(?,?,?,sysdate,null,0,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, notice.getNoticeNum());
+			pstmt.setString(2, notice.getNoticeTitle());
+			pstmt.setString(3, notice.getNoticeImage());
+			pstmt.setInt(4, notice.getNoticeMember());
+			pstmt.setInt(5, notice.getNoticeStatus());
+			
+			rows=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("[에러]insertNotice() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt);
+		}
+		return rows;
+	}
 	
-	
+	public int selectNoticeNextNum() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int nextNum=0;
+		try {
+			con=getConnection();
+			
+			String sql="select notice_seq.nextval from dual";
+			pstmt=con.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				nextNum=rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("[에러]selectNoticeNextNum() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return nextNum;
+	}
 }
 
 
