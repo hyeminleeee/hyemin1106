@@ -99,11 +99,15 @@
 	            <div class="content">
 	                <div class="board_zone_sec">
 	                    <div class="board_zone_tit">
-	                    	<div class="board_head">
-	                    		<button  type="button" id="writeBtn">글쓰기</button>
-	                        	<h2>공지사항</h2>
-	                    	</div>
-	                    </div>
+        <div class="board_head">
+            <div>
+                <button type="button" id="writeBtn">글쓰기</button>
+            </div>
+            <div>
+                <h2>공지사항</h2>
+            </div>
+        </div>
+    </div>
 	                    <div class="board_zone_con">
 	                        <div class="board_zone_list">
 	                            <table class="board_list_table" style="width: 100%;">
