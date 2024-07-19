@@ -50,27 +50,27 @@ div {
 }
 
 .board_head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-    
-     #writeBtn {
-            background-color: #979797;
-            color: white;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: 1px solid #979797;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px; /* 필요에 따라 추가 */
-            cursor: pointer;
-        }
-        #writeBtn:hover {
-            background-color: #878787; /* 버튼 호버 시 색상 변화 */
-            border-color: #878787;
-        }    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#writeBtn {
+       background-color: #979797;
+       color: white;
+       font-weight: bold;
+       padding: 6px 20px;
+       border: 1px solid #979797;
+       text-align: center;
+       text-decoration: none;
+       border-radius: 2px;
+       cursor: pointer;
+}
+#writeBtn:hover {
+    background-color: #878787; /* 버튼 호버 시 색상 변화 */
+    border-color: #878787;
+}    
 /* #writeBtn {
 
 	position: absolute;

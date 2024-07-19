@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+/* 메인공통 */
+.section_comm{padding:35px 0 30px;}
+.section_comm .link_total{display:block;position:absolute;top:24px;right:0;width:75px;height:35px;font-size:13px;color:#fff;text-align:center;line-height:35px;background-color:#565656;}
+.section_comm .link_total:hover{background-color:#34b592;}
+
+.inner_section{position:relative;width:1024px;margin:0 auto;}
+.tit_section{position:relative;padding-bottom:64px;font-size:30px;text-align:center;}
+.tit_section:before{display:block;position:absolute;left:50%;top:58px;width:100px;height:2px;margin-left:-50px;background-color:#333;content:'';}
+.tit_section span{color:#55d2b0;}
+
+/* 메인배너 */
+.section_banner .slide_banner{height:500px}
+
+.section_banner .slick-arrow{z-index:10;}
+.section_banner .slick-arrow::before{display:block;width:26px;height:72px;content:'';}
+.section_banner .slick-prev{left:25px;}
+.section_banner .slick-prev::before{background-image:url(../images/btn_banner_l.png);}
+.section_banner .slick-prev:hover::before{background-image:url(../images/btn_banner_l_ov.png);}
+.section_banner .slick-next{right:25px;}
+.section_banner .slick-next::before{background-image:url(../images/btn_banner_r.png);}
+.section_banner .slick-next:hover::before{background-image:url(../images/btn_banner_r_ov.png);}
+.slide_banner .inner_slide{width:1024px;height:100%;margin:0 auto;padding:150px 0 0 100px;box-sizing:border-box;}
+.slide_banner strong{font-size:40px;color:#fff}
+.slide_banner p{margin:30px 0 10px;font-size:18px;color:#fff}
+.slide_banner span{display:block;padding-top:12px;font-size:13px;color:#fff;}
+.slide_banner.banner1{background-image:url(../images/camping_banner1.jpg);background-size:cover;background-position:center;}
+.slide_banner.banner2{background-image:url(../images/camping_banner2.jpg);background-size:cover;background-position:center;}
+.slide_banner.banner3{background-image:url(../images/camping_banner3.jpg);background-size:cover;background-position:center;}
+
+.section_banner .slick-dots{bottom:12px;z-index:10;}
+.section_banner .slick-dots li button:before{width:8px;height:8px;border-radius:50%;background-color:#fff;opacity:1;content:''}
+.section_banner .slick-dots li.slick-active button:before{background-color:#55d2b0;opacity:1;}
+.section_banner.slick-dotted.slick-slider{margin:0;}
+
+
+/* 신상품 */
+.section_newly{background-color:#fff;}
+.list_product li{width:30%;text-align:center;}
+.list_product li:first-child{margin-left:0}
+.list_product .img_product{width:100%}
+.list_product .name_product{display:block;padding:10px 0 6px;font-size:13px;color:#333;}
+.list_product .product_price{display:block;font-size:16px;font-weight:bold;color:#000;}
+.list_product .product_stat{padding-top:8px;}
+.list_product .link_product{display:block;padding:6px 6px 0 6px;}
+.list_product .wrap_img{display:block;overflow:hidden;width:100%;height:332px;}
+.list_product .img_product{transition-property:transform;transition-duration:0.2s;}
+.list_product .link_product:hover .img_product{transform:scale(1.1)}
+.list_product .slick-arrow{width:40px;height:40px;border-radius:50%;background-color:#000;opacity:0.5;}
+.list_product .slick-prev:hover, .list_product .slick-prev:focus, .list_product .slick-next:hover, .list_product .slick-next:focus{color:#fff;background-color:#000;opacity:1;}
+.list_product .slick-prev:before, .list_product .slick-next:before{display:inline-block;font-size:24px;}
+.list_product .slick-prev{left:-50px;}
+.list_product .slick-next{right:-50px;}
+.ico_stat{margin:0 1px;padding:0px 2px;color:#fff;text-align:center;font-weight:300;}
+.ico_stat.ico_new{background-color:rgb(228, 8, 8);}
+.ico_stat.ico_best{background-color:rgb(0, 46, 228);}
+
+/* 브랜드 스토리 */
+.cont_article{background-color:#3d8e78;background-image:url(../images/bg_brandstory.png);background-size:60%;background-position:50% 300px;background-repeat:no-repeat;background-attachment:fixed;}
+.section_brand .inner_section{position:relative;width:1024px;height:400px;margin:0 auto;}
+.section_brand .tit_section{color:#fff}
+.section_brand .tit_section:before{background-color:#fff;}
+.section_brand .brand_story{position:absolute;bottom:-140px;left:0;width:100%;height:400px;background-color:rgba(255,255,255,.8);box-shadow:2px 3px 5px rgba(0,0,0,.5);border-radius:4px;transition:all 1.2s;opacity:0}
+.section_brand .brand_story.action{bottom:-96px;opacity:1;}
+.section_brand .tit_section span{color:rgb(255, 213, 0)}
+
+
+/* 베스트 상품 */
+.section_best{padding:130px 0 40px;background-color:#fff;}
+.section_best .list_product{overflow:hidden;}
+.section_best .list_product li{float:left;width:25%;padding-bottom:25px;}
+.section_best .list_product .wrap_img{height:auto;}
