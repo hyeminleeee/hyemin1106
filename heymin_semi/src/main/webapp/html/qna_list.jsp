@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/qna_main_style.css">
+<link rel="stylesheet" href="../css/qna_list_style.css">
 
 <title>상품문의</title>
 </head>

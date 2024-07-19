@@ -10,11 +10,11 @@ div {
     margin: 0 auto;
     border-top: 0;
 }
-#contents {
+.contents {
     width: 100%;
     padding: 0 0 80px;
 }
-#contents {
+.contents {
     min-height: 450px;
 }
 .sub_content {
@@ -84,6 +84,17 @@ div {
     letter-spacing: -0.5px;
     font-weight: 400;
 }*/
+.board_head {
+	display: inline-block;
+}
+.board_zone_tit #writeBtn {
+	border: 1px solid #404040;
+	font-size: 14px;
+	color: white;
+	background: #404040;
+	font-style: bold;
+	text-align: center;
+}
 
 /* 공지사항 상세내용 */
 .board_view_content {

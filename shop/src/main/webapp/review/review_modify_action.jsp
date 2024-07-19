@@ -48,11 +48,11 @@
 	review.setReviewSubject(reviewSubject);
 	review.setReviewContent(reviewContent);
 	//업로드 처리된 파일이 있는 경우 기존 이미지 파일 삭제 처리
+	//글번호를 전달받아 REVIEW 테이블에 저장된 하나의 행을 검색하여 ReviewDTO 객체로 반환하는
+	//ReviewDAO 클래스의 메소드 호출 - ReviewDTO 객체에서 기존 이미지 파일의 이름을 반환받아 저장
 	String removeReviewImage=ReviewDAO.getDAO().selectReviewByNum(reviewNum).getReviewImage();
 	if(reviewImage != null) {
 		review.setReviewImage(reviewImage);
-		//글번호를 전달받아 REVIEW 테이블에 저장된 하나의 행을 검색하여 ReviewDTO 객체로 반환하는
-		//ReviewDAO 클래스의 메소드 호출 - ReviewDTO 객체에서 기존 이미지 파일의 이름을 반환받아 저장
 		//서버 디렉토리의 이미지 파일이 저장된 File 객체를 생성해 delete() 메소드를 호출하여 파일 삭제
 		new File(saveDirectory, removeReviewImage).delete();
 	} else {

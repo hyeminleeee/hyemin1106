@@ -82,12 +82,14 @@
 	//게시글에 출력될 일련번호 시작값을 계산하여 저장
 	// => 게시글의 총갯수가 91개인 경우 => 1Page : 91, 2Page : 81, 3Page : 71, ...\
 	int displayNum=totalNotice-(pageNum-1)*pageSize;
+	
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="../css/notice_list_style.css">
+<link rel="stylesheet" href="../css/common.css">
 <title>공지사항</title>
 </head>
 <body>
@@ -97,7 +99,10 @@
 	            <div class="content">
 	                <div class="board_zone_sec">
 	                    <div class="board_zone_tit">
-	                        <h2>공지사항</h2>
+	                    	<div class="board_head">
+	                    		<button  type="button" id="writeBtn">글쓰기</button>
+	                        	<h2>공지사항</h2>
+	                    	</div>
 	                    </div>
 	                    <div class="board_zone_con">
 	                        <div class="board_zone_list">
@@ -139,7 +144,7 @@
 	                                			<% if(currentDate.equals(notice.getNoticeDate().substring(0, 10))) { %>
 	                                				<%=notice.getNoticeDate().substring(11) %>
 	                                			<% } else { %>
-	                                				<%=notice.getNoticeDate() %>
+	                                				<%=notice.getNoticeDate().substring(0, 10) %>
 	                                			<% } %>
 	                       					</td>
 	                       					
