@@ -25,7 +25,7 @@ NOTICE_IMAGE            VARCHAR2(100)  - 이미지파일의 경로
 NOTICE_DATE             DATE           - 작성날짜
 NOTICE_UPDATE           DATE           - 수정날짜
 NOTICE_COUNT            NUMBER         - 조회수
-NOTICE_MEMBER           NUMBER   	   - 회원번호
+NOTICE_MEMBER           NUMBER   	   - 회원번호 : 회원번호의 해당하는 회원의 상태가 9인지 확인하기 위한 컬럼
 NOTICE_STATUS			NUMBER(1)	   - 공지사항 글 상태 - 상단고정글(0), 일반글(1)
 */
 

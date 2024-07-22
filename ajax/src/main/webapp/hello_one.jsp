@@ -47,7 +47,7 @@
 		//=> XMLHttpRequest 객체의 readyState 멤버변수에 자동으로 [0] 저장
 		xhr=new XMLHttpRequest();
 		
-		//XMLHttpRequest 객체의 준비상태(ReadState)가 변경되는 이벤트가 발생될 경우 호출될
+		//XMLHttpRequest 객체의 준비상태(ReadyState)가 변경되는 이벤트가 발생될 경우 호출될
 		//이벤트 처리 함수 저장
 		//XMLHttpRequest.onreadystatechange : XMLHttpRequest 객체의 준비상태(ReadState)가 
 		//변경되는 이벤트에 대한 이벤트 리스너 속성

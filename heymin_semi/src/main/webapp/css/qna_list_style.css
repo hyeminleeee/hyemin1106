@@ -57,13 +57,23 @@ table {
     border-top: 1px solid #999999;
     text-align: center;
 }
-colgroup {
-    display: table-column-group;
-    unicode-bidi: isolate;
+.board_date {
+	width: 10%;
 }
-col {
-    display: table-column;
-    unicode-bidi: isolate;
+.board_category {
+	width: 15%;
+}
+.board_title {
+	width: 10%;
+}
+.board_writer {
+	width: 10%;
+}
+.board_state {
+	width: 10%;
+}
+.board_reply_time {
+	width: 10%;
 }
 thead {
     display: table-header-group;
@@ -105,6 +115,8 @@ td {
 /* 페이지 */
 .pagination {
     margin: 10px 0 0 0;
+    display: flex;
+    
 }
 .pagination ul {
     padding: 10px 0 30px;

@@ -1,11 +1,28 @@
+<%@page import="xyz.itwill.dto.MemberDTO"%>
+<%@page import="xyz.itwill.dao.NoticeDAO"%>
+<%@page import="xyz.itwill.dto.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+		
+	int noticeNum=Integer.parseInt(request.getParameter("noticeNum"));
+	String pageNum=request.getParameter("pageNum");
+	String pageSize=request.getParameter("pageSize");
+	String search=request.getParameter("search");
+	String keyword=request.getParameter("keyword");
+	
+	NoticeDTO notice=NoticeDAO.getDAO().selectNoticeByNum(noticeNum);
+	MemberDTO loginMember=(MemberDTO)session.getAttribute("loginMember");
+	
+	NoticeDAO.getDAO().updateNoticeCount(noticeNum);
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="../css/notice_detail_style.css">
+<link rel="stylesheet" href="../css/notice_list_style.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <title>공지사항</title>
 </head>
 <body>
@@ -20,18 +37,18 @@
 	                    <div class="board_zone_cont">
 							<div class="board_zone_view">
 	                            <div class="board_view_tit">
-	                                <h3> 제목이 출력되는 곳입니다.</h3>
+	                                <h3><%=notice.getNoticeTitle() %></h3>
 	                            </div>
 	                            <div class="board_view_info">
 	                                <span class="view_info_idip">
 	                                    <strong>관리자</strong>
 	                                </span>
 	                                <span class="view_info_day">
-	                                    <em>2024.07.16 23:25:55</em>
+	                                    <em><%=notice.getNoticeDate() %></em>
 	                                </span>
 	                                <span class="view_info_hits">
 	                                    <strong>조회수</strong>
-	                                    333
+	                                    <%=notice.getNoticeCount()+1 %>
 	                                </span>
 	                            </div>
 	                            
@@ -58,5 +75,6 @@
 	        </div>
 		</div>
 	</div>
+
 </body>
 </html>

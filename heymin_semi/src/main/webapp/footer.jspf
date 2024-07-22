@@ -40,7 +40,7 @@
 	<div class="inner_foot">
 		<div class="foot_info">
 			<div class="wrap_img">
-				<img src="images/logo_camp.png" alt="네이쳐기어 로고">
+				<img src="../images/logo_camp.png" alt="네이쳐기어 로고">
 			</div>
 			<div class="wrap_policy">
 				<p>상호명 : NATURE GEAR : 이동환사업자등록번호 : 111-11-11111 </p>

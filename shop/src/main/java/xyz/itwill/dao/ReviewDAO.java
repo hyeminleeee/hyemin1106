@@ -53,7 +53,7 @@ public class ReviewDAO extends JdbcDAO {
 				count=rs.getInt(1);
 			}
 		} catch (SQLException e) {
-			System.out.println("[에러]selectReviewCount() 메소드의 SQL 오류 = "+e.getMessage());
+			System.out.println("[에러]selectTotalReview() 메소드의 SQL 오류 = "+e.getMessage());
 		} finally {
 			close(con, pstmt, rs);
 		}

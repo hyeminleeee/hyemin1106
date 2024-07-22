@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/qna_write_style.css">
+<link rel="stylesheet" href="../css/common.css">
 
 <title>상품문의 쓰기</title>
 </head>
@@ -111,7 +112,7 @@
 												<td>
 													<div class="capcha">
 														<div class="capcha_img">
-															<img src="/images/captcha.php" id="captchaImg" alt="자동등록방지 이미지">
+															<img src="../images/captcha_1.php" id="captchaImg" alt="자동등록방지 이미지">
 														</div>
 														<div class="capcha_txt">
 															<p>
@@ -134,37 +135,6 @@
 											</tr>
 										</tbody>
 									</table>
-								</div>
-							</div>
-							<div class="order_view_info">
-								<div class="order_agree">
-									<div class="order_zone_title">
-										<h4>비회원 개인정보 수집동의</h4>
-										<div class="agreement_box">
-											주식회사 캠핑퍼스트는 비회원의 게시글 등록 시 콘텐츠 등록 및 고객 문의 응대 등을 원활하게 진행하기 위해 아래와 같은 개인정보를 수집하고 있습니다.
-											<br>
-											<br>
-											- 수집항목: 이름, 비밀번호,닉네임,휴대폰번호,이메일,IP
-											<br>
-											- 수집/이용목적: 게시글 접수 및 결과 회신
-											<br>
-											- 이용기간: 개인정보 수집 및 이용목적 달성 시 까지
-											<br>
-											<br>
-											원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 
-											<br>
-											단, 관계법령의 규정에 의하여 보전할 필요가 있는 경우 일정기간 동안 개인정보를 보관할 수 있습니다.
-											<br>
-											그 밖의 사항은 법령상의 개인정보처리방침을 준수합니다.
-										</div>
-										<div class="form_element">
-											<input type="checkbox" class="require">
-											<label class="check_s">
-												비회원 글작성에 대한 개인정보 수집 및 이용동의
-												<strong>전체보기></strong>
-											</label>
-										</div>
-									</div>
 								</div>
 							</div>
 							<div class="btn_center_box">

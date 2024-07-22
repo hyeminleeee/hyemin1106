@@ -88,24 +88,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<link rel="stylesheet" type="text/css" href="../css/font.css">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-<link rel="stylesheet" type="text/css" href="../css/slick-theme.css">
-<link rel="icon" href="../images/logo_favicon.png"/>
-<link rel="apple-touch-icon" href="../images/logo_favicon.png"/>
 
 <link rel="stylesheet" href="../css/notice_list_style.css">
+<link rel="stylesheet" href="../css/common.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <title>공지사항</title>
 </head>
 <body>
-<div id="mainWrap" class="wrap_main">
-	<%@include file="../header.jspf" %>
-	
 	<div id="container">
 		<div id="contents">
 			<div class="sub_content">
@@ -149,7 +140,7 @@
 		                                		<!-- 공지사항 제목 출력 -->
 		                                		<td class="board_tit">
 		                                			<%
-		                                				String url=request.getContextPath()+"index.jsp?workgroup=notice&work=notice_detail"
+		                                				String url=request.getContextPath()+"/index.jsp?workgroup=notice&work=notice_detail"
 		                                				+"&noticeNum="+notice.getNoticeNum()+"&pageNum"+pageNum+"&pageSize="+pageSize
 		                                				+"&search="+search+"&keyword="+keyword;
 		                                			%>
@@ -246,9 +237,8 @@
 		            </div>
 				</div>
 			</div>
-			<%@include file="../footer.jspf" %>
+			
 		</div>
 	<script type="text/javascript" src="js/main.js"></script>
-</div>
 </body>
 </html>
