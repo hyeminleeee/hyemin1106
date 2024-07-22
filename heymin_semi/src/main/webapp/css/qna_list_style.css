@@ -75,6 +75,10 @@ table {
 .board_reply_time {
 	width: 10%;
 }
+.board_tit{
+	width: 10%;
+	text-align: left;
+}
 thead {
     display: table-header-group;
     vertical-align: middle;
@@ -165,6 +169,6 @@ td {
     text-align: center;
     vertical-align: middle;
 }
-strong {
+.write_text {
     font-weight: bold;
 }

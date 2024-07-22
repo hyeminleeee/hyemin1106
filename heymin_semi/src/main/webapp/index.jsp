@@ -1,33 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%
 	request.setCharacterEncoding("utf-8");
 
+	//페이지 몸체부에 포함될 JSP 문서의 작업 폴더명을 반환받아 저장
 	String workgroup=request.getParameter("workgroup");
-	if(workgroup == null){
+	if(workgroup == null) {
 		workgroup="main";
 	}
-	
+
+	//페이지 몸체부에 포함될 JSP 문서의 파일명을 반환받아 저장
 	String work=request.getParameter("work");
-	if(work == null){
+	if(work == null) {
 		work="main_page";
 	}
 	
+	//전달값을 사용하여 페이지 몸체부에 포함될 JSP 문서의 컨텍스트 경로를 생성하여 저장
 	String contentPath=workgroup+"/"+work+".jsp";
 	
-	String headerPath="/header.jspf";
+	String headerPath="/header.jsp";
 	if(workgroup.equals("admin")) {
-		headerPath="/header_admin,jsp";
+		headerPath="/header_admin.jsp";
 	}
-%>
-    
+
+%>   
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/common.css">
 <link rel="stylesheet" type="text/css" href="css/font.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
 <link rel="icon" href="images/logo_favicon.png"/>
@@ -41,12 +44,11 @@
 </head>
 <body>
 	<div id="mainWrap" class="wrap_main">
-		<div id="head">
-			<jsp:include page="<%=headerPath %>"/>
-		</div>
+		<%@include file="header.jspf" %>
+		<%--<%@include file="header_admin.jspf" %>--%>
 		
-		<div id="content">
-			<jsp:include page="<%=contentPath %>"/>
+		<div id="mAticle" class="cont_article<%if(workgroup=="main"&&work=="main_page"){%> main<%}%>">
+			<jsp:include page="<%=contentPath %>"/>		
 			<%
 				String returnUrl=(String)request.getAttribute("returnUrl");
 				if(returnUrl != null) {
@@ -56,9 +58,7 @@
 			%>
 		</div>
 		
-		<div id="footer">
-			<%@include file="footer.jspf" %>
-		</div>
+		<%@include file="footer.jspf" %>
 	</div>
 	<script type="text/javascript" src="js/main.js"></script>
 </body>

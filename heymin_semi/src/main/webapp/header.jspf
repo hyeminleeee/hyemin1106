@@ -4,15 +4,15 @@
 	<div class="wrap_top">
 		<div class="inner_top">
 			<ul class="list_top">
-				<li><a href="#" class="link_top">로그인</a></li>
-				<li><a href="#" class="link_top">회원가입</a></li>
+				<li><a href="index.jsp?workgroup=client&work=login" class="link_top">로그인</a></li>
+				<li><a href="index.jsp?workgroup=client&work=join_terms" class="link_top">회원가입</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="inner_head clear_fix">
 		<h1>
 			<span class="screen_out">네이쳐기어</span>
-			<a href="#" class="link_tit"><img src="../images/logo_camp.png" alt="네이쳐기어"></a>
+			<a href="/semi_prac/index.jsp" class="link_tit"><img src="images/logo_camp.png" alt="네이쳐기어"></a>
 		</h1>
 		<div class="wrap_search">
 			<h2 class="screen_out">검색</h2>
@@ -27,14 +27,14 @@
 		<div class="wrap_menu">
 			<ul class="list_menu">
 				<li>
-					<a href="#" class="link_menu">
-						<img src="../images/top_mypage.png" alt="마이페이지">
+					<a href="index.jsp?workgroup=mypage&work=mypage" class="link_menu">
+						<img src="images/top_mypage.png" alt="마이페이지">
 						<span>마이페이지</span>
 					</a>
 				</li>
 				<li>
-					<a href="#" class="link_menu">
-						<img src="../images/top_cart.png" alt="장바구니">
+					<a href="index.jsp?workgroup=cart&work=cart_list" class="link_menu">
+						<img src="images/top_cart.png" alt="장바구니">
 						<span>장바구니</span>
 						<span class="screen_out">상품갯수</span><span class="num_product">1</span>
 					</a>
@@ -194,8 +194,8 @@
 				</ul>
 			</div>	
 			<ul class="list_board">
-				<li><a href="index.jsp?workgroup=notice&work=notice_list" class="link_board">공지사항</a></li>
-				<li><a href="#" class="link_board">고객문의</a></li>
+				<li><a href="index.jsp?workgroup=board&work=notice_list" class="link_board">공지사항</a></li>
+				<li><a href="index.jsp?workgroup=board&work=qna_list" class="link_board">고객문의</a></li>
 			</ul>
 		</div>
 	</div>

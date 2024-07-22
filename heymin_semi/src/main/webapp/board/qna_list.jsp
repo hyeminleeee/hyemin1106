@@ -86,7 +86,7 @@
 <link rel="icon" href="../images/logo_favicon.png"/>
 <link rel="apple-touch-icon" href="../images/logo_favicon.png"/>
 
-<link rel="stylesheet" href="../css/notice_list_style.css">
+<link rel="stylesheet" href="css/qna_list_style.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -100,10 +100,10 @@
                         <h2>상품문의</h2>
                     </div>
                     <div class="btn_right_box">
-                                <button type="button" class="btn_write" onclick="gb_btn_write('goodsqa')">
-                                    <strong>1:1 문의하기</strong>
-                                </button>
-                            </div>
+                        <button type="button" class="btn_write" onclick="gb_btn_write('goodsqa')">
+                            <strong class="write_text">1:1 문의하기</strong>
+                        </button>
+                    </div>
                     <div class="board_zone_con">
                         <div class="board_zone_list">
                             <div class="date_check_box">
@@ -123,12 +123,12 @@
                                     </thead>
                                     <tbody>
                                         <tr style="height: 10px;">
-                                            <td>2024-07-11</td>
-                                            <td>상품</td>
+                                            <td class="board_date">2024-07-11</td>
+                                            <td class="board_category">상품</td>
                                             <td class="board_tit">문의 제목이 들어갈 자리입니다.</td>
-                                            <td>홍길동</td>
-                                            <td>답변완료</td>
-                                            <td>2024-07-14</td>
+                                            <td class="board_writer">홍길동</td>
+                                            <td class="board_state">답변완료</td>
+                                            <td class="board_reply_time">2024-07-14</td>
                                         </tr>
                                     </tbody>
                                 </table>

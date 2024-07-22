@@ -32,6 +32,7 @@
 		// => 매개변수에는 Object 객체를 전달하며 Ajax 기능 구현에 필요한 값 또는 함수를 
 		//Object 객체의 요소값으로 설정하여 제공
 		// => $.get() 멤버함수 또는 $.post() 멤버함수를 호출하여 Ajax 기능 구현 가능
+		/*
 		$.ajax({
 			type: "post",//요청방식 설정 - 생략된 경우 GET 방식으로 요청
 			url: "welcome_two.jsp",//요청 웹프로그램의 URL 주소 설정
@@ -47,7 +48,14 @@
 			error: function(xhr) {
 				alert("에러코드 = "+xhr.status);
 			}
-		});		
+		});
+		*/
+		
+		//$.post(url[, data][, success][, dataType]) : Ajax 엔진을 사용해 웹프로그램을 POST
+		//방식으로 요청하여 응답결과를 제공받아 처리하기 위한 멤버함수 
+		$.post("welcome_two.jsp","name="+name, function(result) {
+			$("#message").text(result);
+		}, "text"); 
 	});
 	</script>
 </body>

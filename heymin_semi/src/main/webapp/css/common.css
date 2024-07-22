@@ -75,6 +75,16 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 .list_board li:last-child .link_board{padding-right:0;}
 .list_board .link_board{display:block;padding:0 20px;font-size:14px;}
 
+/* admin header */
+.wrap_head.admin .inner_top{padding:10px 0;text-align:right;}
+.wrap_head.admin .inner_top .admin_welcome{padding-right:10px;}
+.wrap_head.admin .inner_top .link_top{display:inline-block;padding:2px 6px;border:1px solid #ccc;background-color:#fff;}
+.wrap_head.admin .inner_top .link_top:hover{color:#fff;background-color:#333;}
+.wrap_head.admin .wrap_gnb{float:none;padding:0;text-align:center;}
+.wrap_head.admin .list_gnb li{display:inline-block;float:none;}
+
+/* Article(Content) */
+.cont_article{width:1024px;margin:0 auto;padding:25px 0;}
 
 /* 푸터 */
 .wrap_foot{border-top:1px solid #ccc;background-color:#fff}

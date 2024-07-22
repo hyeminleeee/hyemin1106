@@ -77,4 +77,81 @@ public class AjaxMemberDAO extends JdbcDAO {
 		}
 		return ajaxMember;
 	}
+
+	//이름(String 객체)과 이메일(String 객체)을 전달받아 AJAX_MEMBER 테이블에 저장된 행의 
+	//아이디를 검색하여 문자열(String 객체)로 반환하는 메소드
+	/*public String selectAjaxMemberId(String name, String email) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String id=null;
+		try {
+			con=getConnection();
+			
+			String sql="select id from ajax_member where name=? and email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				id=rs.getString(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("[에러]selectAjaxMemberId() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return id;
+	}
+	*/
+	
+	//회원정보(AjaxMemberDTO)를 전달받아 AJAX_MEMBER 테이블에 저장된 행의 아이디를 
+	//검색하여 문자열(String 객체)로 반환하는 메소드
+	public String selectAjaxMemberId(AjaxMemberDTO ajaxMember) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String id=null;
+		try {
+			con=getConnection();
+			
+			String sql="select id from ajax_member where name=? and email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, ajaxMember.getName());
+			pstmt.setString(2, ajaxMember.getEmail());
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				id=rs.getString(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("[에러]selectAjaxMemberId() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return id;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,7 @@
 <%@page import="xyz.itwill.dao.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%-- NOTICE 테이블에 저장된 행을 검색하여 검색된 행을 HTML 태그에 포함해 응답하는 JSP 문서 --%>
 <%-- => NOTICE 테이블에 저장된 행을 페이지 단위로 구분하여 검색해 응답 처리 - 페이징 처리 --%>
 <%-- => [페이지번호] 태그를 클릭한 경우 [/notice/notice_main.jsp] 문서를 요청하여 페이지 이동 
@@ -84,13 +85,14 @@
 	int displayNum=totalNotice-(pageNum-1)*pageSize;
 	
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
 
-<link rel="stylesheet" href="../css/notice_list_style.css">
-<link rel="stylesheet" href="../css/common.css">
+
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/notice_list_style.css">
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -240,5 +242,10 @@
 			
 		</div>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript">
+	$("#writeBtn").click(function() {
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_write";
+	});
+	</script>
 </body>
 </html>
