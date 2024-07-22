@@ -1,6 +1,6 @@
+<%@page import="xyz.itwill.dto.ClientDTO"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="xyz.itwill.dto.MemberDTO"%>
 <%@page import="xyz.itwill.dto.NoticeDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="xyz.itwill.dao.NoticeDAO"%>
@@ -73,7 +73,7 @@
 	//세션에 저장된 권한 관련 정보가 저장된 속성값을 객체로 반환받아 저장
 	// => 로그인 사용자에게만 글쓰기 권한 제공
 	// => 게시글이 비밀글인 경우 로그인 사용자가 게시글 작성자이거나 관리자인 경우에만 권한 제공
-	MemberDTO loginMember=(MemberDTO)session.getAttribute("loginMember");
+	ClientDTO loginClient=(ClientDTO)session.getAttribute("loginClient");
 	
 	//서버의 현재 날짜와 시간이 저장된 Date 객체를 생성하여 SimpleDateFormat 객체에 저장된
 	//패턴의 문자열로 변환하여 저장
@@ -110,7 +110,9 @@
 						                <h2>공지사항</h2>
 						            </div>
 						            <div>
+						            <%--<% if(loginClient.getClientStatus()==9) { --%>
 						                <button type="button" id="writeBtn">글쓰기</button>
+						            <%--<% } --%>
 						            </div>
 						        </div>
 						    </div>
@@ -142,7 +144,7 @@
 		                                		<!-- 공지사항 제목 출력 -->
 		                                		<td class="board_tit">
 		                                			<%
-		                                				String url=request.getContextPath()+"/index.jsp?workgroup=notice&work=notice_detail"
+		                                				String url=request.getContextPath()+"/index.jsp?workgroup=board&work=notice_detail"
 		                                				+"&noticeNum="+notice.getNoticeNum()+"&pageNum"+pageNum+"&pageSize="+pageSize
 		                                				+"&search="+search+"&keyword="+keyword;
 		                                			%>
@@ -188,7 +190,7 @@
 			                    		}
 		                            %>
 		                            <%
-										String myUrl=request.getContextPath()+"/index.jsp?workgroup=notice&work=notice_list"
+										String myUrl=request.getContextPath()+"/index.jsp?workgroup=board&work=notice_list"
 											+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword;
 									%>
 		
@@ -220,12 +222,11 @@
 		                            
 		                            <%-- 조회기능을 제공하기 위한 form 태그 --%>
 		                            <div class="board_search_box">
-			                            <form action="<%=request.getContextPath() %>/index.jsp?workgroup=notice&work=notice_list" method="post">
+			                            <form action="<%=request.getContextPath() %>/index.jsp?workgroup=board&work=notice_list" method="post">
 			                            	<%-- select 태그로 전달되는 값은 반드시 컬럼명을 전달되도록 작성 --%>
 			                            	<select name="search">
-			                            		<option value="member_name" <% if(search.equals("member_name")) { %>selected<% } %>>&nbsp;작성자&nbsp;</option>
+			                            		<option value="client_name" <% if(search.equals("client_name")) { %>selected<% } %>>&nbsp;작성자&nbsp;</option>
 			                            		<option value="notice_title" <% if(search.equals("notice_title")) { %>selected<% } %>>&nbsp;제목&nbsp;</option>
-			                            		<option value="notice_content" <% if(search.equals("notice_content")) { %>selected<% } %>>&nbsp;내용&nbsp;</option>
 			                            	</select>
 			                            	<input type="text" class="text" name="keyword" value=<%=keyword %>>
 			                                <button class="btn_board_search">
@@ -243,7 +244,7 @@
 		</div>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript">
-	$("#writeBtn").click(function() {
+	$("#writeBtn").click(function() {	
 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_write";
 	});
 	</script>

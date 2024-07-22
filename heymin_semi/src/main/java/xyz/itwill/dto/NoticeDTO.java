@@ -8,9 +8,9 @@ package xyz.itwill.dto;
     notice_date     DATE DEFAULT SYSDATE,
     notice_update   DATE DEFAULT SYSDATE,
     notice_count    NUMBER,
-    notice_member   NUMBER,
+    notice_client_num   NUMBER,
     notice_status   NUMBER(1),
-    CONSTRAINT fk_notice_member FOREIGN KEY (notice_member) REFERENCES member (member_num)
+    CONSTRAINT fk_notice_client_num FOREIGN KEY (notice_client_num) REFERENCES client (client_num)
 );
  */
 
@@ -25,7 +25,7 @@ NOTICE_IMAGE            VARCHAR2(100)  - 이미지파일의 경로
 NOTICE_DATE             DATE           - 작성날짜
 NOTICE_UPDATE           DATE           - 수정날짜
 NOTICE_COUNT            NUMBER         - 조회수
-NOTICE_MEMBER           NUMBER   	   - 회원번호 : 회원번호의 해당하는 회원의 상태가 9인지 확인하기 위한 컬럼
+NOTICE_CLIENT_NUM       NUMBER   	   - 회원번호 : 회원번호의 해당하는 회원의 상태가 9인지 확인하기 위한 컬럼
 NOTICE_STATUS			NUMBER(1)	   - 공지사항 글 상태 - 상단고정글(0), 일반글(1)
 */
 
@@ -38,8 +38,7 @@ public class NoticeDTO {
 	private String noticeDate;
 	private String noticeUpdate;
 	private int noticeCount;
-	private int noticeMember;
-	private String memberNum;
+	private int noticeClientNum;
 	private int noticeStatus;
 	
 	public NoticeDTO() {
@@ -94,22 +93,15 @@ public class NoticeDTO {
 		this.noticeCount = noticeCount;
 	}
 
-	public int getNoticeMember() {
-		return noticeMember;
+	public int getNoticeClientNum() {
+		return noticeClientNum;
 	}
 
-	public void setNoticeMember(int noticeMember) {
-		this.noticeMember = noticeMember;
-	}
-	
-	public String getMemberNum() {
-		return memberNum;
+	public void setNoticeClientNum(int noticeClientNum) {
+		this.noticeClientNum = noticeClientNum;
 	}
 
-	public void setMemberNum(String memberNunm) {
-		this.memberNum = memberNunm;
-	}
-	
+
 	public int getNoticeStatus() {
 		return noticeStatus;
 	}
@@ -117,5 +109,8 @@ public class NoticeDTO {
 	public void setNoticeStatus(int noticeStatus) {
 		this.noticeStatus = noticeStatus;
 	}
+
+	
+	
 	
 }

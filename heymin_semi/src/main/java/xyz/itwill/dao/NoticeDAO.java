@@ -42,7 +42,7 @@ public class NoticeDAO extends JdbcDAO{
 				String sql="select count(*) from notice";
 				pstmt=con.prepareStatement(sql);
 			} else {
-				String sql="select count(*) from notice join member on notice_member=member_num"
+				String sql="select count(*) from notice join client on notice_client_num=client_num"
 						+ " where "+search+" like '%'||?||'%'";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, keyword);
@@ -74,16 +74,16 @@ public class NoticeDAO extends JdbcDAO{
 			
 			if(keyword.equals("")) {
 				String sql="select * from (select rownum rn, temp.* from (select notice_num,notice_title"
-						+ ",notice_image,notice_date,notice_update,notice_count,notice_member,notice_status"
-						+ " from notice join member on notice_member=member_num order by notice_num desc)"
+						+ ",notice_image,notice_date,notice_update,notice_count,notice_client_num,notice_status"
+						+ " from notice join client on notice_client_num=client_num order by notice_num desc)"
 						+ "temp) where rn between ? and ?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			} else {
 				String sql="select * from (select rownum rn, temp.* from (select notice_num,notice_title"
-					+ ",notice_image,notice_date,notice_update,notice_count,notice_member,notice_status"
-					+ " from notice join member on notice_member=member_num where "+search+"like '%'||?||'%'"
+					+ ",notice_image,notice_date,notice_update,notice_count,notice_client,notice_status"
+					+ " from notice join client on notice_client_num=client_num where "+search+"like '%'||?||'%'"
 					+ "order by notice_num desc) temp) where rn between ? and ?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, keyword);
@@ -102,7 +102,7 @@ public class NoticeDAO extends JdbcDAO{
 				review.setNoticeDate(rs.getString("notice_date"));
 				review.setNoticeUpdate(rs.getString("notice_update"));
 				review.setNoticeCount(rs.getInt("notice_count"));
-				review.setNoticeMember(rs.getInt("notice_member"));
+				review.setNoticeClientNum(rs.getInt("notice_client_num"));
 				review.setNoticeStatus(rs.getInt("notice_status"));
 								
 				noticeList.add(review);
@@ -128,7 +128,7 @@ public class NoticeDAO extends JdbcDAO{
 			pstmt.setInt(1, notice.getNoticeNum());
 			pstmt.setString(2, notice.getNoticeTitle());
 			pstmt.setString(3, notice.getNoticeImage());
-			pstmt.setInt(4, notice.getNoticeMember());
+			pstmt.setInt(4, notice.getNoticeClientNum());
 			pstmt.setInt(5, notice.getNoticeStatus());
 			
 			rows=pstmt.executeUpdate();
