@@ -1,5 +1,4 @@
 <%@page import="xyz.itwill.dto.ClientDTO"%>
-<%@page import="xyz.itwill.dto.MemberDTO"%>
 <%@page import="xyz.itwill.dao.NoticeDAO"%>
 <%@page import="xyz.itwill.dto.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -81,6 +80,10 @@
 								</div>
 								<div class="btn_right_box">
 									<button type="button" class="btn_board_list" id="listBtn">목록</button>
+									<% if(loginClient.getClientStatus() == 9) { %>
+									<button type="button" class="btn_board_modify" id="modifyBtn">수정</button>
+									<button type="button" class="btn_board_remove" id="removeBtn">삭제</button>
+									<% } %>
 								</div>
 							</div>
 						</div>
@@ -91,6 +94,20 @@
 	<script type="text/javascript">
 	$("#listBtn").click(function() {
 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_list";
+	});
+	
+	$("#modifyBtn").click(function() {
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_modify"
+			+"&noticeNum=<%=notice.getNoticeNum()%>&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>"
+			+"&search=<%=search%>&keyword=<%=keyword%>";
+	});
+	
+	$("#removeBtn").click(function() {
+		if(confirm("게시글을 정말로 삭제 하시겠습니까?")) {
+			location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_remove_action"
+				+"&noticeNum=<%=notice.getNoticeNum()%>&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>"
+				+"&search=<%=search%>&keyword=<%=keyword%>";
+		}
 	});
 	</script>
 </body>

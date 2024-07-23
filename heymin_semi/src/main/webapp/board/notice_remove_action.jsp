@@ -25,7 +25,7 @@
 		return;
 	}
 	
-	if(loginClient.getClientNum() != notice.getNoticeClientNum() && loginClient.getClientStatus()!=9 ) {
+	if(loginClient.getClientStatus()!=9 ) {
 		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
 		return;
 	}
@@ -39,6 +39,6 @@
 		new File(saveDirectory, notice.getNoticeImage()).delete();
 	}
 	
-	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=notice&work=notice_list"
+	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=board&work=notice_list"
 			+"&pageNum="+pageNum+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword);
 %>

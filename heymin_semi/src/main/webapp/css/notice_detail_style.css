@@ -120,4 +120,23 @@
     border: 1px solid #a3a3a3;
     text-align: center;
 }
+.btn_board_modify {
+    height: 28px;
+    line-height: 26px;
+    margin: 0 0 0 5px;
+    padding: 0 12px 0 12px;
+    color: #666666;
+    border: 1px solid #a3a3a3;
+    text-align: center;
+}
+ .btn_board_remove {
+    height: 28px;
+    line-height: 26px;
+    margin: 0 0 0 5px;
+    padding: 0 12px 0 12px;
+    color: #666666;
+    border: 1px solid #a3a3a3;
+    text-align: center;
+}
+
 

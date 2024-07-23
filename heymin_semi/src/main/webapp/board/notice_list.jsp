@@ -110,9 +110,9 @@
 						                <h2>공지사항</h2>
 						            </div>
 						            <div>
-						            <%--<% if(loginClient.getClientStatus()==9) { --%>
+						            <% if(loginClient.getClientStatus()==9) { %>
 						                <button type="button" id="writeBtn">글쓰기</button>
-						            <%--<% } --%>
+						            <% } %>
 						            </div>
 						        </div>
 						    </div>
