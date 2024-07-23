@@ -21,12 +21,15 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 .wrap_main{min-width:1024px;}
 
 /* top */
-.wrap_top{border-bottom:1px solid #e2e1e1;background-color:#f0f0f0;}
-.wrap_top .inner_top{width:1024px;margin:0 auto;}
-.list_top{overflow:hidden;padding:10px 0;}
-.list_top li{float:right;margin:0 8px;}
-.list_top .link_top{font-size:13px}
-.list_top .link_top:hover{font-weight:bold;color:#000}
+.wrap_top{border-bottom:1px solid #e2e1e1;text-align:right;background-color:#f0f0f0;}
+.wrap_top .inner_top{width:1024px;margin:0 auto;padding:8px 0;height:41px;box-sizing:border-box;}
+.wrap_top .login_name{font-weight:bold;}
+/*.list_top{padding:10px 0;text-align:right;}
+.list_top li{display:inline-block;margin:0 8px;}*/
+.link_top{display:inline-block;margin:4px 0 0 10px;font-size:13px}
+.link_top:hover{font-weight:bold;color:#000}
+.link_top.type2{margin-top:0;padding:2px 6px;border:1px solid #ccc;background-color:#fff;}
+.link_top.type2:hover{color:#fff;background-color:#333;}
 
 /* header */
 .wrap_head{border-bottom:1px solid #ccc;}
@@ -78,10 +81,11 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 /* admin header */
 .wrap_head.admin .inner_top{padding:10px 0;text-align:right;}
 .wrap_head.admin .inner_top .admin_welcome{padding-right:10px;}
-.wrap_head.admin .inner_top .link_top{display:inline-block;padding:2px 6px;border:1px solid #ccc;background-color:#fff;}
-.wrap_head.admin .inner_top .link_top:hover{color:#fff;background-color:#333;}
+/* .wrap_head.admin .inner_top .link_top{display:inline-block;padding:2px 6px;border:1px solid #ccc;background-color:#fff;}
+.wrap_head.admin .inner_top .link_top:hover{color:#fff;background-color:#333;} */
 .wrap_head.admin .wrap_gnb{float:none;padding:0;text-align:center;}
 .wrap_head.admin .list_gnb li{display:inline-block;float:none;}
+.wrap_head.admin+.cont_article{padding:45px 0 60px;}
 
 /* Article(Content) */
 .cont_article{width:1024px;margin:0 auto;padding:25px 0;}

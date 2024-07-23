@@ -57,7 +57,7 @@
 .ico_stat.ico_best{background-color:rgb(0, 46, 228);}
 
 /* 브랜드 스토리 */
-.cont_article{background-color:#3d8e78;background-image:url(../images/bg_brandstory.png);background-size:60%;background-position:50% 300px;background-repeat:no-repeat;background-attachment:fixed;}
+.cont_article.main{width:100%;margin:0;padding:0;background-color:#3d8e78;background-image:url(../images/bg_brandstory.png);background-size:60%;background-position:50% 300px;background-repeat:no-repeat;background-attachment:fixed;}
 .section_brand .inner_section{position:relative;width:1024px;height:400px;margin:0 auto;}
 .section_brand .tit_section{color:#fff}
 .section_brand .tit_section:before{background-color:#fff;}

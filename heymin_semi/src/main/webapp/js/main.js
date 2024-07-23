@@ -48,7 +48,26 @@ $(document).ready(function(){
         dots:true
     });
 
-    
+    //관리자 탭메뉴
+    $(".link_gnb").click(function(){
+		$(".link_gnb").removeClass("on");
+		$(this).addClass("on");
+	});
+	
+	$(".manage_client").click(function(){
+		$(".admin_cont").hide();
+		$(".admin_member").show();
+	});
+	
+	$(".manage_product").click(function(){
+		$(".admin_cont").hide();
+		$(".admin_product").show();
+	});
+	
+	$(".manage_delivery").click(function(){
+		$(".admin_cont").hide();
+		$(".admin_delivery").show();
+	});
 
 
 }); 

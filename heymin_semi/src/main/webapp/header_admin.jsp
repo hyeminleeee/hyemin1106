@@ -3,8 +3,8 @@
 <div id="wrapHead" class="wrap_head admin">
 	<div class="wrap_top">
 		<div class="inner_top">
-			<span class="admin_welcome">관리자님, 환영합니다.</span>
-			<a href="#" class="link_top">쇼핑몰 돌아가기</a>
+			<span class="admin_welcome"><span class="login_name">[관리자]</span>님, 환영합니다.</span>
+			<a href="index.jsp?" class="link_top type2">쇼핑몰 돌아가기</a>
 		</div>
 	</div>
 	<div class="inner_head clear_fix">
@@ -28,9 +28,9 @@
 			<div class="wrap_gnb">
 				<h2 class="screen_out">관리 주요 메뉴</h2>
 				<ul class="list_gnb">
-					<li><a href="#" class="link_gnb">회원관리</a></li>
-					<li><a href="#" class="link_gnb">상품관리</a></li>
-					<li><a href="#" class="link_gnb">배송관리</a></li>
+					<li><a href="#" class="link_gnb manage_client on">회원관리</a></li>
+					<li><a href="#" class="link_gnb manage_product">상품관리</a></li>
+					<li><a href="#" class="link_gnb manage_delivery">배송관리</a></li>
 				</ul>
 			</div>	
 		</div>
