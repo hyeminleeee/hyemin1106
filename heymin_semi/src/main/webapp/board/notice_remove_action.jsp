@@ -25,7 +25,7 @@
 		return;
 	}
 	
-	if(loginMember.getMemberNum() != notice.getNoticeMember() && loginMember.getMemberAuth()!=9 ) {
+	if(loginClient.getClientNum() != notice.getNoticeClientNum() && loginClient.getClientStatus()!=9 ) {
 		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
 		return;
 	}

@@ -27,8 +27,8 @@
 	
 	String noticeTitle=Utility.escapeTag(multipartRequest.getParameter("noticeTitle"));
 	
-	int noticeStatus=1;//비밀글
-	if(multipartRequest.getParameter("noticeStatus") != null) {
+	int noticeStatus=1;//일반글
+	if(multipartRequest.getParameter("noticeStatus") != null) {//2 : 상단고정글
 		noticeStatus=Integer.parseInt(multipartRequest.getParameter("noticeStatus"));
 	}
 	
@@ -40,11 +40,11 @@
 	notice.setNoticeNum(nextNum);
 	notice.setNoticeTitle(noticeTitle);
 	notice.setNoticeImage(noticeImage);
-	notice.setNoticeMember(loginMember.getMemberNum());
+	notice.setNoticeClientNum(loginClient.getClientNum());
 	notice.setNoticeStatus(noticeStatus);
 	
 	NoticeDAO.getDAO().insertNotice(notice);
 	
-	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=notice%work=notice_list"
+	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=board%work=notice_list"
 			+"&pageNum="+pageNum+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword);		
 %>

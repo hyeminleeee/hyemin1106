@@ -229,9 +229,7 @@
 			                            		<option value="notice_title" <% if(search.equals("notice_title")) { %>selected<% } %>>&nbsp;제목&nbsp;</option>
 			                            	</select>
 			                            	<input type="text" class="text" name="keyword" value=<%=keyword %>>
-			                                <button class="btn_board_search">
-			                                    <em>검색</em>
-			                                </button>
+			                                <button type="submit" class="btn_board_search">검색</button>
 			                            </form>
 		                            </div>
 		                        </div>
@@ -244,6 +242,10 @@
 		</div>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript">
+	$("#pageSize").change(function() {	
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_list"
+			+"&pageNum=<%=pageNum%>&pageSize="+$("#pageSize").val()+"&search=<%=search%>&keyword=<%=keyword%>";
+	});
 	$("#writeBtn").click(function() {	
 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_write";
 	});

@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
+    
+<%
+	String pageNum="1", pageSize="16", search="", keyword="";
+%>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/notice_write_style.css">
@@ -12,13 +13,18 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 <title>공지사항 작성</title>
-</head>
-<body>
 	<div id="container">
 		<div class="notice_write_head">
 			<h2>공지사항 작성</h2>
 		</div>
 		<div>
+		<form action="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_write_action"
+			method="post" enctype="multipart/form-data" id="noticeForm">
+			<input type="hidden" name="pageNum" value="<%=pageNum%>">
+			<input type="hidden" name="pageSize" value="<%=pageSize%>">
+			<input type="hidden" name="search" value="<%=search%>">
+			<input type="hidden" name="keyword" value="<%=keyword%>">
+		
 			<table class="notice_write_table">
 				<colgroup>
 					<col style="width: 15%;">
@@ -26,41 +32,57 @@
 				</colgroup>
 				<tr>
 					<th scope="row">제목</th>
-					<td>
-						<input type="text" id="notice_title">
+					<td style="display: flex;">
+						<input type="text" name="noticeTitle" id="notice_title">
+						<label class="checkbox-container">
+							<input type="checkbox" name="noticeStatus" value="2">상단고정글
+						</label>
+						<div id="message" style="color: red;"></div>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row">이미지</th>
 					<td id="uploadBox">
 						<div class="file_upload_sec">
-							<label for="attach1">
-								<input type="text" class="file_text" title="파일 첨부하기" readonly="readonly">
-							</label>
 							<div class="btn_upload_box">
-								<button type="button" class="btn_upload" title="찾아보기">
-									<em>찾아보기</em>
-								</button>
-								<!--<input type="file" id="attach1" name="upfiles[]" class="file" title="찾아보기">-->
-								<span class="btn_gray_list">
-									<button type="button" id="addUploadBtn" class="btn_gray_big">
-										<span>+ 추가</span>
-									</button>
-								</span>
+								<input type="file" name="noticeImage" class="btn_upload">
 							</div>
 						</div>
 					</td>
 				</tr>
 			</table>
 			<div class="btn_center_box">
-				<button type="button" class="btn_before">
-					<strong>이전</strong>
-				</button>
-				<button type="submit" class="btn_write_ok">
-					<strong>저장</strong>
-				</button>
+				<button type="button" class="btn_before" id="listBtn">이전</button>
+				<button type="submit" class="btn_write_ok" id="saveBtn">저장</button>
 			</div>
+		</form>
 		</div>
 	</div>
-</body>
-</html>
+	<script type="text/javascript">
+	$("#notice_title").focus();
+	
+	$("#noticeForm").submit(function() {
+		if($("noticeTitle").val()==""){
+		$("#message").text("제목을 입력해 주세요.");
+		$("#noticeTitle").focus();
+		return false;
+		}
+	});
+	
+	$("#listBtn").click(function() {
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_list"
+			+"&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>%search=<%=search%>&keyword=<%=keyword%>";
+	});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+

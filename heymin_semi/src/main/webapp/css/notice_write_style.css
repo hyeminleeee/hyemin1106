@@ -37,11 +37,18 @@ body {
 }
 
 .notice_write_table input[type="text"] {
-    width: 100%;
+    width: 550px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 1px;
     box-sizing: border-box;
+    margin-right: 10px;
+}
+
+.checkbox-container {
+    display: flex;                  /* Flexbox 사용 */
+    align-items: center;            /* 수직 중앙 정렬 */
+    margin-left: 10px;              /* 텍스트 입력란과의 간격 */
 }
 
 .file_upload_sec {
@@ -49,26 +56,12 @@ body {
     align-items: center;
 }
 
-.file_text {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 1px;
-    box-sizing: border-box;
-}
 
 .btn_upload_box {
     display: flex;
     align-items: center;
 }
 
-.btn_upload {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    padding: 8px 12px;
-    cursor: pointer;
-    margin: 0 10px 0 10px;
-}
 
 .btn_upload em {
     font-style: normal;
@@ -107,6 +100,7 @@ body {
 }
 .btn_center_box button {
     margin: 0 2px 0 3px;
+    text-align: center;
 }
 .btn_before {
     display: inline-block;
