@@ -78,7 +78,7 @@
 	
 	//게시글에 출력될 일련번호 시작값을 계산하여 저장
 	// => 게시글의 총갯수가 91개인 경우 => 1Page : 91, 2Page : 81, 3Page : 71, ...\
-	int displayNum=totalNotice-(pageNum-1)*pageSize;
+	//int displayNum=totalNotice-(pageNum-1)*pageSize;
 	
 %>
 <!DOCTYPE html>
@@ -125,49 +125,54 @@
 		                                    </tr>
 		                                </thead>
 		                                <tbody>
-		                                
-		                                <% if(totalNotice == 0) {//검색된 게시글이 없는 경우 %>
-		                                	<tr style="height: 10px;">
-		                                		<td class="board_table_nosearch" colspan="5">검색된 게시글이 없습니다.</td>
-		                                	</tr>
-		                                <% } else { %>
-		                                	<% for(NoticeDTO notice : noticeList) { %>
-		                                	<tr class="board_table_content">
-		                                		<!-- 일련번호 출력 -->
-		                                		<td class="board_num"><%=displayNum %></td>
-		                                		<% displayNum--; %>
-		                                		
-		                                		<!-- 공지사항 제목 출력 -->
-		                                		<td class="board_tit">
-		                                			<%
-		                                				String url=request.getContextPath()+"/index.jsp?workgroup=board&work=notice_detail"
-		                                				+"&noticeNum="+notice.getNoticeNum()+"&pageNum="+pageNum+"&search="+search+"&keyword="+keyword;
-		                                			%>
-		                                			<% if(notice.getNoticeStatus() == 1) {//일반글 %>
-		                                			<a href="<%=url%>"><%=notice.getNoticeTitle() %></a>
-		                                			<% } else if(notice.getNoticeStatus() == 0) {//삭제글 %>
-		                                			<span class="subject_hidden">삭제글</span>
-		                                				관리자에 의해 삭제된 게시글 입니다.
-		                                			<% } %>
-		                                		</td>
-		                                		
-		                                		<!-- 게시글 작성일 출력 -->
-		                                		<td class="board_date">
-		                                			<% if(currentDate.equals(notice.getNoticeDate().substring(0, 10))) { %>
-		                                				<%=notice.getNoticeDate().substring(11) %>
-		                                			<% } else { %>
-		                                				<%=notice.getNoticeDate().substring(0, 10) %>
-		                                			<% } %>
-		                       					</td>
-		                       					
-		                       					<!-- 작성자 출력 -->
-		                       					<td class="board_writer">관리자</td>
-		                       					
-		                       					<!-- 게시글 조회수 출력 -->
-		                       					<td class="board_count"><%=notice.getNoticeCount() %></td>
-		                                	</tr>
-		                                	<% } %>
-		                                <% } %>
+		                                <% if(totalNotice == 0) { // 검색된 게시글이 없는 경우 %>
+								            <tr style="height: 10px;">
+								                <td class="board_table_nosearch" colspan="5">검색된 게시글이 없습니다.</td>
+								            </tr>
+								        <% } else { 
+								            int displayNum = totalNotice-((pageNum-1)*pageSize); %>
+								            <% for(NoticeDTO notice : noticeList) { 
+								                if(notice.getNoticeStatus() != 0) { // 삭제된 게시글이 아닌 경우에만 출력
+								                	//displayNum--;
+								            %>
+								            <tr class="board_table_content">
+								                <!-- 일련번호 출력 -->
+								                <% if(notice.getNoticeStatus()==2) { %>
+								                <td>
+								                	<img src="images/icon_board_notice.png">
+								                </td>
+								                <% } else { %>
+								                <td class="board_num"><%= displayNum %></td> <!-- 1부터 시작 -->
+								                <% } %>
+								                <!-- 공지사항 제목 출력 -->
+								                <td class="board_tit">
+								                    <%
+								                        String url = request.getContextPath() + "/index.jsp?workgroup=board&work=notice_detail"
+								                        + "&noticeNum=" + notice.getNoticeNum() + "&pageNum=" + pageNum + "&search=" + search + "&keyword=" + keyword;
+								                    %>
+								                    <a href="<%=url%>"><%=notice.getNoticeTitle() %></a>
+								                </td>
+								                
+								                <!-- 게시글 작성일 출력 -->
+								                <td class="board_date">
+								                    <% if(currentDate.equals(notice.getNoticeDate().substring(0, 10))) { %>
+								                        <%=notice.getNoticeDate().substring(11) %>
+								                    <% } else { %>
+								                        <%=notice.getNoticeDate().substring(0, 10) %>
+								                    <% } %>
+								                </td>
+								                
+								                <!-- 작성자 출력 -->
+								                <td class="board_writer">관리자</td>
+								                
+								                <!-- 게시글 조회수 출력 -->
+								                <td class="board_count"><%=notice.getNoticeCount() %></td>
+								            </tr>
+								            <% 
+								            	displayNum--;
+								                } // if 문 끝
+								            } // for 문 끝
+								        } // if 문 끝 %>
 		                                </tbody>
 		                            </table>
 		                            
@@ -227,7 +232,7 @@
 			                            	<select name="search">
 			                            		<option value="notice_title" <% if(search.equals("notice_title")) { %>selected<% } %>>&nbsp;제목&nbsp;</option>
 			                            	</select>
-			                            	<input type="text" class="text" name="keyword" value=<%=keyword %>>
+			                            	<input type="text" class="text" name="keyword" value="<%=keyword %>">
 			                                <button type="submit" class="btn_board_search">검색</button>
 			                            </form>
 		                            </div>
@@ -237,14 +242,11 @@
 		            </div>
 				</div>
 			</div>
-			
 		</div>
-		<div id="testboard"></div>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript">
-	$("#testboard").html(pageNum);
 	
-	$("#writeBtn").click(function() {	
+	$("#writeBtn").click(function() {
 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_write";
 	});
 	</script>

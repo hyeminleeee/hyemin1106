@@ -76,15 +76,15 @@ public class NoticeDAO extends JdbcDAO{
 				String sql="select * from (select rownum rn, temp.* from (select notice_num,notice_title"
 						+ ",notice_image,notice_date,notice_update,notice_count,notice_client_num,notice_status"
 						+ " from notice join client on notice_client_num=client_num order by notice_num desc)"
-						+ "temp) where rn between ? and ?";
+						+ "temp) where rn between ? and ? order by notice_status desc, notice_num desc";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
 			} else {
 				String sql="select * from (select rownum rn, temp.* from (select notice_num,notice_title"
-					+ ",notice_image,notice_date,notice_update,notice_count,notice_client,notice_status"
-					+ " from notice join client on notice_client_num=client_num where "+search+"like '%'||?||'%'"
-					+ " order by notice_num desc) temp) where rn between ? and ?";
+					+ ",notice_image,notice_date,notice_update,notice_count,notice_client_num,notice_status"
+					+ " from notice join client on notice_client_num=client_num where "+search+" like '%'||?||'%'"
+					+ " order by notice_num desc) temp) where rn between ? and ? order by notice_status desc, notice_num desc";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, keyword);
 				pstmt.setInt(2, startRow);

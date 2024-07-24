@@ -30,7 +30,7 @@
 	
 	int noticeStatus=1;//일반글
 	if(multipartRequest.getParameter("noticeStatus") != null){//전달값이 있는 경우 - 상단고정글
-		noticeStatus=Integer.parseInt(multipartRequest.getParameter("noticeSatus"));
+		noticeStatus=Integer.parseInt(multipartRequest.getParameter("noticeStatus"));
 	}
 	
 	String noticeImage=multipartRequest.getFilesystemName("noticeImage");
