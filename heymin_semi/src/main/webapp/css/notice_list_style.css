@@ -306,3 +306,7 @@ input[type="text"], input[type="password"] {
     font-weight: bold;
     font-style: normal;
 }
+
+#page_list a:hover {
+	font-size: 1.3em;
+}

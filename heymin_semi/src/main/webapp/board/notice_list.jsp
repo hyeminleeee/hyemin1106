@@ -35,10 +35,7 @@
 		pageNum=Integer.parseInt(request.getParameter("pageNum"));
 	}
 	
-	int pageSize=16;//게시글갯수 - 전달값이 없는 경우 사용할 기본값 저장
-	if(request.getParameter("pageSize") != null) {//전달값이 있는 경우
-		pageSize=Integer.parseInt(request.getParameter("pageSize"));
-	}
+	int pageSize=16;//게시글갯수
 	
 	//조회정보(조회대상과 조회단어)를 전달받아 REVIEW 테이블에 저장된 행에서 조회정보가 포함된 
 	//행의 갯수를 검색하여 반환하는 NoticeDAO 클래스의 메소드 호출
@@ -47,13 +44,13 @@
 	//페이지의 총갯수를 계산하여 저장
 	int totalPage=(int)Math.ceil((double)totalNotice/pageSize);
 	
-	//전달받은 페이지번호가 비상적인 경우 첫번째 페이지를 요청할 수 있는 기본값 저장
+	//전달받은 페이지번호가 비정상적인 경우 첫번째 페이지를 요청할 수 있는 기본값 저장
 	if(pageNum <= 0 || pageNum > totalPage) {
 		pageNum=1;
 	}
 	
 	//페이지번호에 대한 게시글의 시작 행번호를 계산하여 저장
-	//ex) 1Page : 1, 2Page : 11, 3Page : 21, 4Page : 31, ...
+	//ex) 1Page : 1, 2Page : 17, 3Page : 33, 4Page : 49, ...
 	int startRow=(pageNum-1)*pageSize+1;
 	
 	//페이지번호에 대한 게시글의 종료 행번호를 계산하여 저장
@@ -71,8 +68,7 @@
 	List<NoticeDTO> noticeList=NoticeDAO.getDAO().selectNoticeList(startRow, endRow, search, keyword);
 	
 	//세션에 저장된 권한 관련 정보가 저장된 속성값을 객체로 반환받아 저장
-	// => 로그인 사용자에게만 글쓰기 권한 제공
-	// => 게시글이 비밀글인 경우 로그인 사용자가 게시글 작성자이거나 관리자인 경우에만 권한 제공
+	// => 관리자에게만 글쓰기 권한 제공
 	ClientDTO loginClient=(ClientDTO)session.getAttribute("loginClient");
 	
 	//서버의 현재 날짜와 시간이 저장된 Date 객체를 생성하여 SimpleDateFormat 객체에 저장된
@@ -145,8 +141,7 @@
 		                                		<td class="board_tit">
 		                                			<%
 		                                				String url=request.getContextPath()+"/index.jsp?workgroup=board&work=notice_detail"
-		                                				+"&noticeNum="+notice.getNoticeNum()+"&pageNum"+pageNum+"&pageSize="+pageSize
-		                                				+"&search="+search+"&keyword="+keyword;
+		                                				+"&noticeNum="+notice.getNoticeNum()+"&pageNum"+pageNum+"&search="+search+"&keyword="+keyword;
 		                                			%>
 		                                			<a href="<%=url%>"><%=notice.getNoticeTitle() %></a>
 		                                		</td>
@@ -191,10 +186,10 @@
 		                            %>
 		                            <%
 										String myUrl=request.getContextPath()+"/index.jsp?workgroup=board&work=notice_list"
-											+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword;
+											+"&search="+search+"&keyword="+keyword;
 									%>
 		
-		                            <div class="pagination">
+		                            <div class="pagination" id="page_list">
 		                            	<%-- 이전 블럭으로 출력할 수 있는 링크 제공 --%>
 		                            	<% if(startPage > blockSize) { %>
 		                            		<a href="<%=myUrl%>&pageNum=<%=startPage-blockSize %>">◁</a>
@@ -206,7 +201,7 @@
 		                            		<!-- 현재 처리중인 페이지 번호와 출력된 페이지 번호가 같이 않은 경우 링크 제공 -->
 		                            		<!-- 현재 처리 중인 페이지 : pageNum, 출련된 페이지 : startPage -->
 		                            		<% if(pageNum != i) { %>
-		                            			<a href="<%=myUrl%>%pageNum=<%=i%>"><%=i %>&nbsp;</a>
+		                            			<a href="<%=myUrl%>&pageNum=<%=i%>"><%=i %>&nbsp;</a>
 		                            		<% } else { %>
 		                            			<%=i %>
 		                            		<% } %>
@@ -225,7 +220,6 @@
 			                            <form action="<%=request.getContextPath() %>/index.jsp?workgroup=board&work=notice_list" method="post">
 			                            	<%-- select 태그로 전달되는 값은 반드시 컬럼명을 전달되도록 작성 --%>
 			                            	<select name="search">
-			                            		<option value="client_name" <% if(search.equals("client_name")) { %>selected<% } %>>&nbsp;작성자&nbsp;</option>
 			                            		<option value="notice_title" <% if(search.equals("notice_title")) { %>selected<% } %>>&nbsp;제목&nbsp;</option>
 			                            	</select>
 			                            	<input type="text" class="text" name="keyword" value=<%=keyword %>>
@@ -240,12 +234,11 @@
 			</div>
 			
 		</div>
+		<div id="testboard"></div>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript">
-	$("#pageSize").change(function() {	
-		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_list"
-			+"&pageNum=<%=pageNum%>&pageSize="+$("#pageSize").val()+"&search=<%=search%>&keyword=<%=keyword%>";
-	});
+	$("#testboard").html(pageNum);
+	
 	$("#writeBtn").click(function() {	
 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_write";
 	});

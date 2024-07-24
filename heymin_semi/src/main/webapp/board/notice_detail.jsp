@@ -11,7 +11,6 @@
 
 	int noticeNum=Integer.parseInt(request.getParameter("noticeNum"));
 	String pageNum=request.getParameter("pageNum");
-	String pageSize=request.getParameter("pageSize");
 	String search=request.getParameter("search");
 	String keyword=request.getParameter("keyword");
 	
@@ -93,20 +92,19 @@
 		</div>
 	<script type="text/javascript">
 	$("#listBtn").click(function() {
-		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_list";
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_list"
+			+"&pageNum=<%=pageNum%>&search=<%=search%>&keyword=<%=keyword%>";
 	});
 	
 	$("#modifyBtn").click(function() {
 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_modify"
-			+"&noticeNum=<%=notice.getNoticeNum()%>&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>"
-			+"&search=<%=search%>&keyword=<%=keyword%>";
+			+"&noticeNum=<%=notice.getNoticeNum()%>&pageNum=<%=pageNum%>&search=<%=search%>&keyword=<%=keyword%>";
 	});
 	
 	$("#removeBtn").click(function() {
 		if(confirm("게시글을 정말로 삭제 하시겠습니까?")) {
 			location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_remove_action"
-				+"&noticeNum=<%=notice.getNoticeNum()%>&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>"
-				+"&search=<%=search%>&keyword=<%=keyword%>";
+				+"&noticeNum=<%=notice.getNoticeNum()%>&pageNum=<%=pageNum%>&search=<%=search%>&keyword=<%=keyword%>";
 		}
 	});
 	</script>

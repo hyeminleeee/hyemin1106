@@ -45,6 +45,6 @@
 	
 	NoticeDAO.getDAO().insertNotice(notice);
 	
-	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=board%work=notice_list"
-			+"&pageNum="+pageNum+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword);		
+	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=board&work=notice_list"
+			+"&pageNum="+pageNum+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword);
 %>

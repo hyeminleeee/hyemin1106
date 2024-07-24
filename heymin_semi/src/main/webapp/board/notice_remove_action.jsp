@@ -14,13 +14,12 @@
 
 	int noticeNum=Integer.parseInt(request.getParameter("noticeNum"));
 	String pageNum=request.getParameter("pageNum");
-	String pageSize=request.getParameter("pageSize");
 	String search=request.getParameter("search");
 	String keyword=request.getParameter("keyword");
 	
 	NoticeDTO notice=NoticeDAO.getDAO().selectNoticeByNum(noticeNum);
 	
-	if(notice==null){
+	if(notice == null){
 		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
 		return;
 	}
@@ -40,5 +39,5 @@
 	}
 	
 	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=board&work=notice_list"
-			+"&pageNum="+pageNum+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword);
+			+"&pageNum="+pageNum+"&search="+search+"&keyword="+keyword);
 %>

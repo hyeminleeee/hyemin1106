@@ -84,7 +84,7 @@ public class NoticeDAO extends JdbcDAO{
 				String sql="select * from (select rownum rn, temp.* from (select notice_num,notice_title"
 					+ ",notice_image,notice_date,notice_update,notice_count,notice_client,notice_status"
 					+ " from notice join client on notice_client_num=client_num where "+search+"like '%'||?||'%'"
-					+ "order by notice_num desc) temp) where rn between ? and ?";
+					+ " order by notice_num desc) temp) where rn between ? and ?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, keyword);
 				pstmt.setInt(2, startRow);
@@ -95,7 +95,6 @@ public class NoticeDAO extends JdbcDAO{
 			
 			while(rs.next()) {
 				NoticeDTO review=new NoticeDTO();
-				
 				review.setNoticeNum(rs.getInt("notice_num"));
 				review.setNoticeTitle(rs.getString("notice_title"));
 				review.setNoticeImage(rs.getString("notice_image"));
@@ -172,7 +171,7 @@ public class NoticeDAO extends JdbcDAO{
 		try {
 			con=getConnection();
 			
-			String sql="select notice_title,notice_image,notice_date,notice_count from notice where notice_num=?";
+			String sql="select notice_num,notice_title,notice_image,notice_date,notice_count,notice_status from notice where notice_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, noticeNum);
 			
@@ -180,11 +179,12 @@ public class NoticeDAO extends JdbcDAO{
 			
 			if(rs.next()) {
 				notice=new NoticeDTO();
+				notice.setNoticeNum(rs.getInt("notice_num"));
 				notice.setNoticeTitle(rs.getString("notice_title"));
 				notice.setNoticeImage(rs.getString("notice_image"));
 				notice.setNoticeDate(rs.getString("notice_date"));
 				notice.setNoticeCount(rs.getInt("notice_count"));
-				
+				notice.setNoticeStatus(rs.getInt("notice_status"));
 			}
 		} catch (SQLException e) {
 			System.out.println("[에러]selectNoticeByNum() 메소드의 SQL 오류 = "+e.getMessage());
