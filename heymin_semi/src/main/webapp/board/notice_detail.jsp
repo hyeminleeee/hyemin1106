@@ -79,7 +79,7 @@
 								</div>
 								<div class="btn_right_box">
 									<button type="button" class="btn_board_list" id="listBtn">목록</button>
-									<% if(loginClient.getClientStatus() == 9) { %>
+									<% if(loginClient != null && loginClient.getClientStatus() == 9) { %>
 									<button type="button" class="btn_board_modify" id="modifyBtn">수정</button>
 									<button type="button" class="btn_board_remove" id="removeBtn">삭제</button>
 									<% } %>
