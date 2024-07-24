@@ -12,6 +12,8 @@
 <%-- => 로그인 사용자가 게시글 작성자이거나 관리자인 경우에만 JSP 문서 요청 가능 --%>
 <%@include file="/security/login_check.jspf" %>
 <%
+	System.out.println("reviewNum="+request.getParameter("reviewNum"));
+
 	//비정상적으로 JSP 문서를 요청한 경우에 대한 응답 처리
 	if(request.getMethod().equals("GET")) {//JSP 문서를 GET 방식으로 요청한 경우
 		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");

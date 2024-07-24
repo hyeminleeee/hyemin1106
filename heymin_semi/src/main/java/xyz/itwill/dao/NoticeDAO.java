@@ -171,7 +171,8 @@ public class NoticeDAO extends JdbcDAO{
 		try {
 			con=getConnection();
 			
-			String sql="select notice_num,notice_title,notice_image,notice_date,notice_count,notice_status from notice where notice_num=?";
+			String sql="select notice_num,notice_title,notice_image,notice_date,notice_count"
+					+ ",notice_status from notice where notice_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, noticeNum);
 			

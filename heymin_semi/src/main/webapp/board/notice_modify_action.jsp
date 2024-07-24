@@ -9,7 +9,9 @@
     pageEncoding="UTF-8"%>
 <%@include file="/security/login_check.jspf" %>
 <%
-	if(request.getParameter("noticeNum")==null){
+	//System.out.println("noticeNum="+request.getParameter("noticeNum"));
+
+	if(request.getMethod().equals("GET")) {//JSP 문서를 GET 방식으로 요청한 경우
 		request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=error&work=error_400");
 		return;
 	}
@@ -21,11 +23,10 @@
 	
 	int noticeNum=Integer.parseInt(multipartRequest.getParameter("noticeNum"));
 	String pageNum=multipartRequest.getParameter("pageNum");
-	String pageSize=multipartRequest.getParameter("pageSize");
 	String search=multipartRequest.getParameter("search");
 	String keyword=multipartRequest.getParameter("keyword");
 	
-	String noticeTitle=Utility.escapeTag(multipartRequest.getParameter("noticeTItle"));
+	String noticeTitle=Utility.escapeTag(multipartRequest.getParameter("noticeTitle"));
 	
 	int noticeStatus=1;//일반글
 	if(multipartRequest.getParameter("noticeStatus") != null){//전달값이 있는 경우 - 상단고정글
@@ -49,6 +50,6 @@
 	
 	NoticeDAO.getDAO().updateNotice(notice);
 	
-	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=notice&work=notice_list"
-			+"&pageNum="+pageNum+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword);
+	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=board&work=notice_list"
+			+"&pageNum="+pageNum+"&search="+search+"&keyword="+keyword);
 %>

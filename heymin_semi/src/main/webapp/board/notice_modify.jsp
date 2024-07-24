@@ -11,9 +11,10 @@
 	
 	int noticeNum=Integer.parseInt(request.getParameter("noticeNum"));
 	String pageNum=request.getParameter("pageNum");
-	String pageSize=request.getParameter("pageSize");
 	String search=request.getParameter("search");
 	String keyword=request.getParameter("keyword");
+	
+	//System.out.println("noticeNum="+noticeNum);
 	
 	NoticeDTO notice=NoticeDAO.getDAO().selectNoticeByNum(noticeNum);
 	
@@ -43,8 +44,8 @@
 		<div>
 		<form action="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_modify_action"
 			method="post" enctype="multipart/form-data" id="noticeForm">
+			<input type="hidden" name="noticeNum" value="<%=noticeNum %>">
 			<input type="hidden" name="pageNum" value="<%=pageNum%>">
-			<input type="hidden" name="pageSize" value="<%=pageSize%>">
 			<input type="hidden" name="search" value="<%=search%>">
 			<input type="hidden" name="keyword" value="<%=keyword%>">
 		
@@ -70,7 +71,7 @@
 							<div class="btn_upload_box">
 								<input type="file" name="noticeImage" class="btn_upload"><br>
 								<% if(notice.getNoticeImage() != null) { %>
-									<div style="color: red;">이미지를 변경할 경우에만 파일을 입력해 주세요.</div>
+									<div style="color: red;">이미지를 변경할 경우에만 파일을 입력해 주세요.</div><br>
 									<img src="<%=request.getContextPath()%>/review_images/<%=notice.getNoticeImage()%>">
 								<% } %>
 							</div>
@@ -98,6 +99,6 @@
 	
 	$("#listBtn").click(function() {
 		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_list"
-			+"&pageNum=<%=pageNum%>&pageSize=<%=pageSize%>%search=<%=search%>&keyword=<%=keyword%>";
+			+"&pageNum=<%=pageNum%>&search=<%=search%>&keyword=<%=keyword%>";
 	});
 	</script>

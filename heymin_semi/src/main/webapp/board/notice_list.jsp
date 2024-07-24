@@ -141,9 +141,14 @@
 		                                		<td class="board_tit">
 		                                			<%
 		                                				String url=request.getContextPath()+"/index.jsp?workgroup=board&work=notice_detail"
-		                                				+"&noticeNum="+notice.getNoticeNum()+"&pageNum"+pageNum+"&search="+search+"&keyword="+keyword;
+		                                				+"&noticeNum="+notice.getNoticeNum()+"&pageNum="+pageNum+"&search="+search+"&keyword="+keyword;
 		                                			%>
+		                                			<% if(notice.getNoticeStatus() == 1) {//일반글 %>
 		                                			<a href="<%=url%>"><%=notice.getNoticeTitle() %></a>
+		                                			<% } else if(notice.getNoticeStatus() == 0) {//삭제글 %>
+		                                			<span class="subject_hidden">삭제글</span>
+		                                				관리자에 의해 삭제된 게시글 입니다.
+		                                			<% } %>
 		                                		</td>
 		                                		
 		                                		<!-- 게시글 작성일 출력 -->
