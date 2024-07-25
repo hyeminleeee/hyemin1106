@@ -286,7 +286,7 @@ option {
     background: #404040;
     line-height: 29px;
 }
-input[type="text"], input[type="password"] {
+input[type="text"] {
     height: 31px;
     padding: 0 5px;
     color: #333333;
@@ -296,7 +296,7 @@ input[type="text"], input[type="password"] {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-input[type="text"], input[type="password"] {
+input[type="text"] {
     padding: 0 10px;
     outline: none;
     font-size: 12px;

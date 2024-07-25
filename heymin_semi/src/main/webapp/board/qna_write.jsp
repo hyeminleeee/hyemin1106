@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%
+	String pageNum="1", pageSize="16";
+%>
+
+
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/qna_write_style.css">
-<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="css/qna_write_style.css">
+<link rel="stylesheet" href="css/common.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 
 <title>상품문의 쓰기</title>
-</head>
-<body>
+
 <div id="container">
 	<div id="contents">
         <div class="sub_content">
@@ -152,5 +157,3 @@
         </div>
 	</div>
 </div>
-</body>
-</html>

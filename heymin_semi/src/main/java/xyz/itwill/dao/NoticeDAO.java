@@ -94,17 +94,17 @@ public class NoticeDAO extends JdbcDAO{
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
-				NoticeDTO review=new NoticeDTO();
-				review.setNoticeNum(rs.getInt("notice_num"));
-				review.setNoticeTitle(rs.getString("notice_title"));
-				review.setNoticeImage(rs.getString("notice_image"));
-				review.setNoticeDate(rs.getString("notice_date"));
-				review.setNoticeUpdate(rs.getString("notice_update"));
-				review.setNoticeCount(rs.getInt("notice_count"));
-				review.setNoticeClientNum(rs.getInt("notice_client_num"));
-				review.setNoticeStatus(rs.getInt("notice_status"));
+				NoticeDTO notice=new NoticeDTO();
+				notice.setNoticeNum(rs.getInt("notice_num"));
+				notice.setNoticeTitle(rs.getString("notice_title"));
+				notice.setNoticeImage(rs.getString("notice_image"));
+				notice.setNoticeDate(rs.getString("notice_date"));
+				notice.setNoticeUpdate(rs.getString("notice_update"));
+				notice.setNoticeCount(rs.getInt("notice_count"));
+				notice.setNoticeClientNum(rs.getInt("notice_client_num"));
+				notice.setNoticeStatus(rs.getInt("notice_status"));
 								
-				noticeList.add(review);
+				noticeList.add(notice);
 			}
 		} catch (SQLException e) {
 			System.out.println("[에러]selectNoticeList() 메소드의 SQL 오류 = "+e.getMessage());

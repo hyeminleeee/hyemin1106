@@ -31,11 +31,6 @@ div {
     letter-spacing: -0.5px;
     font-weight: 400;
 }
-.date_check_box {
-    margin: 0 0 35px 0;
-    padding: 20px 20px 20px 30px;
-    border: 3px solid #eeeeee;
-}
 
 
 /* 상품문의 테이블 */
@@ -56,27 +51,25 @@ table {
     border-collapse: collapse;
     border-top: 1px solid #999999;
     text-align: center;
+    table-layout: fixed;
 }
 .board_date {
-	width: 10%;
+	width: 13%;
 }
 .board_category {
-	width: 15%;
+	width: 12%;
 }
 .board_title {
-	width: 10%;
+	width: 40%;
 }
 .board_writer {
-	width: 10%;
+	width: 12%;
 }
 .board_state {
-	width: 10%;
-}
-.board_reply_time {
-	width: 10%;
+	width: 13%;
 }
 .board_tit{
-	width: 10%;
+	width: 30%;
 	text-align: left;
 }
 thead {
@@ -91,6 +84,10 @@ tr {
     unicode-bidi: isolate;
     border-color: inherit;
 }
+.board_table_nosearch {
+	width: 100%;
+}
+
 .board_list_table th {
     padding: 10px 10px 10px 14px;
     border-bottom: 1px solid #dbdbdb;
@@ -151,7 +148,30 @@ td {
 /* 1:1문의하기 */
 .btn_right_box {
     text-align: right;
+    display: flex;
+    font-weight: bold;
+    
 }
+
+.btn_mine {
+	display: inline-block;
+    position: absolute;
+    top: 15px;
+    right: 100px;
+    min-width: 90px;
+    height: 31px;
+    margin: 0 0 0 5px;
+    padding: 0 10px 0 10px;
+    line-height: 29px;
+    color: #ffffff;
+    font-size: 12px;
+    border: 1px solid #979797;
+    background: #979797;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
 .btn_write {
     display: inline-block;
     position: absolute;
@@ -169,6 +189,6 @@ td {
     text-align: center;
     vertical-align: middle;
 }
-.write_text {
+/*.write_text {
     font-weight: bold;
-}
+}*/
