@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/notice_write_style.css">
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
@@ -21,7 +20,6 @@
 		<form action="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=notice_write_action"
 			method="post" enctype="multipart/form-data" id="noticeForm">
 			<input type="hidden" name="pageNum" value="<%=pageNum%>">
-			<input type="hidden" name="pageSize" value="<%=pageSize%>">
 			<input type="hidden" name="search" value="<%=search%>">
 			<input type="hidden" name="keyword" value="<%=keyword%>">
 		

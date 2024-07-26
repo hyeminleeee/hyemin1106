@@ -1,3 +1,4 @@
+<%@page import="xyz.itwill.dao.ClientDAO"%>
 <%@page import="xyz.itwill.dto.ClientDTO"%>
 <%@page import="xyz.itwill.dto.QnaDTO"%>
 <%@page import="xyz.itwill.dao.QnaDAO"%>
@@ -68,6 +69,8 @@
     }
 	QnaDTO qna=QnaDAO.getDAO().selectQnaByClientNum(qnaClientNum);
 	
+	//ClientDTO client=ClientDAO.getDAO().select
+	
 	//페이징 관련 정보(시작행번호, 종료행번호)를 전달받아 QNA 테이블에 저장된 행을
 	//검색하여 List 객체를 반환하는 QnaDAO 클래스의 메소드 호출
 	List<QnaDTO> qnaList=QnaDAO.getDAO().selectQnaList(startRow, endRow);
@@ -105,10 +108,12 @@
                         <h2>상품문의</h2>
                     </div>
                     <div class="btn_right_box">
+                    <% if(loginClient != null) { %>
                     	<button type="button" class="btn_mine" id="mineBtn">내가 쓴 글 보기</button>
                         <button type="button" class="btn_write" id="writeBtn" >
                             <strong class="write_text" >1:1 문의하기</strong>
                         </button>
+                    <% } %>
                     </div>
                     <div class="board_zone_con">
                         <div class="board_zone_list">
@@ -152,20 +157,19 @@
 		                                            </td>
 		                                            
 		                                            <td class="board_writer">
-														<%
-									                        String clientName = qnaItem.getClientName();
-									                        if (clientName != null && clientName.length() > 1) {
-									                            String maskedName = clientName.substring(0, 1) + "*" + clientName.substring(2);%>
-									                            <%=maskedName %>
-									                       <% } else { %>
-									                             <%=clientName %>
-									                     <% } %>
+		                                            <% String writerName=loginClient.getClientName();
+		                                            	if(writerName != null && writerName.length() > 1) { %>
+		                                            <% String maskedName=writerName.substring(0,1) + "*" + writerName.substring(2); %>
+		                                            	<%=maskedName %>
+		                                            <% } else { %>
+		                                            	<%=writerName %>
+		                                            <% } %>
 													</td>
 		                                            <td class="board_state">
 			                                            <% if(qnaItem.getQnaReply() != null) { %>
-			                                            답변완료
+			                                            	답변완료
 			                                            <% } else { %>
-			                                            답변대기
+			                                            	답변대기
 			                                            <% } %>
 		                                            </td>
 		                                        </tr>                                        
@@ -190,20 +194,37 @@
                             	}
                             %>
                             <%
-                            	String myUrl=request.getContextPath()+"/index.jsp?workgroup=board&work=qna_list";
-                            %>
-                            
+								String myUrl=request.getContextPath()+"/index.jsp?workgroup=board&work=qna_list";
+							%>
+
                             <div class="pagination" id="page_list">
-                            <% if(totalPage > 5) { %>
-                            	<% if(startPage > blockSize) { %>
-									<a href="<%=myUrl %>&pageNum=<%=startPage-blockSize %>">◁</a>
-								<% } else { %>
-									◁
-								<% } %>
-							<% } %>
-								<% for(int i = startPage; i <= endPage; i++) { %>
-									<a href="#">1</a>
-							   <a href="#">▷</a>
+                            	<%-- 이전 블럭으로 출력할 수 있는 링크 제공 --%>
+                            	<% if(totalPage > 5) { %>
+	                            	<% if(startPage > blockSize) { %>
+	                            		<a href="<%=myUrl%>&pageNum=<%=startPage-blockSize %>">◁</a>
+	                            	<% } else { %>
+	                            		◁
+	                            	<% } %>
+                            	<% } %>
+                            	
+                            	<% for(int i = startPage; i <= endPage; i++) { %>
+                            		<!-- 현재 처리중인 페이지 번호와 출력된 페이지 번호가 같이 않은 경우 링크 제공 -->
+                            		<!-- 현재 처리 중인 페이지 : pageNum, 출련된 페이지 : startPage -->
+                            		<% if(pageNum != i) { %>
+                            			<a href="<%=myUrl%>&pageNum=<%=i%>"><%=i %>&nbsp;</a>
+                            		<% } else { %>
+                            			<%=i %>
+                            		<% } %>
+                            	<% } %>
+                            	
+                            	<!--  다음 블록을 출력할 수 있는 링크 제공 -->
+                            	<% if(totalPage > 5){ %>
+	                            	<% if(endPage != totalPage) { %>
+	                            		<a href="<%=myUrl%>&pageNum=<%=startPage+blockSize%>">▷</a>
+	                            	<% } else { %>
+	                            		▷
+	                            	<% } %>
+                            	<% } %>
                             </div>
                             
                         </div>
@@ -211,7 +232,7 @@
                 </div>
             </div>
         </div>
-    <script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript">
 	
 	$("#writeBtn").click(function() {

@@ -115,35 +115,15 @@ td {
 
 /* 페이지 */
 .pagination {
-    margin: 10px 0 0 0;
-    display: flex;
+    margin: 20px 0 0;
+    padding: 20px 0 0;
+    text-align: center;
+    color: #333;
+    font-size: 16px;
+    font-weight: 300;
     
 }
-.pagination ul {
-    padding: 10px 0 30px;
-    text-align: center;
-}
-.pagination .on {
-    color: #333;
-    font-weight: bold;
-}
-.pagination .on {
-    color: #404040;
-    border: 0;
-}
-.pagination li {
-    display: inline-block;
-    min-width: 26px;
-    vertical-align: middle;
-}
-.pagination li.on span {
-    color: #404040;
-    font-weight: 400;
-}
-.pagination li.on span {
-    background: none;
-    border-radius: 0;
-}
+
 
 /* 1:1문의하기 */
 .btn_right_box {

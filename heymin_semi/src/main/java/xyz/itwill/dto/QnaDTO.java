@@ -171,11 +171,7 @@ public class QnaDTO {
 	public void setProductName(String productName) {
 		ProductName = productName;
 	}
-	
-	
-	
-	
-	
-	
+
+
 	
 }

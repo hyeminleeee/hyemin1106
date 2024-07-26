@@ -201,10 +201,12 @@
 		
 		                            <div class="pagination" id="page_list">
 		                            	<%-- 이전 블럭으로 출력할 수 있는 링크 제공 --%>
-		                            	<% if(startPage > blockSize) { %>
-		                            		<a href="<%=myUrl%>&pageNum=<%=startPage-blockSize %>">◁</a>
-		                            	<% } else { %>
-		                            		◁
+		                            	<% if(totalPage > 5) { %>
+			                            	<% if(startPage > blockSize) { %>
+			                            		<a href="<%=myUrl%>&pageNum=<%=startPage-blockSize %>">◁</a>
+			                            	<% } else { %>
+			                            		◁
+			                            	<% } %>
 		                            	<% } %>
 		                            	
 		                            	<% for(int i = startPage; i <= endPage; i++) { %>
@@ -218,10 +220,12 @@
 		                            	<% } %>
 		                            	
 		                            	<!--  다음 블록을 출력할 수 있는 링크 제공 -->
-		                            	<% if(endPage != totalPage) { %>
-		                            		<a href="<%=myUrl%>&pageNum=<%=startPage+blockSize%>">▷</a>
-		                            	<% } else { %>
-		                            		▷
+		                            	<% if(totalPage > 5) { %>
+			                            	<% if(endPage != totalPage) { %>
+			                            		<a href="<%=myUrl%>&pageNum=<%=startPage+blockSize%>">▷</a>
+			                            	<% } else { %>
+			                            		▷
+			                            	<% } %>
 		                            	<% } %>
 		                            </div>
 		                            

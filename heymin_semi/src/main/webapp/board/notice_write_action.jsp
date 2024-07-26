@@ -21,7 +21,6 @@
 	//파일 이름 충돌 시 새로운 이름을 생성하여 충돌 방지
 	
 	String pageNum=multipartRequest.getParameter("pageNum");
-	String pageSize=multipartRequest.getParameter("pageSize");
 	String search=multipartRequest.getParameter("search");
 	String keyword=multipartRequest.getParameter("keyword");
 	
@@ -46,5 +45,5 @@
 	NoticeDAO.getDAO().insertNotice(notice);
 	
 	request.setAttribute("returnUrl", request.getContextPath()+"/index.jsp?workgroup=board&work=notice_list"
-			+"&pageNum="+pageNum+"&pageSize="+pageSize+"&search="+search+"&keyword="+keyword);
+			+"&pageNum="+pageNum+"&search="+search+"&keyword="+keyword);
 %>

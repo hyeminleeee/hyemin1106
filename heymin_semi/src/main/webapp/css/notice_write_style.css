@@ -62,12 +62,6 @@ body {
     align-items: center;
 }
 
-
-.btn_upload em {
-    font-style: normal;
-    color: #333;
-}
-
 .btn_gray_list {
     display: flex;
     align-items: center;

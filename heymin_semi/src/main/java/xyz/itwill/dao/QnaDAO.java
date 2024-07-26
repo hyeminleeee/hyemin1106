@@ -140,6 +140,59 @@ public class QnaDAO extends JdbcDAO  {
 	    }
 	    return qnaList;
 	}
+	
+	public int insertQna(QnaDTO qna) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rows=0;
+		try {
+			con=getConnection();
+			
+			String sql="insert into qna values(?,?,?,?,?,?,sysdate,null,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, qna.getQnaNum());
+			pstmt.setInt(2, qna.getQnaClientNum());
+			pstmt.setString(3, qna.getQnaSubject());
+			pstmt.setString(4, qna.getQnaTitle());
+			pstmt.setString(5, qna.getQnaContent());
+			pstmt.setString(6, qna.getQnaImage());
+			pstmt.setString(7, qna.getQnaIp());
+			pstmt.setString(8, qna.getQnaReply());
+			pstmt.setInt(9, qna.getQnaProductNum());
+			pstmt.setInt(10, qna.getQnaStatus());
+			
+			rows=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("[에러]insertQna() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt);
+		}
+		return rows;
+	}
+	
+	public int selectQnaNextNum() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int nextNum=0;
+		try {
+			con=getConnection();
+			
+			String sql="select qna_seq.nextval from dual";
+			pstmt=con.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				nextNum=rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("[에러]selectQnaNextNum() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return nextNum;
+	}
 }
 
 

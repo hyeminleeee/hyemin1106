@@ -123,7 +123,7 @@ option {
     padding: 0px 2px 1px;
     white-space: nowrap;
 }
-input[type="text"], input[type="password"] {
+input[type="text"] {
     height: 31px;
     padding: 0 10px;
     color: #333333;
@@ -180,33 +180,17 @@ textarea:focus {
     height: 200px;
     
 }*/
+
 .file_upload_sec {
-    overflow: hidden;
-    width: 100%;
-    margin: 5px 0 5px 0;
+    display: flex;
+    align-items: center;
 }
-.file_upload_sec .file_text {
-    float: left;
-    width: 230px;
-}
-.file_upload_sec .btn_upload_box {
-    overflow: hidden;
-    position: relative;
-    float: left;
-    width: 150px;
-    padding: 0 0 0 6px;
-}
-.file_upload_sec .btn_upload_box .btn_upload {
-    width: 70px;
-    height: 31px;
-    color: #fff;
-    border: 1px solid #979797;
-    background: #979797;
-    text-align: center;
-}
-.file_upload_sec .btn_upload_box .btn_gray_big {
-    width: 62px;
-}
+
+/*.btn_upload_box {
+    display: flex;
+    align-items: center;
+}*/
+
 .btn_gray_list .btn_gray_big {
     height: 31px;
     background-position: 0 -140px;
