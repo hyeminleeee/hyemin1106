@@ -59,7 +59,7 @@ public class QnaDAO extends JdbcDAO  {
 			
 			String sql="select qna_num,qna_client_num,qna_subject,qna_title,qna_content,"
 					+"qna_image,qna_date,qna_update,qna_ip,qna_reply,"
-					+"qna_product_num,qna_status from qna where qna_client_num=?";
+					+"qna_product_num,qna_status,qna_writer from qna where qna_client_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, qnaClientNum);
 			
@@ -79,6 +79,7 @@ public class QnaDAO extends JdbcDAO  {
 				qna.setQnaReply(rs.getString("qna_reply"));
 				qna.setQnaProductNum(rs.getInt("qna_product_num"));
 				qna.setQnaStatus(rs.getInt("qna_status"));
+				qna.setQnaWriter(rs.getString("qna_writer"));
 			}
 		} catch (SQLException e) {
 			System.out.println("[에러]selectQnaByClientNum() 메소드의 SQL 오류 = "+e.getMessage());
@@ -101,12 +102,12 @@ public class QnaDAO extends JdbcDAO  {
 	                   + " select qna_num, qna_client_num, qna_subject, qna_title, "
 	                   + " qna_content, qna_image, qna_date, qna_update, "
 	                   + " qna_ip, qna_reply, qna_product_num, "
-	                   + " qna_status,client_name,product_name from qna join "
+	                   + " qna_status,client_name,product_name,qna_writer from qna join "
 	                   + "client on qna_client_num = client_num "
 	                   + " join product on qna_product_num = product_num "
 	                   + " order by qna_num desc"
 	                   + " ) temp where rownum <= ?"
-	                   + ") where rn > ?";
+	                   + ") where rn >= ?";
 	        
 	        pstmt = con.prepareStatement(sql);
 	        pstmt.setInt(1, endRow);
@@ -130,6 +131,7 @@ public class QnaDAO extends JdbcDAO  {
 	            qna.setQnaStatus(rs.getInt("qna_status"));
 	            qna.setClientName(rs.getString("client_name"));
 	            qna.setProductName(rs.getString("product_name"));
+	            qna.setQnaWriter(rs.getString("qna_writer"));
 	            
 	            qnaList.add(qna);
 	        }
@@ -148,7 +150,7 @@ public class QnaDAO extends JdbcDAO  {
 		try {
 			con=getConnection();
 			
-			String sql="insert into qna values(?,?,?,?,?,?,sysdate,null,?,?,?,?)";
+			String sql="insert into qna values(?,?,?,?,?,?,sysdate,null,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, qna.getQnaNum());
 			pstmt.setInt(2, qna.getQnaClientNum());
@@ -160,6 +162,7 @@ public class QnaDAO extends JdbcDAO  {
 			pstmt.setString(8, qna.getQnaReply());
 			pstmt.setInt(9, qna.getQnaProductNum());
 			pstmt.setInt(10, qna.getQnaStatus());
+			pstmt.setString(11, qna.getQnaWriter());
 			
 			rows=pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -193,6 +196,48 @@ public class QnaDAO extends JdbcDAO  {
 		}
 		return nextNum;
 	}
+	
+	public QnaDTO selectQnaByNum(int qnaNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		QnaDTO qna=null;
+		try {
+			con=getConnection();
+			
+			String sql="select qna_num,qna_client_num,qna_subject,qna_title,qna_content,"
+					+ "qna_image,qna_date,qna_update,qna_ip,qna_reply,"
+					+ "qna_product_num,qna_status,qna_writer from qna where qna_num=?";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, qnaNum);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				qna=new QnaDTO();
+				qna.setQnaNum(rs.getInt("qna_num"));
+				qna.setQnaClientNum(rs.getInt("qna_client_num"));
+				qna.setQnaSubject(rs.getString("qna_subject"));
+				qna.setQnaTitle(rs.getString("qna_title"));
+				qna.setQnaContent(rs.getString("qna_content"));
+				qna.setQnaImage(rs.getString("qna_image"));
+				qna.setQnaDate(rs.getString("qna_date"));
+				qna.setQnaUpdate(rs.getString("qna_update"));
+				qna.setQnaIp(rs.getString("qna_ip"));
+				qna.setQnaReply(rs.getString("qna_reply"));
+				qna.setQnaProductNum(rs.getInt("qna_product_num"));
+				qna.setQnaStatus(rs.getInt("qna_status"));
+				qna.setQnaWriter(rs.getString("qna_writer"));
+			}
+		} catch (SQLException e) {
+			System.out.println("[에러]selectQnaByNum() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return qna;
+	}
+	
 }
 
 

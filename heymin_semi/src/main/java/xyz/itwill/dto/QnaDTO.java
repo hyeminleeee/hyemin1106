@@ -38,6 +38,7 @@ QNA_IP                   VARCHAR2(20)            - 회원 ip 주소
 QNA_REPLY                VARCHAR2(4000)   - 답변 
 QNA_PRODUCT_NUM          NUMBER        - 상품번호
 QNA_STATUS               NUMBER(1)            - 글상태(0:삭제글, 1:비밀글 - 모든 글은 비공개)
+QNA_WRITER					VARCHAR2(50)	  - 작성자이름
 */
 
 public class QnaDTO {
@@ -55,6 +56,7 @@ public class QnaDTO {
 	private int qnaStatus;
 	private String ClientName;
 	private String ProductName;
+	private String qnaWriter;
 	
 	public QnaDTO() {
 		// TODO Auto-generated constructor stub
@@ -171,6 +173,16 @@ public class QnaDTO {
 	public void setProductName(String productName) {
 		ProductName = productName;
 	}
+
+	public String getQnaWriter() {
+		return qnaWriter;
+	}
+
+	public void setQnaWriter(String qnaWriter) {
+		this.qnaWriter = qnaWriter;
+	}
+	
+	
 
 
 	

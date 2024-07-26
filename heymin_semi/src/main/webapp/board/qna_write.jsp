@@ -1,18 +1,12 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="xyz.itwill.dto.ClientDTO"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/security/login_check.jspf"%>
 <%
 	String pageNum="1", pageSize="16";
 
-	// 세션에서 로그인한 사용자 정보를 가져옵니다.
-	ClientDTO loginClient = (ClientDTO)session.getAttribute("loginClient");
-	
-	// 로그인한 회원의 이름을 가져옵니다.
-	String clientName = "";
-	if (loginClient != null) {
-		clientName = loginClient.getClientName();
-	}
 %>
 
 <meta charset="UTF-8">
@@ -52,21 +46,30 @@
 													<div class="category_select">
 														<select class="tune" id="category" name="qnaSubject" style="width: 127px;">
 															<option>문의내용</option>
-															<option value="상품">상품</option>
-															<option value="배송">배송</option>
-															<option value="반품/환불">반품/환불</option>
-															<option value="교환/변경">교환/변경</option>
-															<option value="기타">기타</option>
+															<option>상품</option>
+															<option>배송</option>
+															<option>반품/환불</option>
+															<option>교환/변경</option>
+															<option>기타</option>
 														</select>
+														<input type="checkbox" name="qnaStatus" value="2">비밀글
 													</div>
 												</td>
 											</tr>
 											<tr>
 												<th scope="row" id="qna_writer">작성자</th>
 												<td>
-													<span><%=loginClient.getClientName() %></span>
+													<input type="text" name="qnaWriter" >
 												</td>
 											</tr>
+											<tr>
+												<th scope="row">상품 선택</th>
+												<td>
+													<input type="text" name="qnaProductNum">
+												</td>
+											</tr>
+											
+											<!-- 
 											<tr>
 												<th scope="row">상품 선택</th>
 												<td>
@@ -76,6 +79,9 @@
 													</div>
 												</td>
 											</tr>
+											 -->
+											 
+											 
 											<tr>
 												<th scope="row">제목</th>
 												<td>
@@ -85,9 +91,6 @@
 											<tr>
 												<th scope="row">본문</th>
 												<td class="write_editor">
-													<div class="form_element">
-														<em>해당글은 비밀글로만 작성이 됩니다.</em>
-													</div>
 													<textarea class="content_editor" name="qnaContent" cols="30" rows="10"></textarea>
 												</td>
 											</tr>

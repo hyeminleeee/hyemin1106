@@ -4,8 +4,6 @@
 <%@page import="xyz.itwill.dao.QnaDAO"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="xyz.itwill.dto.NoticeDTO"%>
-<%@page import="xyz.itwill.dto.MemberDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="xyz.itwill.dao.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -108,12 +106,10 @@
                         <h2>상품문의</h2>
                     </div>
                     <div class="btn_right_box">
-                    <% if(loginClient != null) { %>
                     	<button type="button" class="btn_mine" id="mineBtn">내가 쓴 글 보기</button>
                         <button type="button" class="btn_write" id="writeBtn" >
                             <strong class="write_text" >1:1 문의하기</strong>
                         </button>
-                    <% } %>
                     </div>
                     <div class="board_zone_con">
                         <div class="board_zone_list">
@@ -146,18 +142,25 @@
 		                                            <% } %>
 		                                            </td>
 		                                            
-		                                            <td class="board_category"><%=qnaItem.getQnaSubject() %></td>
+		                                            <td class="board_category">[<%=qnaItem.getQnaSubject() %>]</td>
 		                                            
 		                                            <td class="board_tit">
 		                                            	<%
 		                                            		String url=request.getContextPath()+"/index.jsp?workgroup=board&work=qna_detail"
 		                                            		 +"&qnaNum="+qnaItem.getQnaNum()+"&pageNum="+pageNum;
 		                                            	%>
-		                                            	<a href="<%=url %>"><%=qnaItem.getQnaTitle() %></a>
+		                                            	<% if(qnaItem.getQnaStatus() == 1) { %>
+		                                            		<a href="<%=url %>"><%=qnaItem.getQnaTitle() %></a>
+		                                            	<% } else if(qnaItem.getQnaStatus() == 2) { %>
+		                                            		<img src="mages/icon_board_secret.png">
+		                                            		<a href="<%=url %>">비공개 글입니다.</a>
+		                                            	<% } else {%>
+		                                            	 작성자 또는 관리자만 확인 가능합니다.
+		                                            	<% } %>
 		                                            </td>
 		                                            
 		                                            <td class="board_writer">
-		                                            <% String writerName=loginClient.getClientName();
+		                                            <% String writerName=qnaItem.getQnaWriter();
 		                                            	if(writerName != null && writerName.length() > 1) { %>
 		                                            <% String maskedName=writerName.substring(0,1) + "*" + writerName.substring(2); %>
 		                                            	<%=maskedName %>
@@ -234,10 +237,32 @@
         </div>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript">
-	
-	$("#writeBtn").click(function() {
-		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=qna_write";
-	});
+    // JSP를 통해 세션에서 로그인 상태를 가져옵니다.
+    var loginClient = <%= (session.getAttribute("loginClient") != null) %>;
+
+    // 글쓰기 버튼 클릭 이벤트
+    $("#writeBtn").click(function() {
+        if (loginClient === false) {
+            // 로그인 상태가 아닐 때 알림 메시지 표시
+            alert("로그인 후 이용해 주세요.");
+            // 로그인 페이지로 리다이렉트 (선택사항)
+            window.location.href = "<%=request.getContextPath()%>/index.jsp?workgroup=client&work=client_login";
+        } else {
+            // 로그인 상태일 때 글쓰기 페이지로 이동
+            location.href = "<%=request.getContextPath()%>/index.jsp?workgroup=board&work=qna_write";
+        }
+    });
+    $("#mineBtn").click(function() {
+        if (loginClient === false) {
+            // 로그인 상태가 아닐 때 알림 메시지 표시
+            alert("로그인 후 이용해 주세요.");
+            // 로그인 페이지로 리다이렉트 (선택사항)
+            window.location.href = "<%=request.getContextPath()%>/index.jsp?workgroup=client&work=client_login";
+        } else {
+            // 로그인 상태일 때 글쓰기 페이지로 이동
+            location.href = "<%=request.getContextPath()%>/index.jsp?workgroup=board&work=qna_write";
+        }
+    });
 	</script>
 </body>
 </html>
