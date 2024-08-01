@@ -26,7 +26,7 @@
 	String qnaSubject=multipartRequest.getParameter("qnaSubject");
 	
 	int qnaStatus=1;
-	if(multipartRequest.getParameter("qnsStatus") != null) {
+	if(multipartRequest.getParameter("qnaStatus") != null) {
 		qnaStatus=Integer.parseInt(multipartRequest.getParameter("qnaStatus"));
 	}
 	

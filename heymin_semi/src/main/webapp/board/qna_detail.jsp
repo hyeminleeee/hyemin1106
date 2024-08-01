@@ -84,21 +84,27 @@
 								</div>
 								<div class="board_view_qa">
 									<div class="view_question_box">
-										<strong class="view_question_box">Q.<br>
-										<%=qna.getQnaReply() %>
-										</strong>
+										<strong>답변.<br></strong>
+											<p>
+											<% if(qna.getQnaReply() != null ) { %>
+											<%=qna.getQnaReply().replace("\n", "<br>") %>
+											<% }  %>
+											</p>
 										<div class="seem_cont"></div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="btn_right_box">
-							<button type="button" class="btn_board_del" id="removeBtn">
-								<strong>삭제</strong>
-							</button>
-							<button type="button" class="btn_board_edit" id="modifyBtn">
-								<strong>수정</strong>
-							</button>
+					<% if (loginClient != null && (loginClient.getClientNum() == qna.getQnaClientNum() || loginClient.getClientStatus() == 9)) { %>
+					    <!-- 내가 쓴 글일 때 또는 관리자일 때 버튼 활성화 -->
+					    <button type="button" class="btn_board_del" id="removeBtn">
+					        <strong>삭제</strong>
+					    </button>
+					    <button type="button" class="btn_board_edit" id="modifyBtn">
+					        <strong>수정</strong>
+					    </button>
+					<% } %>
 							<button type="button" class="btn_board_list"  id="listBtn">
 								<strong>목록</strong>
 							</button>
@@ -114,8 +120,16 @@
 				+"&pageNum=<%=pageNum%>";
 	});
 	$("#removeBtn").click(function() {
-		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=qna_remove_action";
+		if(confirm("게시글을 정말로 삭제 하시겠습니까?")) {
+			location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=qna_remove_action"
+					+"&qnaNum=<%=qnaNum%>&pageNum=<%=pageNum%>";
+		}
 	});
+	$("#modifyBtn").click(function() {
+		location.href="<%=request.getContextPath()%>/index.jsp?workgroup=board&work=qna_modify"
+				+"&qnaNum=<%=qnaNum%>&pageNum=<%=pageNum%>";
+	});
+	
 	</script>
 </body>
 </html>

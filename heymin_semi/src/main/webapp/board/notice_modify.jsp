@@ -72,7 +72,7 @@
 								<input type="file" name="noticeImage" class="btn_upload"><br>
 								<% if(notice.getNoticeImage() != null) { %>
 									<div style="color: red;">이미지를 변경할 경우에만 파일을 입력해 주세요.</div><br>
-									<img src="<%=request.getContextPath()%>/review_images/<%=notice.getNoticeImage()%>">
+									<img src="<%=request.getContextPath()%>/notice_images/<%=notice.getNoticeImage()%>">
 								<% } %>
 							</div>
 						</div>
@@ -81,7 +81,7 @@
 			</table>
 			<div class="btn_center_box">
 				<button type="button" class="btn_before" id="listBtn">이전</button>
-				<button type="submit" class="btn_write_ok" id="saveBtn">저장</button>
+				<button type="submit" class="btn_write_ok" id="saveBtn">수정</button>
 			</div>
 		</form>
 		</div>

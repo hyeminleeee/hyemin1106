@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jdt.internal.compiler.ast.ReturnStatement;
+
 import xyz.itwill.dto.NoticeDTO;
 import xyz.itwill.dto.QnaDTO;
 
@@ -49,44 +51,67 @@ public class QnaDAO extends JdbcDAO  {
 		return count;
 	}
 	
-	public QnaDTO selectQnaByClientNum(int qnaClientNum) {
+	public int selectQnaTotalByClientNum(int qnaClientNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		QnaDTO qna=null;
+		int rows=0;
 		try {
 			con=getConnection();
 			
-			String sql="select qna_num,qna_client_num,qna_subject,qna_title,qna_content,"
-					+"qna_image,qna_date,qna_update,qna_ip,qna_reply,"
-					+"qna_product_num,qna_status,qna_writer from qna where qna_client_num=?";
+			String sql="select count(*) from qna where qna_client_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, qnaClientNum);
 			
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
-				qna=new QnaDTO();
-				qna.setQnaNum(rs.getInt("qna_num"));
-				qna.setQnaClientNum(rs.getInt("qna_client_num"));
-				qna.setQnaSubject(rs.getString("qna_subject"));
-				qna.setQnaTitle(rs.getString("qna_title"));
-				qna.setQnaContent(rs.getString("qna_content"));
-				qna.setQnaImage(rs.getString("qna_image"));
-				qna.setQnaDate(rs.getString("qna_date"));
-				qna.setQnaUpdate(rs.getString("qna_update"));
-				qna.setQnaIp(rs.getString("qna_ip"));
-				qna.setQnaReply(rs.getString("qna_reply"));
-				qna.setQnaProductNum(rs.getInt("qna_product_num"));
-				qna.setQnaStatus(rs.getInt("qna_status"));
-				qna.setQnaWriter(rs.getString("qna_writer"));
+				rows=rs.getInt(1);
 			}
+			
 		} catch (SQLException e) {
-			System.out.println("[에러]selectQnaByClientNum() 메소드의 SQL 오류 = "+e.getMessage());
+			System.out.println("[에러]selectQnaTotalByClientNum() 메소드의 SQL 오류 = "+e.getMessage());
 		} finally {
 			close(con, pstmt, rs);
 		}
-		return qna;
+		return rows;
+	}
+	
+	public List<QnaDTO> selectQnaListByClientNum(int clientNum) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<QnaDTO> qnaList = new ArrayList<>();
+        try {
+			con=getConnection();
+			
+			String sql="select * from  qna where qna_client_num=? order by qna_num desc";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, clientNum);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				QnaDTO qna=new QnaDTO();
+				qna.setQnaNum(rs.getInt("qna_num"));
+				qna.setQnaClientNum(rs.getInt("qna_client_num"));
+                qna.setQnaSubject(rs.getString("qna_subject"));
+                qna.setQnaStatus(rs.getInt("qna_status"));
+                qna.setQnaProductNum(rs.getInt("qna_product_num"));
+                qna.setQnaWriter(rs.getString("qna_writer"));
+                qna.setQnaTitle(rs.getString("qna_title"));
+                qna.setQnaContent(rs.getString("qna_content"));
+                qna.setQnaReply(rs.getString("qna_reply"));
+                qna.setQnaImage(rs.getString("qna_image"));
+                qna.setQnaDate(rs.getString("qna_date"));
+                qna.setQnaIp(rs.getString("qna_ip"));
+                qnaList.add(qna);
+			}
+		} catch (SQLException e) {
+	        System.out.println("[에러]selectQnaListByClientNum() 메소드의 SQL 오류 = " + e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+        return qnaList;
 	}
 	
 	public List<QnaDTO> selectQnaList(int startRow, int endRow) {
@@ -238,6 +263,55 @@ public class QnaDAO extends JdbcDAO  {
 		return qna;
 	}
 	
+	public int deleteQna(int qnaNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rows=0;
+		try {
+			con=getConnection();
+			
+			String sql="delete from qna where qna_num= ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, qnaNum);
+			
+			rows=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("[에러]deleteQna() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt);
+		}
+		return rows;
+	} 
+	
+	public int updateQna(QnaDTO qna) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rows=0;
+		try {
+			con=getConnection();
+			
+			String sql="update qna set qna_subject=?,qna_status=?,qna_product_num=?,"
+					+ "qna_writer=?,qna_title=?,qna_content=?,"
+					+"qna_update=sysdate,qna_reply=?,qna_image=? where qna_num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, qna.getQnaSubject());
+			pstmt.setInt(2, qna.getQnaStatus());
+			pstmt.setInt(3, qna.getQnaProductNum());
+			pstmt.setString(4, qna.getQnaWriter());
+			pstmt.setString(5, qna.getQnaTitle());
+			pstmt.setString(6, qna.getQnaContent());
+			pstmt.setString(7, qna.getQnaReply());
+			pstmt.setString(8, qna.getQnaImage());
+			pstmt.setInt(9, qna.getQnaNum());
+			
+			rows=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("[에러]updateQna() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt);
+		}
+		return rows;
+	}
 }
 
 

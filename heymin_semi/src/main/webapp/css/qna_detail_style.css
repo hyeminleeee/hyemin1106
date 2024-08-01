@@ -90,6 +90,13 @@ strong {
     color: #000;  /* 텍스트 색상 확인 */
     font-size: 14px;  /* 적절한 크기로 설정 */
 }
+.view_select_item_img img {
+    max-width: 100%; /* 이미지를 컨테이너 너비에 맞게 조정 */
+    height: auto; /* 비율에 맞게 높이를 자동 조정 */
+    display: block; /* 이미지 하단의 여백 제거 */
+    margin: 0 auto; /* 가운데 정렬 (필요시) */
+    object-fit: cover; /* 이미지를 컨테이너에 맞게 잘라내기 (필요시) */
+}
 .view_goods_select {
     margin: 1px 0 0 0;
 }

@@ -47,7 +47,6 @@
 		<%--<%@include file="header.jspf" %> --%>
 		<%--<%@include file="header_admin.jspf" %>--%>
 		 <jsp:include page="<%=headerPath %>"/>
-		
 		<div id="mAticle" class="cont_article<%if(workgroup=="main"&&work=="main_page"){%> main<%}%>">
 			<jsp:include page="<%=contentPath %>"/>		
 			<%
