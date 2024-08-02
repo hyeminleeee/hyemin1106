@@ -15,11 +15,11 @@ public class LogoutModel implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		session.invalidate();//세션 초기화(로그인 정보 초기화)
+		session.invalidate();
 		
 		ActionForward actionForward=new ActionForward();
 		actionForward.setForward(false);
-		actionForward.setPath(request.getContextPath()+"/loginform.do");
+		actionForward.setPath("/loginform.do");
 		return actionForward;
 	}
 
