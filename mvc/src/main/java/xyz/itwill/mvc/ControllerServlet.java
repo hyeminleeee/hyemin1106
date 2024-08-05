@@ -61,7 +61,7 @@ public class ControllerServlet extends HttpServlet {
 		// => Properties 객체 : Properties 파일의 이름(Key)과 값(Value)를 엔트리로 저장하기 위한 콜렉션 객체
 		Properties properties=new Properties();
 		
-		//Properties 파일의 시스템 경로를 반환받아 저장
+		//Properties 파일(웹자원)의 시스템 경로를 반환받아 저장
 		//String configFilePath=config.getServletContext().getRealPath("/WEB-INF/model.properties");
 		//ServletConfig.getInitParameter(String name) : [web.xml] 파일의 init-param 엘리먼트로
 		//제공된 값을 읽어와 반환하는 메소드
