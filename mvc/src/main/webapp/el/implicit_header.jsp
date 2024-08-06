@@ -15,6 +15,8 @@
 		매개변수로 전달받은 이름의 값을 반환하는 메소드 --%>
 		<li>현재 접속중인 서버 = <%=request.getHeader("host") %></li>
 		<li>클라이언트 브라우저의 종류 = <%=request.getHeader("user-Agent") %></li>
+		<%-- request.getHeaders(String name) : 리퀘스트 메세지의 머릿부에 저장된 값 중
+		매개변수로 전달받은 이름의 값들을 반환하는 메소드 --%>
 		<li>몸체부로 전달 가능한 문서의 종류 = <%=request.getHeaders("accept").nextElement() %></li>
 	</ul>
 	<h2>EL 사용</h2>

@@ -12,8 +12,8 @@
 	//객체로 반환받아 사용 가능
 	request.setAttribute("member", member);
 	
-	//포워드 이동 : 현재 웹프로그램의 스레드를 다른 웹프로그램으로 이동하여 명령을 실행해
-	//응답 처리하기 위한 기능을 제공
+	//포워드 이동 : 현재 웹프로그램의 스레드를 다른 웹프로그램으로 이동하여 명령(응답)을 
+	//실행하기 위한 기능을 제공
 	// => 스레드가 이동되는 웹프로그램에게 현재 웹프로그램의 request 객체와 response 객체 전달
 	//request.getRequestDispatcher("member_non_el.jsp").forward(request, response);
 	request.getRequestDispatcher("member_el.jsp").forward(request, response);

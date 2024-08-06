@@ -23,7 +23,5 @@ NullPointerException 미발생 --%>
 	<p>회원의 이름 = ${member["name"]}</p>
 	<p>회원의 자동차(모델명) = ${member["car"]["modelName"]}</p>
 	<p>회원의 자동차(색상) = ${member["car"]["carColor"]}</p>
-	
-	
 </body>
 </html>
