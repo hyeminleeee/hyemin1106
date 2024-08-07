@@ -84,7 +84,7 @@ td {
 			<td>1</td>
 
 			<%-- 게시글 제목 출력 --%>
-			<td class="subject"><%=request.get %></td>
+			<td class="subject"><%= %></td>
 
 			<td>회원이름</td>
 			

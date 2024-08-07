@@ -10,7 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 //필터(Filter) : 클라이언트 요청에 대한 웹프로그램 실행 전 또는 후에 실행될 명령을 제공하기 위한 기능
-// => WAS 프로그램에 의해 관리되며 XSS 방어, 인코딩 변환 처리, 요청 대한 인증 처리, 권한 검사 등의 명령 실행
+// => WAS 프로그램에 의해 관리되며 XSS 방어, 인코딩 변환 처리, 요청에 대한 인증 처리, 권한 검사 등의 명령 실행
 
 //필터 클래스 : 요청 웹프로그램 실행 전에 객체로 생성될 클래스
 // => Filter 인터페이스를 상속받아 작성 - doFilter() 메소드를 오버라이드 선언
