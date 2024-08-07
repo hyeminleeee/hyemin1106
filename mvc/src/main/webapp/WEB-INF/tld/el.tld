@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- TLD(Tag Library Description) 파일 : EL 함수 또는 커스텀 태그를 등록하기 위한 XML 파일 -->
-<!-- => XML 스키마 파일(web-jsptaglibrary_2_0.xsd)에서 제공하는 엘리먼트만 사용하는 XML 문서 작성 -->
+<!-- => XML 스키마 파일(web-jsptaglibrary_2_0.xsd)에서 제공하는 엘리먼트만 사용하여 작성하는 XML 문서 -->
 <taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd ">
 	<!-- description : TLD 파일에 대한 설명을 제공하는 엘리먼트 -->
 	<description>EL 함수</description>

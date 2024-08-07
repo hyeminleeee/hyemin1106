@@ -1,5 +1,10 @@
+<%@page import="xyz.itwill.dto.BoardDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	List<BoardDTO> boardList=(List<BoardDTO>)request.getAttribute("boardList");
+%>
 <!DOCTYPE html>
 <style type="text/css">
 #review_list {
@@ -73,22 +78,24 @@ td {
 			<th width="100">조회수</th>
 			<th width="200">작성일</th>
 		</tr>
-			<tr>
-				<%-- 게시글의 일련번호 출력 --%>
-				<td>1</td>
+		<% for(BoardDTO board : boardList) { %>
+		<tr>
+			<%-- 게시글의 일련번호 출력 --%>
+			<td>1</td>
 
-				<%-- 게시글 제목 출력 --%>
-				<td class="subject">제목</td>
+			<%-- 게시글 제목 출력 --%>
+			<td class="subject"><%=request.get %></td>
 
-				<td>회원이름</td>
-				
-				<%-- 게시글 조횟수 출력 --%>
-				<td>조회수</td>
-				
-				<%-- 게시글 작성일 출력 --%>
-				<td>작성일</td>	
+			<td>회원이름</td>
+			
+			<%-- 게시글 조횟수 출력 --%>
+			<td>조회수</td>
+			
+			<%-- 게시글 작성일 출력 --%>
+			<td>작성일</td>	
 
-			</tr>
+		</tr>
+		<% } %>
 	</table>
 
 </div>

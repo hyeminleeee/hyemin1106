@@ -16,7 +16,7 @@ public class ErrorModel implements Action {
 			throws ServletException, IOException {
 		ActionForward actionForward=new ActionForward();
 		actionForward.setForward(true);
-		actionForward.setPath("/model_two/user_error.jsp");
+		actionForward.setPath("/review/error.jsp");
 		return actionForward;
 	}
 
