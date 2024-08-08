@@ -1,10 +1,12 @@
-<%@page import="xyz.itwill.dto.StudentDTO"%>
+<%@page import="xyz.itwill.dto.Student"%>
 <%@page import="xyz.itwill.dao.StudentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- 학생정보를 전달받아 STUDENT 테이블에 행으로 삽입하고 [displayStudent.jsp] 문서를 요청할
 수 있는 URL 주소로 응답하는 JSP 문서 --%>
 <%
+p
+
 	//비정상적인 요청에 대한 응답 처리
 	if(request.getMethod().equals("GET")) {
 		response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
@@ -22,7 +24,7 @@
 	String birthday=request.getParameter("birthday");
 	
 	//StudentDTO 객체를 생성하여 전달값으로 필드값 변경
-	StudentDTO student=new StudentDTO();
+	Student student=new Student();
 	student.setNo(no);
 	student.setName(name);
 	student.setPhone(phone);
