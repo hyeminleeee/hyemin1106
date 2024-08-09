@@ -1,10 +1,14 @@
+<%@page import="xyz.itwill.dao.MyMemberDAO"%>
+<%@page import="xyz.itwill.dao.MyMemberInterfaceDAO"%>
 <%@page import="xyz.itwill.dao.MyMemberXMLDAO"%>
 <%@page import="xyz.itwill.dto.MyMember"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	List<MyMember> memberList=MyMemberXMLDAO.getDAO().selectMyMemberList();
+	//List<MyMember> memberList=MyMemberXMLDAO.getDAO().selectMyMemberList();
+	//List<MyMember> memberList=MyMemberInterfaceDAO.getDAO().selectMyMemberList();
+	List<MyMember> memberList=MyMemberDAO.getDAO().selectMyMemberList();
 %>    
 <!DOCTYPE html>
 <html>

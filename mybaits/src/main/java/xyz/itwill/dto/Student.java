@@ -1,17 +1,17 @@
 package xyz.itwill.dto;
 
 /*
- 이름       널?       유형            
+이름       널?       유형            
 -------- -------- ------------- 
 NO       NOT NULL NUMBER(4)     
 NAME              VARCHAR2(50)  
 PHONE             VARCHAR2(20)  
 ADDRESS           VARCHAR2(100) 
-BIRTHDAY          DATE 
- */
+BIRTHDAY          DATE   
+*/
 
 //테이블의 컬럼명과 같은 이름으로 필드명을 작성하여 클래스를 선언하는 것을 권장
-// => SqlSession 객체가 컬럼명과 같은 이름의 필드에 검색행의 컬럼값을 자동으로 저장하여 DTO 객체 생성 
+// => SqlSession 객체가 컬럼명과 같은 이름의 필드에 검색행의 컬럼값을 자동으로 저장하여 DTO 객체 생성
 public class Student {
 	private int no;
 	private String name;
@@ -62,7 +62,4 @@ public class Student {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	
-	
-	
 }

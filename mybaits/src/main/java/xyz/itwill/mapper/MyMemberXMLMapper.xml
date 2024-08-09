@@ -36,7 +36,7 @@
 	컬럼명과 같은 이름의 객체 필드에 컬럼값을 저장하여 객체 제공 - 자동 매핑  -->
 	<!-- => DTO 클래스 작성시 필드의 이름을 검색행의 컬럼명과 같도록 작성 -->
 	<select id="selectMyMember" parameterType="string" resultType="MyMember">
-		select id, name, phone, email from mymemebr where id=#{id}
+		select id, name, phone, email from mymember where id=#{id}
 	</select>
 	
 	<select id="selectMyMemberList" resultType="MyMember">

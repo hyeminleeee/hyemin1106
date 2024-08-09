@@ -1,7 +1,7 @@
 package xyz.itwill.dto;
 
-//create table mymember(id varchar2(50) primary key, name varchar2(50), 
-//phone varchar2(20), email varchar2(100));
+//create table mymember(id varchar2(50) primary key, name varchar2(50)
+//	, phone varchar2(20), email varchar2(100));
 
 public class MyMember {
 	private String id;
@@ -44,6 +44,4 @@ public class MyMember {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 }
