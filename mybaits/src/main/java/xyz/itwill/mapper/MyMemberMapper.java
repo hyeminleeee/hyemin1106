@@ -11,3 +11,4 @@ public interface MyMemberMapper {
 	MyMember selectMyMember(String id);
 	List<MyMember> selectMyMemberList();
 }
+
