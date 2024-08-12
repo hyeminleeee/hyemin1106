@@ -1,11 +1,11 @@
-<%@page import="xyz.itwill.dto.MyComment3"%>
+<%@page import="xyz.itwill.dto.MyCommentUser1"%>
 <%@page import="xyz.itwill.dao.MyUserDAO"%>
 <%@page import="xyz.itwill.dao.MyCommentDAO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	List<MyComment3> commentList=MyCommentDAO.getDAO().selectCommentList3();
+	List<MyCommentUser1> commentUserList=MyCommentDAO.getDAO().selectCommentUserList1();
 %>    
 <!DOCTYPE html>
 <html>
@@ -40,12 +40,13 @@ td {
 			<td class="content">게시글내용</td>
 			<td class="date">게시글작성일</td>
 		</tr>
-		<% for(MyComment3 comment : commentList) { %>
+		<% for(MyCommentUser1 commentUser : commentUserList) { %>
 		<tr>
-			<td class="no"><%=comment.getNo()%></td>
-			<td class="name"><%=comment.getName()%>[<%=comment.getId()%>]</td>
-			<td class="content"><%=comment.getContent()%></td>
-			<td class="date"><%=comment.getDate()%></td>
+			<td class="no"><%=commentUser.getCommentNo()%></td>
+			<%-- <td class="name"><%=commentUser.getUserName()%>[<%=commentUser.getCommentId()%>]</td> --%>
+			<td class="name"><%=commentUser.getUserName()%>[<%=commentUser.getUserId()%>]</td>
+			<td class="content"><%=commentUser.getCommentContent()%></td>
+			<td class="date"><%=commentUser.getCommentDate()%></td>
 		</tr>
 		<% } %>
 	</table>

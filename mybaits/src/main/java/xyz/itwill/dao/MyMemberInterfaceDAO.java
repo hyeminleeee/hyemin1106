@@ -47,7 +47,7 @@ public class MyMemberInterfaceDAO {
 			//SqlSession.getMapper(Class<T> class) : 매개변수에 Class 객체(메모리에 저장된 
 			//인터페이스 매퍼)를 전달받아 Mapper 객체로 생성하여 반환하는 메소드
 			// => 매개변수에 [XXX.class] 형식으로 클래스 파일을 작성해 Class 객체를 생성하여 전달
-			//Mapper 객체 : 추상메소드에 등록된 SQL 명령이 저장된 메소드를 호출할 수 있는 객체
+			//Mapper 객체 : SQL 명령이 등록된 추상메소드가 작성된 인터페이스의 정보를 저장한 객체
 			// => Mapper 객체로 추상메소드를 호출하면 추상메소드가 오버라이드 선언되어 SQL 명령이 저장된 
 			//메소드를 호출해 DBMS 서버에 SQL 명령을 전달하여 실행하고 실행결과를 Java 객체로 반환
 			return sqlSession.getMapper(MyMemberInterfaceMapper.class).insertMyMember(member);
