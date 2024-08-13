@@ -10,6 +10,7 @@ import xyz.itwill.dto.MyComment3;
 import xyz.itwill.dto.MyCommentReply;
 import xyz.itwill.dto.MyCommentUser1;
 import xyz.itwill.dto.MyCommentUser2;
+import xyz.itwill.dto.MyCommentUserReplyUser;
 import xyz.itwill.mapper.MyCommentMapper;
 
 public class MyCommentDAO extends AbstractSession {
@@ -98,22 +99,22 @@ public class MyCommentDAO extends AbstractSession {
 			sqlSession.close();
 		}
 	}
-	
-	public MyCommentReply selectCommentReply(int commentNO) {
+	 
+	public MyCommentReply selectCommentReply(int commentNo) {
 		SqlSession sqlSession=getSqlSessionFactory().openSession(true);
 		try {
-			return sqlSession.getMapper(MyCommentMapper.class).selectCommentReply(commentNO);
+			return sqlSession.getMapper(MyCommentMapper.class).selectCommentReply(commentNo);
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	public MyCommentUserReplyUser selectCommentUserReplyUser(int commentNo) {
+		SqlSession sqlSession=getSqlSessionFactory().openSession(true);
+		try {
+			return sqlSession.getMapper(MyCommentMapper.class).selectCommentUserReplyUser(commentNo);
 		} finally {
 			sqlSession.close();
 		}
 	}
 }
-
- 
-
-
-
-
-
-
-

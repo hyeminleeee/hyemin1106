@@ -1,5 +1,7 @@
 package xyz.itwill.dto;
 
+import java.io.Serializable;
+
 /*
 //MYCOMMENT 테이블 : 게시글을 저장하기 위한 테이블
 create table mycomment(comment_no number primary key, comment_id varchar2(50)
@@ -18,7 +20,9 @@ COMMENT_DATE             DATE          - 게시글 작성일
 
 //테이블의 컬럼명과 같은 이름으로 클래스의 필드명 작성 - 자동 매핑
 // => 스네이크 표기법으로 작성된 컬럼명은 카멜 표기법으로 자동 변경되므로 필드명은 카멜 표기법으로 작성
-public class MyComment1 {
+public class MyComment1 implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private int commentNo;
 	private String commentId;
 	private String commentContent;

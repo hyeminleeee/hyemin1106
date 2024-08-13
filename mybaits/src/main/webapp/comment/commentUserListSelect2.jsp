@@ -1,6 +1,4 @@
 <%@page import="xyz.itwill.dto.MyCommentUser2"%>
-<%@page import="xyz.itwill.dto.MyCommentUser1"%>
-<%@page import="xyz.itwill.dao.MyUserDAO"%>
 <%@page import="xyz.itwill.dao.MyCommentDAO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -44,20 +42,25 @@ td {
 		<% for(MyCommentUser2 commentUser : commentUserList) { %>
 		<tr>
 			<td class="no"><%=commentUser.getComment().getCommentNo()%></td>
-			<%-- <td class="name"><%=commentUser.getUserName()%>[<%=commentUser.getCommentId()%>]</td> --%>
-			<td class="name"><%=commentUser.getUser().getUserName() %>[<%=commentUser.getUser().getUserId() %>]</td>
-			<%--<td class="content"><%=commentUser.getComment().getCommentContent() %></td> --%>
+			<%-- <td class="name"><%=commentUser.getUserName()%>[<%=commentUser.getComment().getCommentId()%>]</td> --%>
+			<td class="name"><%=commentUser.getUser().getUserName()%>[<%=commentUser.getUser().getUserId()%>]</td>
+			<%-- <td class="content"><%=commentUser.getComment().getCommentContent()%></td> --%>
 			<td class="content">
-				<%--
+				<%-- 
 				<a href="commentReplySelect1.jsp?commentNo=<%=commentUser.getComment().getCommentNo()%>">
-					<%=commentUser.getComment().getCommentContent() %>
+					<%=commentUser.getComment().getCommentContent()%>
 				</a>
-				 --%>
+				--%>
+				<%-- 
 				<a href="commentReplySelect2.jsp?commentNo=<%=commentUser.getComment().getCommentNo()%>">
-					<%=commentUser.getComment().getCommentContent() %>
+					<%=commentUser.getComment().getCommentContent()%>
+				</a>
+				--%>
+				<a href="commentUserReplyUserSelect.jsp?commentNo=<%=commentUser.getComment().getCommentNo()%>">
+					<%=commentUser.getComment().getCommentContent()%>
 				</a>
 			</td>
-			<td class="date"><%=commentUser.getComment().getCommentDate() %></td>
+			<td class="date"><%=commentUser.getComment().getCommentDate()%></td>
 		</tr>
 		<% } %>
 	</table>
