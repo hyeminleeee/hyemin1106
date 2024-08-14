@@ -20,6 +20,11 @@ COMMENT_DATE             DATE          - 게시글 작성일
 
 //테이블의 컬럼명과 같은 이름으로 클래스의 필드명 작성 - 자동 매핑
 // => 스네이크 표기법으로 작성된 컬럼명은 카멜 표기법으로 자동 변경되므로 필드명은 카멜 표기법으로 작성
+//XML 기반의 매퍼파일에서 cache 엘리먼트를 사용한 경우 select 엘리먼트로 생성된 Java 객체의
+//클래스는 반드시 객체 직렬화 클래스로 작성해야만 임시 메모리에 객체를 입출력 처리 가능
+//객체 직렬화 클래스 : 객체 단위로 입력 또는 출력 처리되도록 작성된 클래스
+// => Serializable 인터페이스를 상속받아 작성
+// => serialVersionUID 이름의 상수필드를 선언하는 것을 권장 
 public class MyComment1 implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

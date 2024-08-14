@@ -54,7 +54,8 @@
 	
 	<!-- DAO 클래스의 메소드에서 사용하지 않고 association 엘리먼트에서 사용하기 위한 select 엘리먼트 -->
 	<!-- => Interface 기반의 매퍼파일에서 select 엘리먼트에 대한 추상메소드를 미작성 -->
-	<!-- => select 엘리먼트의 parameterType 속성값으로 하나의 행만 검색되도록 SELECT 명령 작성 -->
+	<!-- => association 엘리먼트에 하나의 Java 객체를 제공하기 위해 select 엘리먼트의 SELECT
+	명령으로 하나의 행만 검색되도록 SELECT 명령 작성 -->
 	<select id="selectUser" resultType="MyUser" parameterType="string">
 		select user_id, user_name from myuser where user_id=#{replyId}
 	</select>
