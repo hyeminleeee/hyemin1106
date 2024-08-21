@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class LogHelloWorld {
 	//Logger 객체 : 로그 이벤트를 발생하기 위한 객체
-	// => Logger 객체에 의해 로그 이벤트가 발생되면 로그 구현체가 로그 이벤트에 대한 로깅정보를 
+	// => Logger 객체에 의해 로그 이벤트가 발생되면 로그 구현체가 로그 이벤트에 대한 로깅정보를
 	//제공받아 기록
 	//LoggerFactory 클래스 : Logger 객체를 생성하여 제공하기 위한 클래스 - Factory 클래스
 	//LoggerFactory.getLogger(Class<T> class) : 매개변수로 전달받은 클래스(Class 객체)에서

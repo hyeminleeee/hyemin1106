@@ -9,7 +9,7 @@ public class MessageObjectFactory {
 	public static final int HI_MSG=2;
 	
 	//인터페이스를 상속받은 자식클래스로 객체를 생성하여 반환하는 정적 메소드
-	// => 매개변수로 전달받은 값을 비교해 소러 다른 객체를 제공
+	// => 매개변수로 전달받은 값을 비교해 서로 다른 객체를 제공
 	public static MessageObject getMessageObject(int message) {
 		MessageObject object=null;
 		switch (message) {
@@ -18,7 +18,7 @@ public class MessageObjectFactory {
 			break;
 		case HI_MSG:
 			object=new HiMessageObject();
-			break;			
+			break;
 		}
 		return object;
 	}

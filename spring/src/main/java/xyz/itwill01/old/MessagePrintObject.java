@@ -11,6 +11,5 @@ public class MessagePrintObject {
 		HiMessageObject object=new HiMessageObject();
 		String message=object.getHiMessage();
 		System.out.println("message = "+message);
-		
 	}
 }

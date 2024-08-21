@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class LogHelloWorldApp {
-	private static final Logger logger=LoggerFactory.getLogger(LogHelloWorld.class);
+	private static final Logger logger=LoggerFactory.getLogger(LogHelloWorldApp.class);
 
 	public static void main(String[] args) {
 		logger.info("시작");
