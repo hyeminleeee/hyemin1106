@@ -44,7 +44,6 @@ public class BeanAttributeApp {
 		System.out.println("bean4 = "+bean4);
 		System.out.println("bean5 = "+bean5);
 		System.out.println("bean6 = "+bean6);
-
 		System.out.println("=========================================================");
 		((ClassPathXmlApplicationContext)context).close();
 	}
