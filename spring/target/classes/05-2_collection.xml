@@ -79,6 +79,8 @@
 		
 		<property name="controllerProperties">
 			<!-- props : Properties 객체를 생성하여 필드에 저장하기 위한 엘리먼트 -->
+			<!-- => Map 객체의 맵키와 맵값의 제네릭이 문자열인 경우 props 엘리먼트 사용하여
+			필드에 Map 객체를 생성해 저장 가능 -->
 			<props>
 				<!-- prop : Properties 객체에 엔트리(Entry)를 추가하기 위한 엘리먼트 -->
 				<!-- key 속성 : 엔트리의 맵키(Map Key)를 속성값으로 설정 -->
@@ -90,28 +92,3 @@
 		</property>
 	</bean>
 </beans>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
