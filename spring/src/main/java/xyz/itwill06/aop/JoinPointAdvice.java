@@ -46,7 +46,7 @@ public class JoinPointAdvice {
 		
 	}
 	
-	public void displayMessage(JoinPoint joinPoint) {//After Advice Merhod
+	public void displayMessage(JoinPoint joinPoint) {//After Advice Method
 		//System.out.println("### [after]핵심관심코드가 실행된 후 무조건 삽입되어 실행될 횡단관심코드");
 		
 		Object[] params=joinPoint.getArgs();
