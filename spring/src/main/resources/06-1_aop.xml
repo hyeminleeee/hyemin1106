@@ -95,29 +95,29 @@
 			<!-- => aspect 엘리먼트 내부(지역)에서 작성하거나 외부(전역)에서 작성 가능 -->
 			<!-- expression 속성 : 타겟메소드를 지정하기 위한 제한자를 속성값으로 설정 -->
 			<!-- id 속성 : pointcut 엘리먼트를 구분하기 위한 식별자를 속성값으로 설정 -->
-			<aop:pointcut expression="execution(* xyz.itwill06.aop.HewonDAO.*(..))" id="HewonDAOPointcut"/>			
-			<aop:pointcut expression="execution(* xyz.itwill06.aop.HewonService.*(..))" id="HewonServicePointcut"/>
+			<aop:pointcut expression="execution(* xyz.itwill06.aop.HewonDAO.*(..))" id="hewonDAOPointcut"/>			
+			<aop:pointcut expression="execution(* xyz.itwill06.aop.HewonService.*(..))" id="hewonServicePointcut"/>
 			
 			<!-- pointcut-ref 속성 : pointcut 엘리먼트의 식별자(id 속성값)를 속성값으로 설정 -->
 			<!-- => pointcut 엘리먼트로 제공된 정보를 사용해 타겟메소드 지정 -->
-			<!-- <aop:before method="beforeLog" pointcut-ref="HewonDAOPointcut"/> -->
-			<aop:before method="beforeLog" pointcut-ref="HewonServicePointcut"/>
+			<!-- <aop:before method="beforeLog" pointcut-ref="hewonDAOPointcut"/> -->
+			<aop:before method="beforeLog" pointcut-ref="hewonServicePointcut"/>
 				
 			<!-- after-returning : 타겟 메소드의 명령(핵심관심코드)이 예외 없이 정상적으로 실행된
 			후에 횡단관심코드를 삽입해 실행되도록 설정하기 위한 엘리먼트 -->	
-			<aop:after-returning method="afterReturningLog" pointcut-ref="HewonServicePointcut"/>
+			<aop:after-returning method="afterReturningLog" pointcut-ref="hewonServicePointcut"/>
 			
 			<!-- after-throwing : 타겟 메소드의 명령(핵심관심코드) 실행시 예외가 발생된 후에 
 			횡단관심코드를 삽입해 실행되도록 설정하기 위한 엘리먼트 -->	
-			<aop:after-throwing method="afterThrowingLog" pointcut-ref="HewonServicePointcut"/>
+			<aop:after-throwing method="afterThrowingLog" pointcut-ref="hewonServicePointcut"/>
 	
 			<!-- after : 타겟 메소드의 명령(핵심관심코드)이 실행된 후 무조건 횡단관심코드를 
 			삽입해 실행되도록 설정하기 위한 엘리먼트 -->	
-			<aop:after method="afterLog" pointcut-ref="HewonServicePointcut"/>			
+			<aop:after method="afterLog" pointcut-ref="hewonServicePointcut"/>			
 			
 			<!-- around : 타겟 메소드의 명령(핵심관심코드) 실행 전과 후에 횡단관심코드를 삽입해
 			실행되도록 설정하기 위한 엘리먼트 -->
-			<aop:around method="aroundLog" pointcut-ref="HewonServicePointcut"/>			
+			<aop:around method="aroundLog" pointcut-ref="hewonServicePointcut"/>			
 		</aop:aspect>
 	</aop:config>
 </beans>
