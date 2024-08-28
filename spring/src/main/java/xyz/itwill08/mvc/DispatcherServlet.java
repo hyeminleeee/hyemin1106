@@ -28,7 +28,28 @@ public class DispatcherServlet extends HttpServlet {
 		
 		//클라이언트 요청정보(Command)를 이용하여 요청 처리 클래스(Model)의 객체를 제공받아 
 		//메소드를 호출하여 클라이언트 요청을 처리하고 응답 관련 정보(ViewName)를 반환받아 저장
+		/*
+		Controller controller=null;
+		if(command.equals("/list.itwill")) {
+			controller=new ListController();
+		} else if(command.equals("/view.itwill")) {
+			controller=new ViewController();
+		}
+		*/
 		
+		//HandlerMapping 클래스로 객체 생성
+		HandlerMapping mapping=new HandlerMapping();
+		//HandlerMapping 클래스의 메소드를 호출하여 요청 처리 클래스의 객체를 반환받아 저장
+		Controller controller=mapping.getController(command);
+		
+		//요청 처리 클래스의 객체로 요청 처리 메소드를 호출하여 요청 처리
+		String viewName=controller.handleRequest(request, response);
+		
+		//뷰(View - JSP)로 포워드 이동하여 클라이언트 요청에 대한 처리결과를 사용해 응답 처리
+		// => 요청 처리 메소드의 반환값(ViewName)을 사용해 JSP 문서의 컨텍스트 경로를 완성해 포워드 이동
+		ViewResolver viewResolver=new ViewResolver();
+		String view=viewResolver.getView(viewName);
+		request.getRequestDispatcher(view).forward(request, response);
 	}
 }
 

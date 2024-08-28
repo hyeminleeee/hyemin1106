@@ -27,7 +27,7 @@
 		<!-- servlet-name : 요청에 의해 실행될 서블릿의 식별자를 설정하기 위한 엘리먼트 -->
 		<servlet-name>mvc</servlet-name>
 		<!-- servlet-name : 서블릿을 요청할 수 있는 URL 주소(패턴)를 설정하기 위한 엘리먼트 -->
-		<url-pattern>*.itwill/</url-pattern>
+		<url-pattern>*.itwill</url-pattern>
 	</servlet-mapping>
 
 	<!-- Processes application requests -->
