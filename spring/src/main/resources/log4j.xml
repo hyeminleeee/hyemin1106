@@ -79,6 +79,10 @@
 	<logger name="xyz.itwill05.lombok">
 		<level value="info" />
 	</logger>
+
+	<logger name="xyz.itwill09.controller">
+		<level value="info" />
+	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
