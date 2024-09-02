@@ -37,7 +37,7 @@ public class JoinController {
 	//@ModelAttribute : 값(객체)를 뷰(View)에게 제공하기 위한 어노테이션
 	// => 전달값을 제공받아 저장하기 위한 매개변수에 @ModelAttribute 어노테이션을 사용하면 
 	//매개변수에 저장된 전달값을 요청 처리 메소드의 뷰이름으로 생성된 뷰에게 제공
-	// => value 속성을 사용해  value 속성값으로 전달값을 얻어와 뷰에서 속성값을 사용할 수 있도록
+	// => value 속성을 사용해 value 속성값으로 전달값을 얻어와 뷰에서 속성값을 사용할 수 있도록
 	//반드시 속성명(전달값의 이름)을 설정
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(@ModelAttribute("id") String id, @ModelAttribute("passwd") String passwd
@@ -48,13 +48,13 @@ public class JoinController {
 	
 	/*
 	//요청 처리 메소드의 매개변수 자료형을 DTO 클래스로 작성하면 Front Controller는 DTO 클래스로
-	//객체(Command 객체)를 생성하여 매개변수에 저장되도록 제공 
-	// => 전달값의 이름과 같은 이름의 필드에 전달값을 자동으로 저장하여 제공
+	//Command 객체를 생성하여 매개변수에 저장되도록 제공 
+	// => 전달값의 이름과 같은 이름의 객체 필드에 전달값을 자동으로 저장하여 제공
 	//Command 객체 : 전달값이 필드에 저장된 객체로 매개변수에 저장되고 매개변수에 저장된
-	//객체를 뷰에서 사용할 수 있도록 제공하는 객체
+	//객체를 뷰에서 사용할 수 있도록 제공하는 객체 - @ModelAttribute 어노테이션 사용
 	// => @ModelAttribute 어노테이션을 사용하지 않아도 Command 객체는 뷰에게 제공
-	// => @ModelAttribute 어노테이션에 value 속성을 생략하면 매개변수의 자료형을 자동으로
-	//속성명으로 사용되도록 설정 - 자료형의 첫번째 문자는 소문자로 변환
+	// => @ModelAttribute 어노테이션에 value 속성을 생략하면 매개변수의 자료형(DTO 클래스)을 
+	//자동으로 속성명으로 사용되도록 설정 - 자료형의 첫번째 문자는 소문자로 변환
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(@ModelAttribute Member member) {
 		return "join_display";

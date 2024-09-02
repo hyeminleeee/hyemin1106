@@ -43,7 +43,7 @@ public class LoginController {
 	*/
 	
 	//매개변수의 자료형을 DTO 클래스로 작성해 전달값과 같은 이름의 필드에 전달값이 저장된
-	//DTO 객체를 제공받아 매개변수에 저장하여 사용
+	//DTO 객체(Command 객체)를 제공받아 매개변수에 저장하여 사용
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute Member member, Model model, HttpSession session) {
 		if(!member.getId().equals("abc123") || !member.getPasswd().equals("123456")) {
