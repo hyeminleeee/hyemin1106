@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import xyz.itwill09.dto.Student;
 import xyz.itwill09.mapper.StudentMapper;
 
-//DAO 클래스(Repository 클래스) : 저장매체에 행을 삽입하고 저장된 행을 변경, 삭제, 검색하는
+//DAO 클래스(Repository 클래스) : 저장매체에 행을 삽입하거나 저장된 행을 변경, 삭제, 검색하는
 //기능을 제공하기 위한 클래스
 // => DAO 클래스가 교체돼도 의존관계로 설정된 Service 클래스에 영향을 최소화 하기 위해
 //인터페이스를 상속받아 작성하는 것을 권장 - 유지보수의 효율성 증가

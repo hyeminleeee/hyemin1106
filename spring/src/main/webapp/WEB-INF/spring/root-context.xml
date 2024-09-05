@@ -73,4 +73,32 @@
 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession" destroy-method="clearCache">
 		<constructor-arg ref="sqlSessionFactoryBean"/>
 	</bean>
+	
+	<!-- TransactionManager 관련 클래스(DataSourceTransactionManager 클래스)를 Spring Bean으로 등록 -->
+	<!-- => Spring Bean의 식별자(beanName)을 반드시 [transactionManager]로 설정 -->
+	<!-- => dataSource 필드에 TransactionManager 객체에 의해 트렌젝션이 관리될 DataSource 객체가 
+	저장 되도록 의존성 주입 - Setter Injecton -->
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
