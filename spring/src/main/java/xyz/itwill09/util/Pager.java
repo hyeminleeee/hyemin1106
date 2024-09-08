@@ -1,7 +1,6 @@
 package xyz.itwill09.util;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 //페이징 처리 관련 값들을 저장하기 위한 클래스
 @Data
