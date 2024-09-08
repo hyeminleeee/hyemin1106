@@ -8,17 +8,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 import xyz.itwill09.dto.PointBoard;
 import xyz.itwill09.dto.PointUser;
 import xyz.itwill09.service.PointBoardService;
 
-//SpringMVC 기능을 사용한 웹프로그램에서 TransactionManager를 사용해 트렌젝션을 관리하는 방법
+//SpringMVC 기능을 사용한 웹프로그램에서 TransactionManager 객체를 사용해 트렌젝션을 관리하는 방법
 //1. spring-tx 라이브러리를 프로젝트에 빌드 처리 - 메이븐 : pom.xml
 // => spring-jdbc 라이브러리를 프로젝트에 빌드 처리하면 라이브러리 의존관계에 의해 자동으로 빌드 처리
 //2. Spring Bean Configuration File(root-context.xml)에 TransactionManager 관련 클래스를 Spring Bean으로 등록
 //3. Spring Bean Configuration File(servelt-context.xml)에 트렌젝션 처리를 위한 Spring AOP 설정
+// => 트렌젝션 관리를 위한 AOP 설정 대신 @Transactional 어노테이션 사용 가능
+
+//TransactionManager 객체에 의해 트렌젝션 관리될 메소드에 @Transactional 어노테이션을 사용하면
+//예외가 발생하지 않은 경우 커밋 처리하고 예외가 발생된 경우 롤백 처리
+// => @Transactional 어노테이션을 사용하기 위해서는 Spring Bean Configuration File(root-context.xml)에
+//annotation-driven 엘리먼트 작성
+//=> Spring Bean Configuration File에서 tx 네임스페이스에 spring-tx.xsd 파일을 제공받아야만
+//annotation-driven 엘리먼트 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
