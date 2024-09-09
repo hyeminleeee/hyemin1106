@@ -55,6 +55,7 @@ public class FileBoardServiceImpl implements FileBoardService {
 		//하나의 블럭에 출력될 페이지 번호의 갯수를 임의의 값으로 저장
 		int blockSize=5;
 		
+		//페이징 처리 관련 값들이 저장된 Pager 객체 생성
 		Pager pager=new Pager(pageNum, pageSize, totalSize, blockSize);
 		
 		//FileBoardDAO 객체의 selectFileBoardList() 메소드의 매개변수에 전달될 Map 객체 생성
@@ -74,17 +75,3 @@ public class FileBoardServiceImpl implements FileBoardService {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
