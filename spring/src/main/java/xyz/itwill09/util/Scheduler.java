@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 //시간마다 자동 호출되도록 설정 가능
 public class Scheduler {
 	//@Scheduled : 메소드에 스케줄링 기능을 제공하여 자동 호출되도록 설정하는 어노테이션
+	// => Spring Bean Configuration File(servlet-context.xml)에 annotation-driven 엘리먼트 설정
 	//cron 속성 : 메소드를 자동 호출하기 위한 날짜 및 시간을 속성값으로 설정
 	// => 속성값 : 초 분 시 일 월 요일
 	// => 요일 : 0(일) ~ 6(토) - [0] 대신 [7] 사용 가능
