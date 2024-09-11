@@ -37,8 +37,10 @@ public class ExceptionController {
 		return "userinfo/user_error";
 	}
 	
+	/*
 	@ExceptionHandler(Exception.class)
 	public String exception() {
 		return "userinfo/user_error";
 	}
+	*/
 }

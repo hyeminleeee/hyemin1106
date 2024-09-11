@@ -10,7 +10,7 @@ public class ExistsUserinfoException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	//예외 처리에 필요한 값을 저장하기 위한 필드 작성
-	// => 사용자로부터 입력받은 회원정보를 필드에 저장
+	// => 사용자로부터 입력받은 회원정보를 필드에 저장하여 예외 처리 메소드에서 사용되도록 제공
 	@Getter
 	private Userinfo userinfo;
 	
