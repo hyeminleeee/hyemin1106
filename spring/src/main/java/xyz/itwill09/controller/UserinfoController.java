@@ -42,7 +42,7 @@ public class UserinfoController {
 	*/
 	
 	//예외 처리 메소드를 사용해 예외 처리 기능을 구현하고 인터셉터를 사용해 권한 관련 처리 기능 구현
-	// => 요청 처리 메소드에서는 예외 처리 및 권한 관련 명령 미작성
+	// => 요청 처리 메소드에서는 예외 처리 및 권한 관련 명령을 미작성하여 생산성 및 유지보수 효율성 증가
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write(HttpSession session) {
 		return "userinfo/user_write";
