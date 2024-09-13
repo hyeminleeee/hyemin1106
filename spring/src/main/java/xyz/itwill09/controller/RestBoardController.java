@@ -48,10 +48,10 @@ public class RestBoardController {
 	}
 	
 	//게시글을 전달받아 REST_BOARD 테이블의 행으로 삽입하고 실행결과를 문자열로 응답하는 요청 처리 메소드
-	// => 게시글을 [application/json] 형식의 문자열로 전달받아 매개변수에 RestBoard 객체로 
-	//저장하기 위해 @RequestBody 어노테이션 사용
-	// => @RequestBody 어노테이션을 사용한 매개변수의 자료형을 DTO 클래스로 설정하면 JSON 
-	//형식의 문자열로 저장된 값을 DTO 객체의 필드에 저장
+	// => JSON 형식의 문자열을 전달받아 Java 객체로 변경하여 매개변수에 저장하기 위해 매개변수에
+	//@RequestBody 어노테이션 사용
+	// => @RequestBody 어노테이션을 사용한 매개변수의 자료형을 클래스로 설정하면 JSON 형식의 
+	//문자열로 전달된 값이 필드값으로 저장된 객체를 생성하여 저장 - 전달값의 이름과 필드명이 같아야한다.
 	@PostMapping("/board_add")
 	public String restBoardAdd(@RequestBody RestBoard restBoard) {
 		//HtmlUtils.htmlEscape(String str) : 매개변수로 전달받은 문자열에 존재하는 HTML 태그
@@ -74,9 +74,10 @@ public class RestBoardController {
 	// => 페이지 요청시 요청 URL 주소에 {이름} 형식으로 값을 전달받아 매개변수에 저장해 요청 처리 메소드에서 사용
 	// => 요청 URL 주소로 제공된 값을 매개변수에 저장하여 사용하기 위해서는 @PathVariable 어노테이션 사용
 	//@PathVariable : 페이지를 요청한 URL 주소로 값을 전달받아 매개변수에 저장하기 위한 어노테이션
-	// => 페이지 요청 URL 주소로 값을 제공받기 위한 이름과 같은 이름으로 매개변수를 작성해야만
+	// => 요청 URL 주소로 값을 제공받기 위한 이름과 같은 이름으로 매개변수를 작성해야만
 	//요청 URL 주소로 제공된 값을 매개변수에 저장 가능
 	//value 속성 : 요청 URL 주소로 제공된 값이 저장된 이름을 속성값으로 설정
+	// => 요청 URL 주소로 제공된 값의 이름과 매개변수의 이름이 다른 경우 사용
 	@GetMapping("/board_view/{idx}")
 	public RestBoard restBoardView(@PathVariable int idx) {
 		return restBoardService.getRestBoard(idx);
