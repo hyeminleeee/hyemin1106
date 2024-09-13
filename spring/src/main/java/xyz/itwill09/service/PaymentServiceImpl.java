@@ -43,7 +43,7 @@ public class PaymentServiceImpl implements PaymentService {
 			//HttpURLConnection.setRequestMethod(String method) : HttpURLConnection 객체에
 			//저장된 요청정보로 페이지를 요청하기 위한 요청방식을 변경하는 메소드
 			// => OpenAPI를 [post] 방식으로 요청할 수 있도록 변경
-			connection.setRequestMethod("post");
+			connection.setRequestMethod("POST");
 
 			//HttpURLConnection.setRequestProperty(String key, String value) : 리퀘스트 메세지
 			//머릿부를 변경하는 메소드
@@ -63,7 +63,7 @@ public class PaymentServiceImpl implements PaymentService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-			
+			 
 			//응답코드를 반환받아 저장
 			int responseCode=connection.getResponseCode();
 			
@@ -119,19 +119,19 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public Payment getPayment(String accessToken, String impUid) {
 		Payment payment=new Payment();
-		
+
 		//하나의 결재정보를 검색하여 제공하는 OpenAPI의 URL 주소 저장
-		String apiURL="https://api.iamport.kr/payment/"+impUid;
+		String apiURL="https://api.iamport.kr/payments/"+impUid;
 		
 		try {
 			URL url=new URL(apiURL);
 			HttpURLConnection connection=(HttpURLConnection)url.openConnection();
-			connection.setRequestMethod("get");
+			connection.setRequestMethod("GET");
 			//OpenAPI를 사용할 수 있는 접근토큰을 리퀘스트 메세지 머릿부에 저장하여 제공
 			connection.setRequestProperty("Authorization", accessToken);
-			
+
 			int responseCode=connection.getResponseCode();
-			if(responseCode == 200) {
+			if(responseCode == 200) {				
 				BufferedReader br=new BufferedReader(new InputStreamReader(connection.getInputStream()));
 				String input="";
 				String result="";
@@ -140,11 +140,13 @@ public class PaymentServiceImpl implements PaymentService {
 				}
 				br.close();
 				
+				System.out.println(result);
+				
 				//응답결과(JSON 형식의 문자열)를 제공받아 객체(Payment 객체)의 필드값 변경 
 				JSONParser jsonParser=new JSONParser();
 				JSONObject jsonObject=(JSONObject)jsonParser.parse(result);
 				JSONObject responseObject=(JSONObject)jsonObject.get("response");
-				
+							
 				payment.setImpUid((String)responseObject.get("imp_uid"));
 				payment.setMerchantUid((String)responseObject.get("merchant_uid"));
 				payment.setAmount((Long)responseObject.get("amount"));
@@ -162,7 +164,7 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public String cancelPayment(String accessToken, Payment payment) {
 		//결재정보를 취소하는 OpenAPI의 URL 주소 저장
-		String apiURL="https://api.iamport.kr//payments/cancel";
+		String apiURL="https://api.iamport.kr/payments/cancel";
 		
 		//OpenAPI에 전달될 값을 JSON 형식의 문자열로 작성하여 저장
 		// => {"imp_uid" : 거래고유번호, "checksum" : 취소금액}
@@ -172,7 +174,7 @@ public class PaymentServiceImpl implements PaymentService {
 		try {
 			URL url=new URL(apiURL);
 			HttpURLConnection connection=(HttpURLConnection)url.openConnection();
-			connection.setRequestMethod("post");
+			connection.setRequestMethod("POST");
 			connection.setRequestProperty("Authorization", accessToken);
 			connection.setRequestProperty("Content-type", "application/json");
 			connection.setDoOutput(true);
