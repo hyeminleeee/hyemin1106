@@ -32,6 +32,7 @@
     </beans:bean>
     
     <!-- Component Scan -->
+    <context:component-scan base-package="xyz.itwill" />
     <context:component-scan base-package="xyz.itwill01" />
 
 </beans:beans>
