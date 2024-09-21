@@ -1,4 +1,4 @@
-package xyz.itwill.security;
+package xyz.itwill.auth;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 

@@ -21,11 +21,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
-		<beans:property name="maxUploadSize" value="20971520"/>	
-		<beans:property name="defaultEncoding" value="utf-8"/>	
-	</beans:bean>
-	
 	<context:component-scan base-package="xyz.itwill.security" />
-	
+	<context:component-scan base-package="xyz.itwill.service" />
 </beans:beans>
