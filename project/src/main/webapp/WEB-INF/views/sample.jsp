@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -119,13 +120,29 @@
 <!-- 게시글 상단 정보 -->
 <div class="post-header">
     <div class="post-title">제주 여행 추천</div>
+    <!-- <div class="post-title">${course.courseTitle}</div> -->
     <div class="post-author">바삭바삭</div>
+    <!-- <div class="post-author">${course.courseWriter}</div> -->
     <div class="post-meta">
         <span class="date">2024-09-19</span>
+        <!-- 
+        <span class="data">
+        <c:choose>
+        	<c:when test="${course.courseUpdate == null}">
+        		${course.courseRegdate}
+        	</c:when>
+        	<c:otherwise>
+        		${course.courseUpdate}
+        	</c:otherwise>
+        </c:choose>
+        </span>
+         -->
         <div class="post-actions">
             <span class="views">5024</span>
+            <!-- <span class="views">${course.courseCount}</span> -->
             <span class="comments">72</span>
             <span class="likes">3028</span>
+            <!-- <span class="likes">${course.courseLike}</span> -->
         </div>
     </div>
 </div>
@@ -134,14 +151,29 @@
 <div id="map"></div>
 
 <!-- 게시글 요소들 -->
-<div class="element">
-    <h2>제주 명소 1</h2>
-    <div class="description">
-        제주 명소 1에 대한 설명이 여기에 들어갑니다. 이 설명은 여러 줄로 길게 나올 수 있습니다. 따라서 여러 줄에 걸쳐 나오는 텍스트가 자연스럽게 표시되도록 스타일링을 추가하였습니다. 이처럼 설명이 길어질 경우에도 줄 간격과 단어가 잘리지 않게 표시됩니다.
-    </div>
-    <img src="https://placekitten.com/200/300" alt="서울 명소 1 이미지">
-</div>
+<c:forEach var="i" begin="1" end="5" step="1">
+	<div class="element">
+	    <h2>제주 명소 ${i }</h2>
+	    <div class="description">
+	        제주 명소 ${i }에 대한 설명이 여기에 들어갑니다. 이 설명은 여러 줄로 길게 나올 수 있습니다. 따라서 여러 줄에 걸쳐 나오는 텍스트가 자연스럽게 표시되도록 스타일링을 추가하였습니다. 이처럼 설명이 길어질 경우에도 줄 간격과 단어가 잘리지 않게 표시됩니다.
+	    </div>
+	    <img src="https://placekitten.com/200/300" alt="제주 명소 ${i } 이미지">
+	</div>
+</c:forEach>
 
+<!-- 
+<c:forEach var="place" items="${placeList}">
+	<div class="element">
+	<h2>${place.placeTitle }</h2>
+	    <div class="description">
+	    ${place.placeContent }
+	    </div>
+		<img src="${place.placeImage}">
+    </div>
+</c:forEach>
+ -->
+
+<!-- 
 <div class="element">
     <h2>제주 명소 2</h2>
     <div class="description">
@@ -149,7 +181,8 @@
     </div>
     <img src="https://placekitten.com/200/301" alt="서울 명소 2 이미지">
 </div>
-
+ -->
+ 
 <!-- 카카오 맵 스크립트 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f668f12cefa13f73e2909521572e5b72"></script>
 <script>

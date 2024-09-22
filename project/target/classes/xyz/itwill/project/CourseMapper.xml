@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.itwill.project.CourseMapper">
+	<insert id="insertCourse">
+		insert into course values(#{course_no}, #{course_title}, #{course_writer}, sysdate
+			, null, #{course_concept}, 0, 0)
+	</insert>
+	
+	<insert id="insertPlace">
+		insert into place values(#{place_no}, #{place_order}, #{place_x}, #{place_y}
+			, #{place_name}, #{place_content}, #{place_image})
+	</insert>
+
+	<!-- course 객체의 필드명과 컬럼명 매핑하기 위한 엘리먼트 -->
+	<resultMap type="course" id="courseResultMap">
+		<id column="course_no" property="courseNo"/>
+		<result column="course_title" property="courseTitle"/>
+		<result column="course_writer" property="courseWriter"/>
+		<result column="course_regdate" property="courseRegdate"/>
+		<result column="course_update" property="courseUpdate"/>
+		<result column="course_count" property="courseCount"/>
+		<result column="course_like" property="courseLike"/>
+		<collection property="placeList" select="selectPlaceByPlaceNo" column="course_no"/>
+	</resultMap>
+	
+	<!-- resultMap collection 엘리먼트에서 호출할 쿼리 -->
+	<select id="selectPlaceByPlaceNo" resultType="place">
+		select place_no, place_order, place_x, place_y, place_name, place_content
+			, place_image from place where place_no=#{placeNo}
+	</select>
+	
+	<select id="selectCourseByCourseNo" resultMap="courseResultMap">
+		select course_no, course_title, course_writer, course_regdate, course_update
+			, course_concept, course_count, course_like from course where course_no=#{courseNo}
+	</select>
+</mapper>
