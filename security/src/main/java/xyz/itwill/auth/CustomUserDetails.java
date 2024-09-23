@@ -27,7 +27,7 @@ public class CustomUserDetails implements UserDetails {
 	private String email;
 	private String enabled;
 	
-	//인증된 사용자의 권한 정보가 저장될 필드 작성
+	//인증된 사용자의 모든 권한 정보가 저장될 필드 작성
 	private List<GrantedAuthority> secuthryAuthList;
 
 	//매개변수로 전달받은 SecurityUser 객체의 필드값을 CustomUserDetails 객체의 필드에 저장
