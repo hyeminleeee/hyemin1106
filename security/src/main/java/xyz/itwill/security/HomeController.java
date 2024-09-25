@@ -72,7 +72,8 @@ public class HomeController {
 	// => Principal 객체 : 로그인 사용자 정보가 저장된 객체 - 로그인 사용자 아이디 제공
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Principal principal) {
-		if(principal != null) {//로그인 사용자가 있는 경우
+		if(principal != null) {//인증 처리된 사용자인 경우
+			//principal.getName() : 인증 처리된 사용자의 식별자(아이디)를 반환하는 메소드
 			//log.warn("아이디 = "+principal.getName());
 			
 			SecurityUser user=securityUserService.getSecurityUserByUserid(principal.getName());
@@ -92,7 +93,7 @@ public class HomeController {
 	// => Authentication 객체 : 로그인 사용자 및 권한 정보가 저장된 객체
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Authentication authentication) {
-		if(authentication != null) {//로그인 사용자가 있는 경우			
+		if(authentication != null) {//인증 처리된 사용자인 경우			
 			//Authentication.getPrincipal() : 로그인 사용자 및 권한 정보가 저장된 UserDetails
 			//객체(CustomUserDetails 객체)를 반환하는 메소드
 			// => Object 객체를 반환하므로 명시적 객체 형변환 후 사용

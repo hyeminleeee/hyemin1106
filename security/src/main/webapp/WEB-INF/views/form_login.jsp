@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,11 +30,16 @@
 			<td colspan="2"><button type="submit">로그인</button></td>
 		</tr>
 	</table>
+	
+	<%-- 브라우저가 종료돼도 로그인이 유지되는 기능을 제공하기 위한 태그 --%>
+	<%-- => input 태그의 type 속성값을 [checkbox]로 설정하고 name 속성값을 [remember-me]로 설정 --%>
+	<input type="checkbox" name="remember-me">자동 로그인
+	
 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 	</form>
-	<%-- SPRING_SECURITY_LAST_EXCEPTION : Spring Security에 의해 마지막에 발생된 예외(Exception)
+	<%-- SPRING_SECURITY_LAST_EXCEPTION : Spring Security에 의해 마지막에 발생된 예외(Exception 객체)가
 	Session Scope 속성값으로 저장된 속성명 --%>
-	<%-- Spring Security에 의해 예외가 발생된 경우 태그를 포함하여 출력 처리 --%>
+	<%-- => Spring Security에 의해 예외가 발생된 경우 태그를 포함하여 출력 처리 --%>
 	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
 		<hr>
 		<%-- <h3 style="color: red;">아이디 또는 비밀번호가 맞지 않습니다.</h3> --%>
@@ -42,6 +47,11 @@
 		<%-- 예외가 저장된 Session Scope 속성값 제거 --%>
 		<c:remove var="SPRING_SECURITY_LAST_EXCEPTION"/>
 	</c:if>
+	
+	<hr>
+	<a href="<c:url value="/kakao/login"/>">
+		<img alt="카카오 로그인" src="<c:url value="/resources/images/kakao_login_medium_narrow.png"/>">
+	</a>
 	
 	<hr>
 	<h3><a href="<c:url value="/"/>">메인페이지</a></h3>
