@@ -23,7 +23,7 @@ h1 {
 	text-align: center; 
 }
 
-div {
+div { 
 	margin: 10px auto;
 	width: 850px;
 	text-align: right;
