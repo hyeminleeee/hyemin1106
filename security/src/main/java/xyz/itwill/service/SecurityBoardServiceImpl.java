@@ -61,7 +61,7 @@ public class SecurityBoardServiceImpl implements SecurityBoardService {
 	@Override
 	public Map<String, Object> getSecurityBoardList(Map<String, Object> map) {
 		int pageNum=1;
-		if(map.get("pageNum") != null && !map.get("pageNUm").equals("")) {
+		if(map.get("pageNum") != null && !map.get("pageNum").equals("")) {
 			pageNum=Integer.parseInt((String)map.get("pageNum"));
 		}
 		

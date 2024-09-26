@@ -54,6 +54,7 @@
  		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')"/>
  		<intercept-url pattern="/manager/**" access="hasRole('ROLE_MANAGER')"/>
  		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+ 		<!-- <intercept-url pattern="/board/register" access="isAuthenticated()"/> -->
  		<intercept-url pattern="/**" access="permitAll"/>
  		
  		<!-- form-login : form 태그를 사용한 로그인 페이지를 설정하기 위한 엘리먼트 -->
