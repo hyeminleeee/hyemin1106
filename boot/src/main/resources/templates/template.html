@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>BOOT</title>
+<style type="text/css" th:replace="~{/layout :: styles}"></style>
+</head>
+<body>
+	<div id="header" th:replace="~{/layout :: header}"></div>
+
+	<!-- content 이름의 태그를 포함되도록 설정 -->
+	<div id="content" layout:fragment="content"></div>
+
+	<div id="footer" th:replace="~{/layout :: footer}"></div>
+</body>
+</html>

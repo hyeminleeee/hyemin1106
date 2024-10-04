@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>BOOT</title>
+<style th:fragment="styles">
+div {
+	margin: 10px;
+}
+
+#header {
+	height: 150px;
+	border: 1px solid red;
+	text-align: center;
+}
+
+#content {
+	min-height: 600px;
+	border: 1px solid green;
+	text-align: center;
+}
+
+#footer {
+	height: 150px;
+	border: 1px solid blue;
+	text-align: center;
+}	
+</style>
+</head>
+<body>
+	<!-- fragment 속성 : 다른 HTML 문서에 태그를 제공하기 위한 Thymeleaf 속성 -->
+	<!-- => 속성값으로 태그를 구분하기 위한 식별자를 속성값으로 설정 -->
+	<div id="header" th:fragment="header">
+		<h2>페이지 머릿부</h2>
+	</div>	
+	
+	<div id="footer" th:fragment="footer">
+		<h2>페이지 꼬릿부</h2>
+	</div>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+

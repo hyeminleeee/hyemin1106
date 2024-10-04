@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>BOOT</title>
+<!-- 
+<style type="text/css">
+div {
+	margin: 10px;
+}
+
+#header {
+	height: 150px;
+	border: 1px solid red;
+	text-align: center;
+}
+
+#content {
+	min-height: 600px;
+	border: 1px solid green;
+	text-align: center;
+}
+
+#footer {
+	height: 150px;
+	border: 1px solid blue;
+	text-align: center;
+}	
+</style>
+-->
+<style type="text/css" th:replace="~{/layout :: styles}"></style>
+</head>
+<body>
+	<!-- 
+	<div id="header">
+		<h2>페이지 머릿부</h2>
+	</div>
+	 -->
+	<!-- replace 속성 : fragment 속성으로 설정된 태그를 제공받아 태그를 변경하는 Thymeleaf 속성 -->
+	<!-- => ~{ HTML 문서 경로 :: Fragment 식별자} 형식으로 태그를 제공를 제공받아 변경 -->
+	<!-- => insert 속성 또는 include 속성으로 fragment 속성으로 설정된  태그를 제공받아 사용 가능 -->
+	<!-- insert : fragment 속성으로 설정된 태그를 제공받아 태그의 하위태그로 변경하는 Thymeleaf 속성 --> 
+	<!-- include : fragment 속성으로 설정된 태그를 제공받아 태그의 하위태그로 포함하는 Thymeleaf 속성 --> 
+	<div th:replace="~{/layout :: header}"></div> 
+	
+	<div id="content">
+		<h2>페이지 몸체부</h2>
+	</div>
+	
+	<!-- 
+	<div id="footer">
+		<h2>페이지 꼬릿부</h2>
+	</div>
+	 -->
+	<div th:replace="~{/layout :: footer}"></div> 
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!-- decorate 속성 : 응답 처리될 템플릿 페이지의 HTML 문서의 파일을 설정 -->
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{template}">
+<head>
+<meta charset="UTF-8">
+<title>BOOT</title>
+</head>
+<body>
+	<div id="content" layout:fragment="content">
+		<h2>첫번째 요청 페이지</h2>	
+	</div>
+</body>
+</html>

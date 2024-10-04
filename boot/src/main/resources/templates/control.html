@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>BOOT</title>
+</head>
+<body>
+	<h1>Thymeleaf</h1>
+	<hr>
+	<!-- HTML 주석 : HTML 문서에 설명을 제공하기 위해 사용 -->
+	<!-- => 페이지 소스보기에서 주석문에 대한 설명문 출력 -->
+	<!-- <h2 th:text="설명문-1">HTML 주석문</h2> -->
+	
+	<!-- Thymeleaf 주석문(Parser 주석) : Thymeleaf 엔진으로 동적으로 HTML 문서를 생성해도 
+	설명을 제공하는 주석문 -->
+	<!-- => 페이지 소스보기에서 주석문에 대한 설명문 미출력 -->
+	<!--/* <h2 th:text="설명문-2">Thymeleaf 주석문(Parser 주석)</h2> */-->
+	
+	<!-- Thymeleaf 주석문(Prototype 주석) : Thymeleaf 엔진으로 동적으로 HTML 문서를 생성하면
+	설명이 아닌 태그를 제공하는 주석문 -->
+	<!--/*/ <h2 th:text="설명문-3">Thymeleaf 주석문(Prototype 주석)</h2> /*/-->
+	<hr>
+	
+	<!-- if 속성 : 태그를 사용 여부를 설정하기 위한 Thymeleaf 속성 -->
+	<!-- => 속성값으로 false 또는 treu 중 하나를 제공받아 [true]인 경우 태그 사용 -->
+	<h2 th:if="${gender == 'M'}">남자</h2>
+	<h2 th:if="${gender == 'W'}">여자</h2>
+	<hr>
+
+	<h2 th:if="${age < 20}" th:text="미성년자"></h2>
+	<!-- unless 속성 : 태그를 사용 여부를 설정하기 위한 Thymeleaf 속성 -->
+	<!-- => 속성값으로 false 또는 treu 중 하나를 제공받아 [false]인 경우 태그 사용 -->
+	<h2 th:unless="${age < 20}" th:text="성인"></h2>
+	<hr>
+	<!-- block 태그 : 별도의 HTML 태그를 사용하지 않고 each 속성 또는 if 속성 등을 사용하기
+	위한 Thymeleaf 태그 -->
+	<!-- switch 속성 : 값을 비교하여 태그를 선택 사용하기 위한 Thymeleaf 속성 -->
+	<!-- case 속성 : switch 속성값과 값을 비교해 같은 경우 태그를 사용하기 위한 Thymeleaf 속성 -->
+	<!-- => case 속성값으로 [*]를 설정한 경우 default와 동일한 기능 제공 -->
+	<th:block th:switch="${gender}">
+		<h2 th:case="M">남자</h2>
+		<h2 th:case="W">여자</h2>
+		<h2 th:case="*">모름</h2>
+	</th:block>
+	
+	<hr>
+	<table>
+		<tr>
+			<th>아이디</th>
+			<th>이름</th>
+			<th>이메일</th>
+		</tr>
+		<!-- each 속성 : 태그를 반복 처리하기 위한 Thymeleaf 속성 -->
+		<!-- => 속성값으로 [Scope 속성명 : List 객체]로 설정하여 List 객체의 요소값을 차례대로
+		제공받아 반복 처리 -->
+		<tr th:each="user : ${userList}">
+			<td th:text="${user.id}">test</td>
+			<td th:text="${user.name}">테스트</td>
+			<td th:text="${user.email}">test@aaa.com</td>
+		</tr>
+	</table>
+	<hr>
+	<!-- each 속성에 status 속성값으로 status 객체를 제공받아 반복 처리시 필요한 값을 제공받아
+	사용 - index, count, size, current, even, odd, first, last -->
+	<th:block th:each="user, status : ${userList}">
+		<h2>
+			<th:block th:if="${status.odd}">
+				아이디 = <span th:text="${user.id}">test</span>, 
+				이름 = <span th:text="${user.name}">테스트</span>, 
+				이메일 = <span th:text="${user.email}">test@aaa.com</span>
+			</th:block>
+		</h2>
+	</th:block>
+</body>
+</html>
