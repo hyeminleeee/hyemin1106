@@ -11,17 +11,17 @@
 	<!-- => 페이지 소스보기에서 주석문에 대한 설명문 출력 -->
 	<!-- <h2 th:text="설명문-1">HTML 주석문</h2> -->
 	
-	<!-- Thymeleaf 주석문(Parser 주석) : Thymeleaf 엔진으로 동적으로 HTML 문서를 생성해도 
+	<!-- Thymeleaf 주석문(Parser 주석) : Thymeleaf 엔진을 사용해 동적으로 HTML 문서를 생성해도 
 	설명을 제공하는 주석문 -->
 	<!-- => 페이지 소스보기에서 주석문에 대한 설명문 미출력 -->
 	<!--/* <h2 th:text="설명문-2">Thymeleaf 주석문(Parser 주석)</h2> */-->
 	
-	<!-- Thymeleaf 주석문(Prototype 주석) : Thymeleaf 엔진으로 동적으로 HTML 문서를 생성하면
+	<!-- Thymeleaf 주석문(Prototype 주석) : Thymeleaf 엔진을 사용해 동적으로 HTML 문서를 생성하면
 	설명이 아닌 태그를 제공하는 주석문 -->
 	<!--/*/ <h2 th:text="설명문-3">Thymeleaf 주석문(Prototype 주석)</h2> /*/-->
 	<hr>
 	
-	<!-- if 속성 : 태그를 사용 여부를 설정하기 위한 Thymeleaf 속성 -->
+	<!-- if 속성 : 태그의 사용 여부를 설정하기 위한 Thymeleaf 속성 -->
 	<!-- => 속성값으로 false 또는 treu 중 하나를 제공받아 [true]인 경우 태그 사용 -->
 	<h2 th:if="${gender == 'M'}">남자</h2>
 	<h2 th:if="${gender == 'W'}">여자</h2>

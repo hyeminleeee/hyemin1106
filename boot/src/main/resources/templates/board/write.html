@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>BOOT</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>게시글 쓰기</h1>
+	<hr>
+	<form th:action="@{/board/write}" method="post" id="boardForm">
+	<table>
+		<tr>
+			<td>작성자</td>
+			<td><input type="text" name="writer" id="writer"></td>
+		</tr>
+		<tr>
+			<td>제목</td>
+			<td><input type="text" name="title" id="title"></td>
+		</tr>
+		<tr>
+			<td>내용</td>
+			<td><textarea cols="80" rows="3" name="content" id="content"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2"><button type="submit">저장</button></td>
+		</tr>
+	</table>	
+	</form>
+	
+	<script type="text/javascript">
+	$("#boardForm").submit(function() {
+		if($("#writer").val() == "") {
+			alert("작성자를 입력해 주세요.");
+			return false;
+		}
+		
+		if($("#title").val() == "") {
+			alert("제목을 입력해 주세요.");
+			return false;
+		}
+		
+		if($("#content").val() == "") {
+			alert("내용을 입력해 주세요.");
+			return false;
+		}
+	});
+	</script>
+</body>
+</html>
