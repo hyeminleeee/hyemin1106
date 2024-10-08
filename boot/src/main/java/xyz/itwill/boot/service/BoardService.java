@@ -1,7 +1,12 @@
 package xyz.itwill.boot.service;
 
-import xyz.itwill.boot.dto.Board;
+import java.util.List;
+
+import xyz.itwill.boot.dto.BoardDTO;
 
 public interface BoardService {
-	void addBoard(Board board);
+	void addBoard(BoardDTO boardDTO);
+	List<BoardDTO> getBoardList();
+	BoardDTO getBoard(Long num);
+	void updateHit(Long num);
 }

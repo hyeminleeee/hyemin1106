@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>BOOT</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style type="text/css">
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+th { width: 200px; }
+td { width: 500px; }
+
+pre {
+	font-size: 16px;
+}
+</style>
+</head>
+<body>
+	<h1>게시글 정보</h1>
+	<hr>
+	<table>
+		<tr>
+			<th>번호</th>
+			<td th:text="${board.num}"></td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<td th:text="${board.writer}"></td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td th:text="${board.title}"></td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td><pre th:text="${board.content}"></pre></td>
+		</tr>		
+		<tr>
+			<th>작성일</th>
+			<td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+		</tr>
+		<tr>
+			<th>조회수</th>
+			<td th:text="${board.hit}"></td>
+		</tr>						
+	</table>
+	<br>
+	<button type="button" id="listBtn">목록</button>
+	<button type="button" id="modifyBtn">수정</button>
+	<button type="button" id="removeBtn">삭제</button>
+	
+	<script type="text/javascript">
+	$("#listBtn").click(function() {
+		location.href="[[@{/board/list}]]";	
+	});
+	</script>
+</body>
+</html>
