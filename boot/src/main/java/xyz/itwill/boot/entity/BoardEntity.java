@@ -77,7 +77,7 @@ public class BoardEntity extends BaseEntity {
 	private LocalDateTime updateDate;
 	*/
 	
-	//Entity 객체를 DTO 객체로 변환하여 반환하는 메소드 - 검색 처리시 사용
+	//Entity 객체를 DTO 객체로 변환하여 반환하는 메소드 - SELECT 명령 사용시 호출
 	public BoardDTO toBoardDTO() {
 		BoardDTO board=new BoardDTO();
 		board.setNum(num);

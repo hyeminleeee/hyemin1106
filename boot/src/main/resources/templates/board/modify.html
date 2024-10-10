@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>BOOT</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>게시글 변경</h1>
+	<hr>
+	<form th:action="@{/board/modify}" method="post" id="boardForm">
+	<input type="hidden" name="num" th:value="${board.num}">
+	<input type="hidden" name="hit" th:value="${board.hit}">
+	<table>
+		<tr>
+			<td>작성자</td>
+			<td><input type="text" name="writer" id="writer" th:value="${board.writer}" readonly="readonly"></td>
+		</tr>
+		<tr>
+			<td>제목</td>
+			<td><input type="text" name="title" id="title" th:value="${board.title}"></td>
+		</tr>
+		<tr>
+			<td>내용</td>
+			<td><textarea cols="80" rows="3" name="content" id="content" th:text="${board.content}"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2"><button type="submit">변경</button></td>
+		</tr>
+	</table>	
+	</form>
+	
+	<script type="text/javascript">
+	$("#boardForm").submit(function() {		
+		if($("#title").val() == "") {
+			alert("제목을 입력해 주세요.");
+			return false;
+		}
+		
+		if($("#content").val() == "") {
+			alert("내용을 입력해 주세요.");
+			return false;
+		}
+	});
+	</script>
+</body>
+</html>

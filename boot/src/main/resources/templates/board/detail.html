@@ -15,8 +15,8 @@ th, td {
 	padding: 5px;
 }
 
-th { width: 200px; }
-td { width: 500px; }
+th { width: 100px; }
+td { width: 300px; }
 
 pre {
 	font-size: 16px;
@@ -48,8 +48,8 @@ pre {
 			<td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 		</tr>
 		<tr>
-			<th>조회수</th>
-			<td th:text="${board.hit}"></td>
+			<th>조횟수</th>
+			<td th:text="${board.hit + 1}"></td>
 		</tr>						
 	</table>
 	<br>
@@ -57,10 +57,38 @@ pre {
 	<button type="button" id="modifyBtn">수정</button>
 	<button type="button" id="removeBtn">삭제</button>
 	
-	<script type="text/javascript">
+	<!-- inline 속성 : css 태그 또는 javascript 태그에서 인라인 표현식을 사용하기 위한 속성 -->
+	<script th:inline="javascript">
 	$("#listBtn").click(function() {
-		location.href="[[@{/board/list}]]";	
+		location.href="/board/list";	
+	});
+	
+	$("#modifyBtn").click(function() {
+		var num=[[${board.num}]];
+		//alert("num = "+num);
+		location.href="/board/modify/"+num;
+	});
+
+	$("#removeBtn").click(function() {
+		var num=[[${board.num}]];
+		location.href="/board/remove/"+num;
 	});
 	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
