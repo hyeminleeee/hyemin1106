@@ -1,5 +1,8 @@
 package xyz.itwill.boot.controller;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,8 +45,11 @@ public class BoardController {
 	}
 	
 	@GetMapping("/detail/{num}")
-	public String detail(@PathVariable(value = "num") Long num,  Model model) {
+	public String detail(@PathVariable(value = "num") Long num,  Model model
+			, @PageableDefault(page = 1, size = 5) Pageable pageable) {
 		model.addAttribute("board", boardService.getBoard(num));
+		model.addAttribute("page", pageable.getPageNumber());
+		model.addAttribute("size", pageable.getPageSize());
 		return "board/detail"; 
 	}
 	
@@ -64,7 +70,34 @@ public class BoardController {
 		boardService.removeBoard(num);
 		return "redirect:/board/list"; 
 	}
+	
+	//요청 처리 메소드에 Pageable 인터페이스로 매개변수를 작성하면 Front Controller에게 Pageable
+	//객체를 제공받아 저장하여 사용 가능
+	// => Pageable 객체 : 페이징 처리 관련 정보를 저장하기 위한 객체
+	// => 페이징 처리 관련 전달값이 있는 Pageable 객체 필드에 전달값 저장 
+	//@PageableDefault : 페이징 처리 관련 전달값이 없는 경우 Pageable 객체의 필드에 원하는 
+	//초기값을 저장하기 위한 어노테이션
+	//page 속성 : 전달값이 없는 경우 요청 페이지 번호를 속성값으로 설정
+	//size 속성 : 전달값이 없는 경우 페이지에 출력될 검색행의 갯수를 속성값으로 설정
+	@GetMapping("/paging")
+	public String paging(@PageableDefault(page = 1, size = 5) Pageable pageable, Model model) {
+		Page<BoardDTO> boardList=boardService.getBoardList(pageable); 
+		int blockSize=3;
+		int startPage=(((int)(Math.ceil((double)pageable.getPageNumber() / blockSize)))
+				- 1) * blockSize + 1;//1 4 7 10 ...
+		int endPage=((startPage + blockSize - 1) < boardList.getTotalPages()) ? 
+				startPage + blockSize - 1 : boardList.getTotalPages();//3 6 9 12 ...
+		
+		model.addAttribute("boardList", boardList);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		
+		return "board/paging"; 
+	}
 }
+
+
+
 
 
 

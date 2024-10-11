@@ -21,9 +21,9 @@ public class BoardDTO {
 		entity.setWriter(writer);
 		entity.setTitle(title);
 		entity.setContent(content);
-		if(num == null) {
-			entity.setHit(0);			
-		} else {
+		if(num == null) {//삽입 처리시 실행되는 명령
+			entity.setHit(0);
+		} else {//변경 처리시 실행되는 명령
 			entity.setNum(num);
 			entity.setHit(hit);
 		}

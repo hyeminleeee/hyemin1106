@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -76,17 +79,71 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void modifyBoard(BoardDTO boardDTO) {
+	public void modifyBoard(BoardDTO board) {
 		//DTO 객체를 Entity 객체로 변환하여 저장
-		BoardEntity entity=boardDTO.toBoardEntity();
+		BoardEntity entity=board.toBoardEntity();
 		boardRepository.save(entity);
 	}
 
 	@Override
 	public void removeBoard(Long num) {
-		//JpaRepository.deleteById(Long id) : 매개변수로 전달받은 식별자를 사용해 테이블에서
-		//행을 삭제하는 메소드 
+		//JpaRepository.deleteById(Long id) : 매개변수로 전달받은 식별자를 사용해 테이블에서 
+		//행을 삭제하는 메소드
 		boardRepository.deleteById(num);
+	}
+
+	@Override
+	public Page<BoardDTO> getBoardList(Pageable pageable) {
+		//Pageable.getPageNumber() : 요청 페이지 번호를 반환하는 메소드
+		// => Pageable 객체로 페이징 처리시 요청 페이지 번호는 [0]부터 시작되므로 1 감소 후 검색
+		int pageNum=pageable.getPageNumber() - 1;
+		
+		//Pageable.getPageSize() : 페이지에 출력될 검색행의 갯수를 반환하는 메소드
+		int pageSize=pageable.getPageSize();
+		
+		//JpaRepository.findAll(Pageable pageable) : 테이블에서 페이징 처리된 행을 검색해 
+		//Page 객체로 반환하는 메소드
+		//Page 객체 : 페이징 처리된 결과를 저장한 객체 - List 객체와 유사
+		// => 제네릭으로 설정된 클래스의 객체를 요소값으로 저장
+		//PageRequest.of(int pageNumber, int pageSize, Sort sort) : PageRequest 객체를 생성
+		//하여 반환하는 정적메소드
+		// => PageRequest 객체 : 페이징 처리 관련 정보기 저장된 Pageable 객체를 생성하는 객체
+		Page<BoardEntity> boardEitityPage=boardRepository.findAll(PageRequest.of
+				(pageNum, pageSize, Sort.by(Sort.Direction.DESC, "num")));
+		
+		//Page.getContent() : 요청 패이지에 해당하는 행을 반환하는 메소드
+		System.out.println("boardEitityList.getContent() = "+boardEitityPage.getContent());
+		//Page.getTotalElements() : 전체 행의 갯수를 반환하는 메소드
+		System.out.println("boardEitityList.getTotalElements() = "+boardEitityPage.getTotalElements());
+		//Page.getNumber() : 요청 페이지 번호를 반환하는 메소드
+		System.out.println("boardEitityList.getNumber() = "+boardEitityPage.getNumber());
+		//Page.getTotalPages() : 전체 페이지 갯수를 반환하는 메소드
+		System.out.println("boardEitityList.getTotalPages() = "+boardEitityPage.getTotalPages());
+		//Page.getSize() : 페이지에 출력될 검색행의 갯수를 반환하는 메소드
+		System.out.println("boardEitityList.getSize() = "+boardEitityPage.getSize());
+		//Page.hasPrevious() : 이전 페이지의 존재 유무를 반환하는 메소드
+		System.out.println("boardEitityList.hasPrevious() = "+boardEitityPage.hasPrevious());
+		//Page.hasNext() : 다음 페이지의 존재 유무를 반환하는 메소드
+		System.out.println("boardEitityList.hasNext() = "+boardEitityPage.hasNext());
+		//Page.hasNext() : 첫번째 페이지 여부를 반환하는 메소드
+		System.out.println("boardEitityList.isFirst() = "+boardEitityPage.isFirst());
+		//Page.hasNext() : 마지막 페이지 여부를 반환하는 메소드
+		System.out.println("boardEitityList.isLast() = "+boardEitityPage.isLast());
+
+		//Page<T>.map(Function<? super T, ? extends U> converter) : Page 객체의 요소값을 변환하여 
+		//Page 객체를 반환하는 메소드
+		// => Page<BoardEntity> 객체를 Page<BoardDTO> 객체로 변환하여 저장
+		Page<BoardDTO> boardDTOPage=boardEitityPage.map(boardEntity -> {
+			BoardDTO boardDTO=new BoardDTO();
+			boardDTO.setNum(boardEntity.getNum());
+			boardDTO.setWriter(boardEntity.getWriter());
+			boardDTO.setTitle(boardEntity.getTitle());
+			boardDTO.setHit(boardEntity.getHit());
+			boardDTO.setCreateDate(boardEntity.getCreateDate());
+			return boardDTO;
+		});
+		
+		return boardDTOPage;
 	}
 }
 
